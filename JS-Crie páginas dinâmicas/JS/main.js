@@ -1,2 +1,2 @@
-alert('testando o javascript!');
+// alert('testando o javascript!'); 
 document.querySelector('.tecla_pom');

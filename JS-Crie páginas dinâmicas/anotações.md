@@ -55,6 +55,7 @@
         - se digitarmos ```queryselector``` teremos um __erro de sintaxe__
 
     - O JavaScript é __sensível a letras maiúsculas e minúsculas__, sendo assim precisamos sempre digitar de forma correta a __sintaxe das funções__
+    - Sempre é muito bom usar o __autocomplete__
 
 
     #### Dentro do arquivo main.js
