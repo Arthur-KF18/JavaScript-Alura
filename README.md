@@ -8,4 +8,4 @@
 ---
 
 ### Repositório JavaScript para Web: Crie páginas dinâmicas
-- link: [JS-Crie páginas dinâmicas](https://github.com/Arthur-KF18/JavaScript-Alura/blob/main/JS-Crie%20p%C3%A1ginas%20din%C3%A2micas/anota%C3%A7%C3%B5es.md)
+- link: [JS-Crie páginas dinâmicas](https://github.com/Arthur-KF18/JavaScript-Alura/blob/main/JS-Crie%20p%C3%A1ginas%20din%C3%A2micas/README.md)
