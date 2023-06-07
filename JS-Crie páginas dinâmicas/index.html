@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,25 +14,55 @@
 
     <link rel="icon" type="image/png" href="images/bateria.png">
     <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/estilos.css">  
+    <link rel="stylesheet" href="css/estilos.css">
 
 </head>
+
+<!-- Anotações do Curso -->
+<!-- 
+    Ao abrirmos o arquivo, percebemos que ao clicar nos botões
+    eles não produzem nenhum som.
+    Como fazemos para o HTML reproduzir um som?
+
+    As tags <audio> são responsáveis por carregar e fornecer ao navegador
+    os sons dos instrumentos que queremos reproduzir
+    - <audio controls src="sounds/keyc.wav" id="som_tecla_tom"></audio>
+    - Um atributo importante nela, é o controls, responsável por exibir a tag
+    - Quando está sem o JS, elas aparecem no navegador, justamente por adicionar
+      o atributo controls, e ela vem com controles nativos
+    - Há uma diferença da aparência dependendo do navegador.
+    - É muito difícil customizar essa tag no CSS
+
+    O que podemos fazer é passar o controle da reprodução do som, na tag audio
+    para a tag button. Ai utilizamos uma linguagem de programaçao que trabalhe
+    com HTML e CSS, o JavaScript
+
+    Para podermos fazer algo nos botões, precisamos colocar um atributo HTML
+    que será capaz dessa comunicação: onclick="códigoJS"
+    - JS adiciona dinamismo na página
+    - Dentro do onclick, usamos a função alert('texto do aviso'), que ao clicarmos
+      no botão, ele nos trará o alert retornando a mensagem escrita
+      -- Em todo tipo de navegador será retornado a caixinha de mensagem
+      -- <button onclick="alert('POM')" class="tecla tecla_pom">Pom</button>
+
+-->
+
 <body>
 
-    <h1>Alura Midi</h1>
+    <h1>Alura Midi</h1> 
 
     <section class="teclado">
-        <button class="tecla tecla_pom">Pom</button>
-        <button class="tecla tecla_clap">Clap</button>
-        <button class="tecla tecla_tim">Tim</button>
+        <button onclick="alert('POM')" class="tecla tecla_pom">Pom</button>
+        <button onclick="" class="tecla tecla_clap">Clap</button>
+        <button onclick="" class="tecla tecla_tim">Tim</button>
 
-        <button class="tecla tecla_puff">Puff</button>
-        <button class="tecla tecla_splash">Splash</button>
-        <button class="tecla tecla_toim">Toim</button>
+        <button onclick="" class="tecla tecla_puff">Puff</button>
+        <button onclick="" class="tecla tecla_splash">Splash</button>
+        <button onclick="" class="tecla tecla_toim">Toim</button>
 
-        <button class="tecla tecla_psh">Psh</button>
-        <button class="tecla tecla_tic">Tic</button>
-        <button class="tecla tecla_tom">Tom</button>
+        <button onclick="" class="tecla tecla_psh">Psh</button>
+        <button onclick="" class="tecla tecla_tic">Tic</button>
+        <button onclick="" class="tecla tecla_tom">Tom</button>
     </section>
 
     <audio src="sounds/keyq.wav" id="som_tecla_pom"></audio>
@@ -45,4 +76,5 @@
     <audio src="sounds/keyc.wav" id="som_tecla_tom"></audio>
 
 </body>
+
 </html>
