@@ -86,7 +86,10 @@
             }
         ```
         - Quando executamos essa função no console, ela retorna ```ƒ```, o que indica a __existência da função__. usando ```tocaSomPom()``` no console, __nos retorna o audio__
+        - O ```undefined``` que aparece não é necessssário se preocupar __no momento__
 
+    #### Clique no botão
+    - a ser continuado
 
     #### Dentro do arquivo main.js
     - O nome main vem de "principal", e sempre é usado main para o arquivo principal javascript, para facilitar quando precisa-se descobrir qual o principal arquivo js e toda lógica
