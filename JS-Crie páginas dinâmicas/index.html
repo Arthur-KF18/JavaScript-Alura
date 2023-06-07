@@ -20,54 +20,6 @@
 
 </head>
 
-<!-- Anotações do Curso -->
-<!-- 
-    Ao abrirmos o arquivo, percebemos que ao clicar nos botões
-    eles não produzem nenhum som.
-    Como fazemos para o HTML reproduzir um som?
-
-    As tags <audio> são responsáveis por carregar e fornecer ao navegador
-    os sons dos instrumentos que queremos reproduzir
-    - <audio controls src="sounds/keyc.wav" id="som_tecla_tom"></audio>
-    - Um atributo importante nela, é o controls, responsável por exibir a tag
-    - Quando está sem o JS, elas aparecem no navegador, justamente por adicionar
-      o atributo controls, e ela vem com controles nativos
-    - Há uma diferença da aparência dependendo do navegador.
-    - É muito difícil customizar essa tag no CSS
-
-    O que podemos fazer é passar o controle da reprodução do som, na tag audio
-    para a tag button. Ai utilizamos uma linguagem de programaçao que trabalhe
-    com HTML e CSS, o JavaScript
-
-    Para podermos fazer algo nos botões, precisamos colocar um atributo HTML
-    que será capaz dessa comunicação: onclick="códigoJS"
-    - JS adiciona dinamismo na página
-    - Dentro do onclick, usamos a função alert('texto do aviso'), que ao clicarmos
-      no botão, ele nos trará o alert retornando a mensagem escrita
-      -- Em todo tipo de navegador será retornado a caixinha de mensagem
-      -- <button onclick="alert('POM')" class="tecla tecla_pom">Pom</button>
-
-    Escrevendo o JS no HTML é próximo ao CSS Inline, ou seja, não é eficiente, ficaria
-    muito confuso e dificíl de reproduzir algo para as outras tags, tendo erros.
-    
-    Cada Linguagem possui sua responsabilidade, assim com JS, Inline tem maior objetivo de teste
-
-    O HTML tem o objeto de construir a estrutura semântica da página, o CSS, os estilos da
-    página, e o JS responsável por adicionar o dinamismo e atualização da lógica na página, que
-    não é forncecida pelo HTML
-
-    Para isso, para construirmos o JS de forma consistente e correta, iremos criar um arquivo
-    externo main.js
-
-    Para ligarmos o arquivo main.js ao HTML usamos a tag: <script src="main.js"></script>
-
-    #### Dentro do arquivo main.js
-    - O nome main vem de "principal", e sempre é usado main para o arquivo principal javascript, para
-    facilitar quando precisa-se descobrir qual o principal arquivo js e toda lógica
-    - o ; no JavaScript é opcional, sendo extremamente recomendado para evitar diferentes erros no futuro
-
--->
-
 <body>
 
     <h1>Alura Midi</h1>
