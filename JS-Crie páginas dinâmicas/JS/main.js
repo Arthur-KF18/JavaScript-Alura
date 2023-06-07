@@ -1,0 +1,1 @@
+alert('testando o javascript!');
