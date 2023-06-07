@@ -19,7 +19,7 @@ body {
 h1 {
   color: var(--branca);
   margin-bottom: 20px;
-  font-size: 2rem;
+  font-size: 2.4rem;
 }
 
 .teclado {
@@ -39,11 +39,12 @@ h1 {
   color: var(--vermelha);
   cursor: pointer;
   height: 120px;
-  font-size: 1.75em;
+  font-size: 1.50em;
   font-weight: bold;
   line-height: 120px;
   text-align: center;
   width: 120px;
+  text-transform: uppercase;
 }
 
 .tecla.ativa,
