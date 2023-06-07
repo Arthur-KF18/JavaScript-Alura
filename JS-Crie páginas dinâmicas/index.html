@@ -45,11 +45,23 @@
       -- Em todo tipo de navegador será retornado a caixinha de mensagem
       -- <button onclick="alert('POM')" class="tecla tecla_pom">Pom</button>
 
+    Escrevendo o JS no HTML é próximo ao CSS Inline, ou seja, não é eficiente, ficaria
+    muito confuso e dificíl de reproduzir algo para as outras tags, tendo erros.
+    
+    Cada Linguagem possui sua responsabilidade, assim com JS, Inline tem maior objetivo de teste
+
+    O HTML tem o objeto de construir a estrutura semântica da página, o CSS, os estilos da
+    página, e o JS responsável por adicionar o dinamismo e atualização da lógica na página, que
+    não é forncecida pelo HTML
+
+    Para isso, para construirmos o JS de forma consistente e correta, iremos criar um arquivo
+    externo .js
+
 -->
 
 <body>
 
-    <h1>Alura Midi</h1> 
+    <h1>Alura Midi</h1>
 
     <section class="teclado">
         <button onclick="alert('POM')" class="tecla tecla_pom">Pom</button>
