@@ -118,8 +118,8 @@
 - Antes de continuarmos utilizando nosso script, precisamos entender como __as listas funcionam no JavaScript__. Antes de tudo, precisamos deixar nosso código legível e muito fácil de entender
 - Uma forma de realiar isto, é adicionar alguns nomes para que aumente a legibilidade do código
 - Podemos fazer isso através de um recurso da linguagem chamado de __referências__
-- __As referências no JavaScript devem ser criadas ou declaradas com base no valor que vão receber e terão que guardar__ 
-  -  Muito provavelmente o ideal seria que realmente a lista de teclas sempre armazenasse a mesma lista de teclas, portanto, terá seu valor constante. Porém, __se fosse um outro tipo de valor que fosse armazenado nessa referência, que pudesse ter seu valor modificado ao longo do script, essa outra referência poderia ser uma variável__, que não é o nosso caso.
+- __As referências no JavaScript devem ser criadas ou declaradas com base no valor que vão receber e terão que guardar__
+  - Muito provavelmente o ideal seria que realmente a lista de teclas sempre armazenasse a mesma lista de teclas, portanto, terá seu valor constante. Porém, __se fosse um outro tipo de valor que fosse armazenado nessa referência, que pudesse ter seu valor modificado ao longo do script, essa outra referência poderia ser uma variável__, que não é o nosso caso.
   - E o ideal mesmo é usarmos sempre __referências constantes__, e caso necessitarmos de uma variável a utilizamos como variável
 - Para se criar uma referência constante precisamos escrever da seguinte forma:
   - ```const listaDeTeclas```
@@ -137,10 +137,58 @@
 - Como acessar um elemento dentro de uma lista? Para isto usamos a sintaxe de __colchetes []__, e dentro dele, vamos passar o __número com o indice que o elemento está dentro desta lista__
   - ```listaDeTeclas[0]``` resulta em ```<button class="tecla tecla_pom">```
   - Isto quer dizer que, a __NodeList__ nos passou o __número de cada item da lista, sempre começada em 0__, e quando colocamos o número no [], __acessamos o respectivo item da lista__. Ele vai pela __ordem de declaração do HTML__
-  -  Então se eu quiser voltar a ter o meu ```onclick``` no pom, eu preciso acessar este elemento pela lista, mas informando o número do seu índice para conseguir acessá-lo e então acessar o ```onclick```
+  - Então se eu quiser voltar a ter o meu ```onclick``` no pom, eu preciso acessar este elemento pela lista, mas informando o número do seu índice para conseguir acessá-lo e então acessar o ```onclick```
   - __É muito comum que as listas dentro da programação comecem com índice zero e vão até um índice de um número total -1.__
 - ```listaDeTeclas[0]```: quando adicionamos um __ponto__, eu vou voltar a acessar todas as propriedades funcionalidades de um elemento, porque agora a minha referência para este elemento é através da lista de teclas e eu não preciso mais usar o ```document.querySelector``` de um único seletor.
   - ```listaDeTeclas[0].onclick = tocaSomPom```:
+  - ```console.log(referência)```: retorna no console a lista criada
+
+#### Percorrendo uma lista
+
+- Como podemos acessar todos os elementos de uma única vez através das listas?
+- Agora precisamos saber como acessamos todos de uma vez, na verdade __cada item dessa lista de forma automatizada__, pois não vai ser viável __continuarmos repetindo esse trecho de atribuição a um clique de cada elemento, uma função de uma lista que não sabemos o tamanho.__
+- Estamos trabalhando em um escopo pequeno, mas em um maior, poderia ser dificil
+- Toda linguagem de programação possui uma __estrutura de repetição__ para casos onde temos muitas repetições.
+
+- Usando o ```while```, "enquanto" determinada condição, __que vai ser informada aqui nos parênteses que escrevemos logo após a palavra while__, a declaração while, vamos criar uma condição que vai determinar onde essa repetição deve parar, porque senão __ela vai rodar para sempre__, vai causar um loop infinito e vai travar o nosso navegador e possivelmente até o computador. Portanto, precisamos ter uma condição que tenha fim
+
+  -
+
+    ```
+      while(condição){
+              rotina
+        }
+    ```
+
+  - a rotina da repetição é o que será __executado, guardado e feito a cada loop dessa função__
+
+- ```
+      while(){
+          listaDeTeclas[0].onclick = tocaSomPom;
+        }
+    ```
+
+- Ao realizamos esta função, faltará a condição para que este loop aconteça
+- Para que a condição seja atendida, o while espera receber uma condição __verdadeira ou falsa__, ou seja, algo que o JS vai verificar
+- Precisamos ter um __true ou false__ e precisamos comparar as condições para passarmos no while.
+- Temos o tamanho da nossa lista, que é de nove elementos e temos repetições. Então podemos contar essas repetições e enquanto essas repetições não atingirem o tamanho da nossa lista, elas vão tendo que ser incrementadas, ter o seu valor contado.
+- podemos usar por exemplo o operador ```0 < 9```, para verificar se 0 é __menor__ que nove.
+- Temos que ter do lado esquerdo do operador, algo que sempre conte as repetições e compare como número total da nossa lista. Precisaremos então criar um contador
+  - Para isso precisamos criar uma __referência variável__, utilizando ```let```
+  - assim, criamos o ```let contador = 0;```, que será nosso contador e o nossa condição dentro do __while__
+  - __importante lembrar que quando nós colocarmos dentro do loop, o navegador vai bugar, justamente por nosso contador ser 0__
+
+- Dentro do while, nós podemos mudar o valor do ```let``` pois ele é uma __variável__. Ele permite chamar ele novamente. Porém, se colocarmos ```contador = 1```, ele vai executar o loop e o contador vai ser ```1 < 9```, acontecendo o loop novamente
+- Para evitarmos este problema, precisamos que : ```contador = valorAntigo + 1```, onde este valorAntigo será o __valor anterior do contador__, ou seja, pode ser __ele mesmo__:
+  - ```contador = contador + 1;```, para que ele __realize a conta primeiro e depois aconteça o loop novamente__
+- Quando voltamos ao navegador, ele realizará o contador, e irá parar assim que retornar ```false```.
+  - Visualizamos isto através da função do console: ```console.log(contador);```
+- Para que todas as teclas emitam som, usamos então:
+  - ```listaDeTeclas[contador].onclick = tocaSomPom;```, ou seja, __podemos, no lugar de 0 escrever a referência contador, que vai guardar um número variável, um número que uma hora vai ter um valor e outra hora vai armazenar um outro valor, um outro número__
+  - Quando acessamos o navegador, o __mesmo som estará em todas as teclas__, para resolvermos isto, precisamos alterar uma parte da função para poder resolver isto.
+- Há uma condição específica para nosso while, pois, nós __sabemos__ quantos itens tem na lista. Porém, se tivéssemos mais itens, mais botões, precisariámos contar a quantidade. E para isto, existe um atributo responsável por identificar a quantidade, o ```length```
+  - Ao invés de usar 9, usamos o atributo length: ```(contador < listaDeTeclas.lenght)```. O atributo pertence a nossa referência, por isto, podemos utiliza-lo, para o loop funcionar corretamente por toda a lista, já que o atributo guarda __a quantidade de itens na lista__
+- __Então veja que estamos fazendo uma comparação entre duas referências que armazenam números nelas. Dessa forma conseguimos ter mais ideia e o nosso código consegue ter um pouco mais de legibilidade, apesar de ele ficar um pouco maior em termos de palavras, ao invés de comparar números, que nem sempre sabemos o significado dos números dentro do nosso código. Dessa forma fica mais dinâmico o nosso código.__
 
 #### Dentro do arquivo main.js
 

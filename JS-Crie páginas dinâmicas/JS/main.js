@@ -6,4 +6,14 @@ function tocaSomPom() {
 }
 
 const listaDeTeclas = document.querySelectorAll('.tecla');
-listaDeTeclas[0].onclick = tocaSomPom;
+
+// Definindo variável para um novo valor
+let contador = 0;
+
+// Criando um loop para repetir a execução dos sons
+while (contador < listaDeTeclas.length) {
+    listaDeTeclas[contador].onclick = tocaSomPom;
+    contador = contador + 1;
+    
+    console.log(contador);
+}
