@@ -190,6 +190,30 @@
   - Ao invés de usar 9, usamos o atributo length: ```(contador < listaDeTeclas.lenght)```. O atributo pertence a nossa referência, por isto, podemos utiliza-lo, para o loop funcionar corretamente por toda a lista, já que o atributo guarda __a quantidade de itens na lista__
 - __Então veja que estamos fazendo uma comparação entre duas referências que armazenam números nelas. Dessa forma conseguimos ter mais ideia e o nosso código consegue ter um pouco mais de legibilidade, apesar de ele ficar um pouco maior em termos de palavras, ao invés de comparar números, que nem sempre sabemos o significado dos números dentro do nosso código. Dessa forma fica mais dinâmico o nosso código.__
 
+#### Funções com parâmetros
+
+- Temos de criar uma função que tenha o nome mais genérico, justamente para abrangermos todos os botões do teclado.
+- primeiro, substituímos o nome da função por ```tocaSom```. Quando analisamos a função, não podemos ter um ID fixo, ele armazenará audios, então informamos a tag audio específica.
+- Precisamos informar qual vai ser a tag áudio específica e precisamos obter o ID dessa tag áudio em específico, que vai ter um som que vai ser reproduzido por essa função que toca um som de um dado ID, de uma determinada tag áudio.
+- portanto, esse seletor não pode ser fixo, ele precisa ser variável, e também precisa ser informado a nossa função
+- Quem chamar a função tocaSom, vai precisar do ID, para que a nossa função consiga tocar o som desse elemento audio, portanto vamos precisar de um __parâmetro__
+- O parâmetro é algo que conseguimos passar para a nossa função, e que a execução, que o código dependa para funcionar corretamente. Muitas das vezes esse parâmetro é opcional
+- Para nossa função funcionar corretamente, precisamos deste parâmetro.
+- __Para declarar o parâmetro de uma função, basta irmos na assinatura da nossa função ```funcion tocaSom(){}```, e escrevermos dentro da nossa função: ```idElementoAudio```__  
+- __quanto mais descritivo, mais informativo for o nome das nossas referências, sejam elas constantes, variáveis, funções, parâmetros, melhor e mais fácil de entender o nosso código fica, chamamos isso de nomes significativos. Então é importante criarmos nomes que tenham sentido.__
+- Por ser um valor variável, podemos usar imediatamente dentro da função, que vai precisar dentro do ```querySelector```.
+- Como é uma variável, ou seja, uma referência, __não podemos colocar isto entre aspas__, apenas digitamos o nosso valor variável
+- Como isto ocorre no console:
+  - Quando chamamos a função ```tocaSom()```, ela nos dará um erro, sendo ele este: ```Uncaught TypeError: Cannot read properties of null (reading 'play')```
+  - Este erro quer dizer que ele não consegue ouvir o aúdio de algo que retorna ```null```, ou seja, nada. Isto ocorre porque a função é __genérica__ e não está chamando um ID que existe no HTML
+  - quando digitamos então: ```tocaSom('#som_tecla_som')```, ele nos retornará ```undefined``` e o __aúdio será tocado__
+  - A função já está correta e recebendo o som adequado
+- Podemos definir parâmetro como: nomes que damos a valores que uma função pode receber em sua chamada, que podem ou não ter um valor padrão. Os parâmetros de uma função são como variáveis ficam disponíveis apenas no corpo da função.
+
+#### Funções anônimas
+
+- 
+
 #### Dentro do arquivo main.js
 
 - O nome main vem de "principal", e sempre é usado main para o arquivo principal javascript, para facilitar quando precisa-se descobrir qual o principal arquivo js e toda lógica
