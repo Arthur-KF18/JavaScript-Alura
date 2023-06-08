@@ -213,14 +213,15 @@
 #### Funções anônimas
 
 - Quando verificamos tudo abordado até o momento, verficamos que para poder invocar o som, ele precisa estar presente nas funções do ```main.js```
-- Para que isto ocorra, __nós precisamos que no while, quando a tecla ser clicada, o som seja emitido__, porém, a ```listaDeTeclas[contador].onclick = tocaSom;``` __não pode ter parênteses no tocaSom, pois ele é executado imediatamente__ 
+- Para que isto ocorra, __nós precisamos que no while, quando a tecla ser clicada, o som seja emitido__, porém, a ```listaDeTeclas[contador].onclick = tocaSom;``` __não pode ter parênteses no tocaSom, pois ele é executado imediatamente__
 - Sendo assim, o JavaScript possui uma funcionalidade chamada __funções anônimas__, e ela será usada no lugar da ```tocaSom```
 - E essas funções sem nome __só podem ser utilizadas nesse contexto de quando elas são o valor de algum atributo ou estão sendo armazenadas dentro de alguma referência constante ou variável__
 - assim, substituíndo por uma função, ficará: ```listaDeTeclas[contador].onclick = function () {}``` e dentro das chaves vamos conseguir chamar a função ```tocaSomPom();```, pois dentro da nossa atribuição estaremos criando um a função nova, portanto, quando criamos ela, não a invocaremos __automaticamente__.
 
 #### Textos Dinâmicos
+
 - Com a função criada, sendo ela anônima, como nós podemos deixar o id de forma dinâmica, lendo todos os botões?
-- 
+-
 
 #### Dentro do arquivo main.js
 
