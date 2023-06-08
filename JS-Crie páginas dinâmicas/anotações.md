@@ -99,7 +99,23 @@
 - ```document.querySelector('#som_tecla_pom').play().onclick()```, pelo __```onclick()```__ ser um __atributo__, para eu passar e definir um valor para ele, eu uso o sinal de atribuição, o mesmo do HTML, que é o sinal de igual =. Este sinal de =, vai poder atribuir __tudo que vem para o lado direito aquilo, nesta propriedade/atributo o que está do lado esquerdo do sinal. Portanto queremos que quando o onclick deste elemento da tecla pom seja executado, queremos que chame a função tocaSomPom();.__
   - Ela ficará dessa forma: ```document.querySelector('.tecla_pom').onclick = tocaSomPom();```
   - Quando atribuímos uma função para um elemento e utilizamos o (), __nós não estamos guardando essa função dentro do atributo ```onclick```__, isso é uma __peculiaridade do arquivo JavaScript.. Já estamos dizendo para o navegador passar nessa parte e executar essa função imediatamente__
-  - __Para que guardemos uma função em um atributo onclick, precisamos retirar o parentêses, e ai sim, ele irá guardar dentro do onclick a referência__ 
+  - __Para que guardemos uma função em um atributo onclick, precisamos retirar o parentêses, e ai sim, ele irá guardar dentro do onclick a referência__
+
+#### Lista de Elementos
+
+- Quando haviamos criado a função ```tocaSomPom()```, ela foi responsável por apenas __um dos botões de som__. No mainjs, se adicionarmos uma função para cada botão, __as teclas serão reproduzidas__, porém o main.js ficará extenso e isto não é uma __boa prática__
+  - Se aumentarmos a quantidade de teclas, __ficará cada vez mais difícil de ler e entender o código, sendo quase impossível entender o que acontece e o que cada botão fará__
+  - Não compensa ter a repetição de código, até porque se precisarmos mudar a funcionalidade das nossas funções, será difícil
+- Para solucionarmos isto, podemos aprender uma nova funcionalidade do JavaScript, __que é automatizar as nossas funcionalidades e principalmente trabalhar com muitos elementos de uma vez só, precisamos aprender a trabalhar com listas de elementos.__
+- Para que isto ocorra, precisamos saber como selecionar todos os botões de uma única vez, adicionando o aúdio e a função que toca o som
+- No console digitaremos:
+  - ```document.querySelectorAll()``` ele é uma funcionalidade do JS, que busca todos os elementos com o seletor que definirmos nos parênteses.
+  - ```document.querySelectorAll('.tecla')```: Quando digitado no console, ele retornará um ```NodeList(9)```, sendo de 0 a 8 elementos, dando 9 no total, assim indicando que todos os botões foram encontrados pelo JavaScript seguindo o seletor que especificamos.
+  - A principal característica presente nas listas são os __colchetes ou ```[]```__
+
+#### Referências
+
+- Antes de continuarmos utilizando nosso script, precisamos entender como __as listas funcionam no JavaScript__. Antes de tudo, precisamos deixar nosso código legível e muito fácil de entender
 
 #### Dentro do arquivo main.js
 
