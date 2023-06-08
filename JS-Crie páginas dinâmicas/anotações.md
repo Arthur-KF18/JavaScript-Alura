@@ -116,6 +116,18 @@
 #### Referências
 
 - Antes de continuarmos utilizando nosso script, precisamos entender como __as listas funcionam no JavaScript__. Antes de tudo, precisamos deixar nosso código legível e muito fácil de entender
+- Uma forma de realiar isto, é adicionar alguns nomes para que aumente a legibilidade do código
+- Podemos fazer isso através de um recurso da linguagem chamado de __referências__
+- __As referências no JavaScript devem ser criadas ou declaradas com base no valor que vão receber e terão que guardar__ 
+  -  Muito provavelmente o ideal seria que realmente a lista de teclas sempre armazenasse a mesma lista de teclas, portanto, terá seu valor constante. Porém, __se fosse um outro tipo de valor que fosse armazenado nessa referência, que pudesse ter seu valor modificado ao longo do script, essa outra referência poderia ser uma variável__, que não é o nosso caso.
+  - E o ideal mesmo é usarmos sempre __referências constantes__, e caso necessitarmos de uma variável a utilizamos como variável
+- Para se criar uma referência constante precisamos escrever da seguinte forma:
+  - ```const listaDeTeclas```
+  - ```const listaDeTeclas = document.querySelectorAll('.tecla');```: Através deste código, atribuímos a nossa direita o que armazenar dessa referência
+  - Desta forma, a gente consegue ter uma lista de teclas guardadas em um nome que é fácil de entender e lembrar.
+- A partir da listaDeTeclas é que vamos manipular nossa lista de teclas do navegador
+  - No console ele autocompletará nossa constante e assim usaremos ela durante a construção mais automática dos elementos
+- 
 
 #### Dentro do arquivo main.js
 
