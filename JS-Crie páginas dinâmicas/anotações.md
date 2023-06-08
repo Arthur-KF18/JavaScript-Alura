@@ -126,8 +126,21 @@
   - ```const listaDeTeclas = document.querySelectorAll('.tecla');```: Através deste código, atribuímos a nossa direita o que armazenar dessa referência
   - Desta forma, a gente consegue ter uma lista de teclas guardadas em um nome que é fácil de entender e lembrar.
 - A partir da listaDeTeclas é que vamos manipular nossa lista de teclas do navegador
-  - No console ele autocompletará nossa constante e assim usaremos ela durante a construção mais automática dos elementos
-- 
+  - No console ele autocompletará nossa referência constante e assim usaremos ela durante a construção mais automática dos elementos
+
+#### Conhecendo listas
+
+- Agora que já entendemos como deixar o código mais legível,  precisamos entender como eu acesso individualmente um elemento dessa lista.
+- Quando usamos o __ponto__ para acessarmos essa referência, não encontramos o ```onclick```. A lógica não funciona desta maneira.
+- __Não se coloca o evento de clicar na lista, mas sim em cada elemento dela__
+- Portanto, apesar de eu ter conseguido concentrar todos os meus elementos em uma linha de código, eu ainda vou precisar acessá-los individualmente para conseguir em cada um deles atribuir um valor para o onclick, ou seja, uma função que vai reproduzir o determinado som daquela tecla.
+- Como acessar um elemento dentro de uma lista? Para isto usamos a sintaxe de __colchetes []__, e dentro dele, vamos passar o __número com o indice que o elemento está dentro desta lista__
+  - ```listaDeTeclas[0]``` resulta em ```<button class="tecla tecla_pom">```
+  - Isto quer dizer que, a __NodeList__ nos passou o __número de cada item da lista, sempre começada em 0__, e quando colocamos o número no [], __acessamos o respectivo item da lista__. Ele vai pela __ordem de declaração do HTML__
+  -  Então se eu quiser voltar a ter o meu ```onclick``` no pom, eu preciso acessar este elemento pela lista, mas informando o número do seu índice para conseguir acessá-lo e então acessar o ```onclick```
+  - __É muito comum que as listas dentro da programação comecem com índice zero e vão até um índice de um número total -1.__
+- ```listaDeTeclas[0]```: quando adicionamos um __ponto__, eu vou voltar a acessar todas as propriedades funcionalidades de um elemento, porque agora a minha referência para este elemento é através da lista de teclas e eu não preciso mais usar o ```document.querySelector``` de um único seletor.
+  - ```listaDeTeclas[0].onclick = tocaSomPom```:
 
 #### Dentro do arquivo main.js
 
