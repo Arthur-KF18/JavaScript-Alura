@@ -229,7 +229,8 @@
 - Para podermos acessar esta classe, usamos ```listaDeTeclas[0].classList[1]```, retornando a classe ```tecla_pom```
 - Para melhor entendimento, guardaremos essa função em uma __referência constante__
 
-  - ```
+  - 
+  ```js
      const instrumento = listaDeTeclas[contador].classList[1];
      console.log(instrumento);
     ```
@@ -238,7 +239,7 @@
   - vemos no console que está dando o console tanto do nosso instrumento como também do valor do contador que mantivemos
   -
 
-    ```
+    ```js
     tecla_pom
     1
     tecla_clap
@@ -246,7 +247,7 @@
     ...
     ```
 
-    - Resultado no console
+  - Resultado no console
 
 - Quando voltamos no nosso código, temos uma repetição de código no while, que é a ```listaDeTeclas[contador]```. Isso não é uma boa prática, e a forma de resolvermos isto é através de uma ```const``` chamada __tecla__
   - ```const tecla = listaDeTeclas[contador];```
@@ -255,8 +256,32 @@
   - O que ocorre é que nós damos a primeira parte do nosso id somado ao restante. Este restante, são os finais de __cada id de audio__. Então, utilizando a referência __instrumento__, o classList pode atuar, e ainda, utilizando o contador criado anteriormente.
   - tudo que é variável dentro da minha string eu preciso envolver entre chaves, porém iniciando ```$```
   - Esse ```${}``` faz uma __abertura para o código de JavaScript de dentro da string__, eu posso acessar variáveis, métodos fazer contas aqui dentro. E o nome desse recurso que utilizamos da linguagem JavaScript é __template string__
-  - 
+  -
 
+#### Repetição otimizada com For
+
+- Como podemos melhorar o nosso código mesmo depois de estar funcionando corretamente?
+- Podemos melhorar ainda mais em relação a forma de percorrer cada elemento que estão dentro de uma lista.
+- Utilizamos o ```while```, que depende de uma condição ser verdadeira ou falsa para determinar se a rotina ser aplicada
+- E se nós quisermos aumentar o alura mid e oferecer aos usuários outros instrumentos?
+- Dependemos de um fator externo, __o contador__ para desenvolver a rotina. Se nós criássemos novos teclados, teríamos de ter novos contadores, o que voltaria ao fator de __repetição de código__.
+- O JavaScript oferece opções para resolver as coisas de maneira mais otimizada, evitando repetição de código, deixando tudo mais organizado e com uma boa estrutura de lógica, já oferece contido nele toda a __estrutura, tanto do contador como da parte da condição para nossa rotina de repetição em encerrar e também da parte da incrementação desse valor contador.__
+- Então, a estrutura que usaremos no lugar do whie é o __```for```__. Ele significa __para__, no sentindo de __para esta condição__.
+
+- O for é uma estrutura de laço de repetição ou de loop, que também vai fazer a mesma coisa, enquanto uma instrução, uma condição for verdade, ele vai repetir essa rotina, porém a vantagem em relação ao while é que __o contador pode ser declarado ainda dentro dos parênteses do for.__
+
+  -
+
+  ```js
+   for (let contador = 0; contador < listaDeTeclas.length; contador++){}
+   ```
+
+   ,e a variável contador __não precisará estar fora do loop__
+- Definimos então três características: __Declaração, Condição e Incrementação__, sendo assim:
+  - ```for (Declaração; Condição; Incremetação) {};```
+  - As 3 são __parâmetros do for__
+  - A estrutura de repetição for é usada para percorrer uma lista de forma mais otimizada, __onde em sua declaração criamos a variável contadora da repetição, a condição de interrupção das repetições e a condição de incrementação da variável contadora.__
+- __É sempre bom deixar também no fim do código uma nova linha e não encerrar o final do arquivo com um final de código é sempre bom deixar esse respiro, porque depois se o nosso código vier a sofrer algum tipo de transformação por ferramentas que juntam o código, que ofuscam o código__
 
 #### Dentro do arquivo main.js
 
