@@ -343,7 +343,8 @@
 - Até o momento, nós apenas adicionamos os estilos e funções que queremos que o teclado realize para nós, porém, com o pequeno defeito de aceitar __toda e qualquer tecla__
 - Para nós resolvermos este problema, precisamos limitar as ações apenas nas teclas __Enter e Espaço__
 - Nós precisamos criar uma condição __se a tecla enter ou espaço forem usadas__ para ativar a nossa função
-- 
+-
+
 ```js
     tecla.onkeydown = function (pressionada) {
         
@@ -353,13 +354,14 @@
 
     }
 ```
-  - quando pressionamos a tecla, a função ```pressionada``` irá agir, e ela apenas irá funcionar quando forem pressionadas as teclas __Enter ou Espaço__
-  - o ```if``` é uma função __SE__, que aguarda a informação correta, ele é uma __condição__ para que o código ocorra
-  - Para nós montarmos nossa condição, precisamos saber qual tecla o usuário pressionou. Podemos montar isso através da função acompanhada da tecla
-  - ```tecla.onkeydown = function (nomedafunçãoevento)```. Quando nós damos um nome a ela, estaremos dando o nome a um __evento__
-  - Então esse recurso está disponível para todas as funções que são diretamente atreladas a um evento. E dentro dessa função, temos o parâmetro dela, é fornecido para ela como primeiro parâmetro os detalhes do evento que foi acionado e podemos dar um nome qualquer a este parâmetro que vai representar o evento que foi acionado.
+
+- quando pressionamos a tecla, a função ```pressionada``` irá agir, e ela apenas irá funcionar quando forem pressionadas as teclas __Enter ou Espaço__
+- o ```if``` é uma função __SE__, que aguarda a informação correta, ele é uma __condição__ para que o código ocorra
+- Para nós montarmos nossa condição, precisamos saber qual tecla o usuário pressionou. Podemos montar isso através da função acompanhada da tecla
+- ```tecla.onkeydown = function (nomedafunçãoevento)```. Quando nós damos um nome a ela, estaremos dando o nome a um __evento__
+- Então esse recurso está disponível para todas as funções que são diretamente atreladas a um evento. E dentro dessa função, temos o parâmetro dela, é fornecido para ela como primeiro parâmetro os detalhes do evento que foi acionado e podemos dar um nome qualquer a este parâmetro que vai representar o evento que foi acionado.
   Através do ```console.log(pressionada)```, podemos ver no console o que cada tecla está fazendo por debaixo dos panos ao ser pressionada
-  - Quando vemos a propriedade ```code```, podemos ver a qual tecla se associa quando as utilizamos. __Vale destacar que elas também são identificadas através de números, chamada ```keycode```__
+- Quando vemos a propriedade ```code```, podemos ver a qual tecla se associa quando as utilizamos. __Vale destacar que elas também são identificadas através de números, chamada ```keycode```__
 - Dependendo de como está, se estiver __vazia__,  isso nos faz tomar a decisão correta de qual dessas propriedades podemos usar para trazer no JavaScript e montar a nossa lógica.
 - Se usarmos apenas ```pressionada.code```, no console aparecerá cada tecla que foi pressionada e seu respectivo código
 - Existem 3 operadores utilzando o igual:
@@ -369,8 +371,94 @@
 - o ```===``` compara __o tipo do valor e do dado__
 
 #### Operador Lógico
-- 
 
+- o operador lógico __OR__, também conhecido por ```||``` é  utilizado para definir se duas condições colocadas são atendidas, sendo uma __OU__ outra
+  - Dado o código:
+
+    ```js
+    if (pressionada.code === "Enter" || pressionada.code === "Space") {}
+    ```
+
+  - Se a tecla pressionada for enter __OU__ for espaço, realize a função dentro dos colchetes
+
+#### Mais condições
+
+- Analisando o código novamente, na nossa primeira função ```tocaSom```, criada anteriormente, criamos ela de forma anônima para receber os id que possuímos através do ```idAudio```. Porém existem problemas que devem ser aprimorados.
+- No console, quando digitamos a função  ```tocaSom('parâmetro')```,  e dependendo do que seja, sendo um id, classe ou parâmetro __não declarado no HTML__, ele nos retornará um erro __onde tentou reproduzir um audio e o seletor é nulo__.
+- É necessário aprimorar todo o código de forma que ele responda de forma correta e entenda cada parte de suas funções
+- Por termos uma função muito genérica, podemos ter vulnerabilidades no código
+- Dado o código abaixo:
+
+```js
+    document.querySelector(seletorAudio);
+```
+
+- Quando nós realizamos esta busca pelo ```seletorAudio```, estaremos buscando um elemento. Então guardaremos a o retorno dessa busca __dentro de uma referência constante__, ficando assim:
+
+  ```js
+    const elemento = document.querySelector(seletorAudio);
+  ```
+
+- Temos uma condição para que o código seja executado, ```elemento.play();```, e nós só podemos fazer esse código __SE esse elemento realmente existir__. Se não existir, seu valor será nulo
+- Então se temos uma condição para fazer alguma coisa caso o elemento seja nulo ou não, podemos usar a estrutura do if
+- Como nós queremos que quando seja nulo o elemento que selecionarmos, ele retornará uma mensagem de aviso:
+
+ ```js
+    if (elemento === null) {
+        console.log('elemento não encontrado');
+    }
+  ```
+
+- Depois disso ocorrer, __precisamos de um if que tenha uma condição diferente do ```elemento```__, isto ocorre com auxilio de um operador lógico __```!=```__.
+- Com ele indicamos o que acontecerá quando o elemento for __diferente__ de vazio:
+
+```js
+    if (elemento != null) {
+        elemento.play();
+    }
+  ```
+
+- Após ele ser checado, ele trará o ```elemento.play()``` e assim o som será emitido.
+- Mesmo com toda essa configuração e filtro das características, temos que nos certificar e verificar se o conteúdo da função ```tocaSom``` é uma tag ```<audio>``` Temos que se certificar que o elemento que está sendo passado é do tipo __áudio, é uma tag áudio__ para podermos aí sim executarmos o play nela.
+- Sendo assim, através do ```console.log(elemento.localName)```, veremos o que __cada tag ou classe chamada terá de atributo__
+- Com isto, podemos entender que, sabemos onde o elemento guarda a informação do nome, e se for um elemento do tipo audio, queremos que haja o ```play()```
+- no console, digitando ```elemento.localName === 'audio'```, e nós chamarmos a função ```tocaSom('button')```, ela retornará __false__, já que button não é uma tag de audio. e quando utilizamos ```tocaSom('#som_tecla_pom')```, ele retornará __true__
+- fazemos assim então:
+
+```js
+        if (elemento.localName === 'audio') {
+            elemento.play();
+        }
+```
+
+- Isto representa que o audio só será reproduzido quando a __tag for audio__, impedindo vulnerabilidades no nosso código, deixando-o mais firme e conciso
+
+#### Melhorando o código
+
+- Utilizando o operador lógico __AND__, iremos reduzir a quanitdade de if no código. Ele significa __E__. Não podemos usar o __OU__ por que nosso elemento __não pode estar nulo e tem que ser igual ao audio__
+- Ficando assim:
+
+```js
+    if (elemento != null && elemento.localName === 'audio') {
+        elemento.play();
+    }
+```
+
+- Também percebemos que, como o primeiro if é a negação do segundo, podemos utilizar se em algum momento o elemento não bater nisso, se o elemento for falso, eu vou ter uma outra condição falsa e eu posso no if usar uma estrutura conjunta que é o else.
+- O else significa “senão” e ele precisa ser invocado __imediatamente depois de um if, que vai ser a função que vai ser executada caso esta condição que seja falsa.__ Então se o elemento não for nulo e o elemento for diferente do áudio, então eu vou cair no else.
+- Sendo assim, nosso código ficará:
+
+```js
+    if (elemento != null && elemento.localName === 'audio') {
+        elemento.play();
+    } else {
+        console.log('Elemento não encontrado');
+    }
+```
+
+- Então eu posso passar essa mensagem aqui de __elemento não encontrado__ para dentro do else desse if, posso tirar esse ```== nulo```, porque o else vai __substituir dentro da nossa lógica__.
+- Ou seja, quando a tag audio não for encontrada, haverá uma mensagem de __erro__.
+- Não necessariamente precisamos ter o ```!=``` diferenciado do elemento, pois o if é inteligente o suficiente para entender que __se o valor não for igual, então será nulo__.
 #### Dentro do arquivo main.js
 
 - O nome main vem de "principal", e sempre é usado main para o arquivo principal javascript, para facilitar quando precisa-se descobrir qual o principal arquivo js e toda lógica
