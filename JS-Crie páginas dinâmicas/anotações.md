@@ -221,7 +221,42 @@
 #### Textos Dinâmicos
 
 - Com a função criada, sendo ela anônima, como nós podemos deixar o id de forma dinâmica, lendo todos os botões?
--
+- Quando nós vemos o código, nós apenas criamos uma função anonima que recebe os parâmetros dentro do while. Para assim então determinarmos o id selecionado pela referência ```idElementoAudio```, precisamos __acessar os botões, ou seja, seus id para podermos transformar nossa função dinâmica__
+- Temos acesso a um elemento ```button``` e dentro desse elemento ```button```, através da sua classe, podemos acessar __qual é o instrumento em questão que está sendo clicado.__
+- Então é a partir dessas classes que estão dentro dos elementos ```button``` que __vamos conseguir montar dinamicamente esse texto, pois texto é um tipo de dado que é dinâmico, podemos escrever e inventar do jeito que precisarmos__
+- no console, digitaremos : ```listaDeTeclas[0].classList```, e o ```classlist``` nos retorna uma __lista de classes__
+- No nosso caso, em uma lista de classes, temos o índice, o zero, o valor armazenado é a classe, a classe simplesmente é um texto, o "tecla", representando o texto de classe 0 e no índice 1 também temos a segunda classe, "tecla_pom", sendo o segundo texto, nos totalizando uma lista de 2 itens. Lembrando que os índices sempre começam com zero.
+- Para podermos acessar esta classe, usamos ```listaDeTeclas[0].classList[1]```, retornando a classe ```tecla_pom```
+- Para melhor entendimento, guardaremos essa função em uma __referência constante__
+
+  - ```
+     const instrumento = listaDeTeclas[contador].classList[1];
+     console.log(instrumento);
+    ```
+
+    - Criamos uma constante ```instrumento```, que guarda a função do contador e a lista de classes. Depois, imprimimos ela no console.
+  - vemos no console que está dando o console tanto do nosso instrumento como também do valor do contador que mantivemos
+  -
+
+    ```
+    tecla_pom
+    1
+    tecla_clap
+    2
+    ...
+    ```
+
+    - Resultado no console
+
+- Quando voltamos no nosso código, temos uma repetição de código no while, que é a ```listaDeTeclas[contador]```. Isso não é uma boa prática, e a forma de resolvermos isto é através de uma ```const``` chamada __tecla__
+  - ```const tecla = listaDeTeclas[contador];```
+- porém, para deixarmos dinâmico a função tocaSom, utilizaremos uma peculiaridade das __strings__ no JavaScript utilizando __crase__
+  - ```const idAudio = `#som_${instrumento}`;```
+  - O que ocorre é que nós damos a primeira parte do nosso id somado ao restante. Este restante, são os finais de __cada id de audio__. Então, utilizando a referência __instrumento__, o classList pode atuar, e ainda, utilizando o contador criado anteriormente.
+  - tudo que é variável dentro da minha string eu preciso envolver entre chaves, porém iniciando ```$```
+  - Esse ```${}``` faz uma __abertura para o código de JavaScript de dentro da string__, eu posso acessar variáveis, métodos fazer contas aqui dentro. E o nome desse recurso que utilizamos da linguagem JavaScript é __template string__
+  - 
+
 
 #### Dentro do arquivo main.js
 
