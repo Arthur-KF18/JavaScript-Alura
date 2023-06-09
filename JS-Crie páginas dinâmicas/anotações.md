@@ -333,12 +333,43 @@
         tecla.classList.remove('ativa');
     }
 ```
-  - Quando essa função for chamada, ela vai identificar através do ```onkeyup``` que a tecla já foi pressionada, removendo o ativa que foi adicionado quando pressionamos o botão
-  - Porém ainda teremos o problema do tab que quando navega entre as teclas do Alura Midi, ele ativa os seus estilos.
-  - __Qualquer tecla do teclado vai realizar esse problema. Para isto, devemos selecionar apenas as teclas que queremos que funcionem__, assim deixamos nossa lógica mais __limitada__
 
+- Quando essa função for chamada, ela vai identificar através do ```onkeyup``` que a tecla já foi pressionada, removendo o ativa que foi adicionado quando pressionamos o botão
+- Porém ainda teremos o problema do tab que quando navega entre as teclas do Alura Midi, ele ativa os seus estilos.
+- __Qualquer tecla do teclado vai realizar esse problema. Para isto, devemos selecionar apenas as teclas que queremos que funcionem__, assim deixamos nossa lógica mais __limitada__
 
+#### Condições no Código
 
+- Até o momento, nós apenas adicionamos os estilos e funções que queremos que o teclado realize para nós, porém, com o pequeno defeito de aceitar __toda e qualquer tecla__
+- Para nós resolvermos este problema, precisamos limitar as ações apenas nas teclas __Enter e Espaço__
+- Nós precisamos criar uma condição __se a tecla enter ou espaço forem usadas__ para ativar a nossa função
+- 
+```js
+    tecla.onkeydown = function (pressionada) {
+        
+        if (pressionada.code === "Enter" || pressionada.code === "Space") {
+            listaDeTeclas[contador].classList.add('ativa');
+        }
+
+    }
+```
+  - quando pressionamos a tecla, a função ```pressionada``` irá agir, e ela apenas irá funcionar quando forem pressionadas as teclas __Enter ou Espaço__
+  - o ```if``` é uma função __SE__, que aguarda a informação correta, ele é uma __condição__ para que o código ocorra
+  - Para nós montarmos nossa condição, precisamos saber qual tecla o usuário pressionou. Podemos montar isso através da função acompanhada da tecla
+  - ```tecla.onkeydown = function (nomedafunçãoevento)```. Quando nós damos um nome a ela, estaremos dando o nome a um __evento__
+  - Então esse recurso está disponível para todas as funções que são diretamente atreladas a um evento. E dentro dessa função, temos o parâmetro dela, é fornecido para ela como primeiro parâmetro os detalhes do evento que foi acionado e podemos dar um nome qualquer a este parâmetro que vai representar o evento que foi acionado.
+  Através do ```console.log(pressionada)```, podemos ver no console o que cada tecla está fazendo por debaixo dos panos ao ser pressionada
+  - Quando vemos a propriedade ```code```, podemos ver a qual tecla se associa quando as utilizamos. __Vale destacar que elas também são identificadas através de números, chamada ```keycode```__
+- Dependendo de como está, se estiver __vazia__,  isso nos faz tomar a decisão correta de qual dessas propriedades podemos usar para trazer no JavaScript e montar a nossa lógica.
+- Se usarmos apenas ```pressionada.code```, no console aparecerá cada tecla que foi pressionada e seu respectivo código
+- Existem 3 operadores utilzando o igual:
+  - ```=```: representa atribuição do lado esquero ao direito
+  - ```==```: igualdade de conteúdo ( ```1 == "1"``` é __verdadeiro__)
+  - ```===```: igualade de tipo, ```string``` diferente de ```int``` ( ```1 == "1"``` é __falso__)
+- o ```===``` compara __o tipo do valor e do dado__
+
+#### Operador Lógico
+- 
 
 #### Dentro do arquivo main.js
 
