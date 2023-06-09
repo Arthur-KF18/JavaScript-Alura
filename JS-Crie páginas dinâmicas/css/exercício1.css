@@ -46,6 +46,7 @@
 
   input[type=button]:active{
     background-color: #82ecff;
+    border-color: #5776df;
   }
   
   input[type=tel] {

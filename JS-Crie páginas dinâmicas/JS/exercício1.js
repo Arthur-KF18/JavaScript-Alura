@@ -12,8 +12,10 @@ for (let indice = 0; indice < listaTelefone.length; indice++) {
         inputTel.value = inputTel.value + tecla.value;
     };
 
-    tecla.onkeydown = function () {
-        listaTelefone[indice].classList.add('active')
+    tecla.onkeydown = function (evento) {
+        if (evento.code === "Enter" || evento.code === "Space") {
+            listaTelefone[indice].classList.add('active');
+        }
     }
 
     tecla.onkeyup = function () {
