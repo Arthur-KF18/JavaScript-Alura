@@ -43,6 +43,10 @@
     height: 80px;
     width: 80px;
   }
+
+  input[type=button]:active{
+    background-color: #82ecff;
+  }
   
   input[type=tel] {
     background-color: #cccccc;

@@ -229,13 +229,14 @@
 - Para podermos acessar esta classe, usamos ```listaDeTeclas[0].classList[1]```, retornando a classe ```tecla_pom```
 - Para melhor entendimento, guardaremos essa função em uma __referência constante__
 
-  - 
+  -
+
   ```js
      const instrumento = listaDeTeclas[contador].classList[1];
      console.log(instrumento);
     ```
 
-    - Criamos uma constante ```instrumento```, que guarda a função do contador e a lista de classes. Depois, imprimimos ela no console.
+  - Criamos uma constante ```instrumento```, que guarda a função do contador e a lista de classes. Depois, imprimimos ela no console.
   - vemos no console que está dando o console tanto do nosso instrumento como também do valor do contador que mantivemos
   -
 
@@ -282,6 +283,62 @@
   - As 3 são __parâmetros do for__
   - A estrutura de repetição for é usada para percorrer uma lista de forma mais otimizada, __onde em sua declaração criamos a variável contadora da repetição, a condição de interrupção das repetições e a condição de incrementação da variável contadora.__
 - __É sempre bom deixar também no fim do código uma nova linha e não encerrar o final do arquivo com um final de código é sempre bom deixar esse respiro, porque depois se o nosso código vier a sofrer algum tipo de transformação por ferramentas que juntam o código, que ofuscam o código__
+
+#### Eventos do teclado
+
+- Por padrão, a tag ```<button>``` já aceita o comando o teclado __tab__
+- Quando usamos o tab, barra de espaço ou enter, os botões do Alura Midi vão trazer o som, mas podem ou não indicar qual tecla foi selecionada, já que o estilo quando pressionada não é ativada.
+- No CSS foi determinada uma classe ativa que representa esta ação de clique do usuário chamada ```.tecla.ativa```.
+  - Temos que inserir essa classe ativa pelo JS nos botões que forem clicados através do teclado.
+- No console, quando nós procuramos a tag, como por exemplo ```listaDeTeclas[2]```, ele nos retornará a tag especificada. Porém, assim como podemos entrar na tag com o __ponto__, poderemos entrar na ```classList``` e adicionar uma __nova função__
+- quando digitamos:
+
+```js
+  listaDeTeclas[2].classList.add('ativa')
+```
+
+- Temos uma função, e o ```add()``` é responsável por adicionar algo ao navegador, uma ação.
+- quando fizemos esta ação, no navegador a tecla tim ficará vermelha pois esta ativa
+- Temos que reproduzir esse código no momento que pressionamos uma tecla do teclado
+
+- Utilizando a função:
+
+```js
+    tecla.onkeydown = function () {
+        listaDeTeclas[2].classList.add('ativa');
+    }
+```
+
+- Onde ```onkeydown``` representa quando a __tecla está pressionada__, utilizamos a função responsável por manter o estado ativo da tecla, ou seja, __adicionando o estado ativo através do ```.add()```__
+- Porém, ao fazermos isto, estaremos fazendo a tecla mudar seu padrão, porém, sem tocar som algum.
+- Este problema ocorre principalmente quando trabalhamos com inserção de classes no JS e precisamos prever
+- O JS apenas __inseriu a classe, mas não a retirou depois__
+- Temos que __informar ao javascript todas as informações que queremos__ para que ele nos traga o que idealizamos
+
+#### Adicionando e removendo classes
+
+- Como já estamos trabalhando com classes com o ```classList(classe)```, não é necessário usar o __ponto dentro do parênteses__
+- no console vamos utilzar o seguinte comando:
+
+```js
+    listaDeTeclas[4].classList.remove('ativa');
+```
+
+- Através deste comando, iremos retirar o estilo aplicado na tecla que selecionamos
+- Porém, nós precisamos definir uma função capaz de identificar quando nós tiramos a mão da tecla pressionada
+- Criando a função:
+
+```js
+    tecla.onkeyup = function () {
+        tecla.classList.remove('ativa');
+    }
+```
+  - Quando essa função for chamada, ela vai identificar através do ```onkeyup``` que a tecla já foi pressionada, removendo o ativa que foi adicionado quando pressionamos o botão
+  - Porém ainda teremos o problema do tab que quando navega entre as teclas do Alura Midi, ele ativa os seus estilos.
+  - __Qualquer tecla do teclado vai realizar esse problema. Para isto, devemos selecionar apenas as teclas que queremos que funcionem__, assim deixamos nossa lógica mais __limitada__
+
+
+
 
 #### Dentro do arquivo main.js
 

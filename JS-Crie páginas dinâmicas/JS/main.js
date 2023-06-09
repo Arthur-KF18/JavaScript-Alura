@@ -19,6 +19,14 @@ for (let contador = 0; contador < listaDeTeclas.length; contador++) {
     // Função de dar play ao audio
     tecla.onclick = function () {
         tocaSom(idAudio);
-    };
+    }
+
+    tecla.onkeydown = function () {
+        listaDeTeclas[contador].classList.add('ativa');
+    }
+
+    tecla.onkeyup = function () {
+        tecla.classList.remove('ativa');
+    }
 
 }

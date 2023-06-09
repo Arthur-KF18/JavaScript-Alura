@@ -11,6 +11,14 @@ for (let indice = 0; indice < listaTelefone.length; indice++) {
     tecla.onclick = function () {
         inputTel.value = inputTel.value + tecla.value;
     };
+
+    tecla.onkeydown = function () {
+        listaTelefone[indice].classList.add('active')
+    }
+
+    tecla.onkeyup = function () {
+        tecla.classList.remove('active')
+    }
 };
 
 
