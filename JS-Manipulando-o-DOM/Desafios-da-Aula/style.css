@@ -11,8 +11,7 @@ body {
   user-select: none;
   transition: 2s;
 }
-
-.container {
+body .container {
   height: 90vh;
   width: 100%;
   display: flex;
@@ -20,8 +19,7 @@ body {
   justify-content: center;
   align-items: center;
 }
-
-.trono {
+body .trono {
   background-image: url("https://caelum-online-public.s3.amazonaws.com/1369-alura-mais-dark-mode/trono-preto.png");
   background-size: cover;
   width: 450px;

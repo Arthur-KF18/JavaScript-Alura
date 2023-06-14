@@ -1,33 +1,36 @@
 * {
     margin: 0;
     padding: 0;
-  }
-  
-  body {
+}
+
+body {
     background: var(--cor-fundo);
     color: var(--cor-fonte);
     font-family: 'Cinzel', serif;
     font-size: 38px;
     user-select: none;
     transition: 2s;
-  }
-  
-  .container {
-    height: 90vh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .trono {
-    background-image: url("https://caelum-online-public.s3.amazonaws.com/1369-alura-mais-dark-mode/trono-preto.png");
-    background-size: cover;
-    width: 450px;
-    height: 350px;
-    margin-bottom: 3rem;
-    position: relative;
-    top: 10%;
-    right: 5%;
-  }
+
+
+    .container {
+        height: 90vh;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .trono {
+        background-image: url("https://caelum-online-public.s3.amazonaws.com/1369-alura-mais-dark-mode/trono-preto.png");
+        background-size: cover;
+        width: 450px;
+        height: 350px;
+        margin-bottom: 3rem;
+        position: relative;
+        top: 10%;
+        right: 5%;
+    }
+
+}
+
