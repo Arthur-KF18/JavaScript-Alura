@@ -47,22 +47,25 @@
 - O DOM (Document Object Model) e o JavaScript, juntos, possuem grande poder de modificar dinamicamente a estrutura de um documento HTML. Sendo assim, temos __alguns__ das funções em JavaScript:
 
 #### Métodos para selecionar elementos no HTML
-  - ```document.getElementByID(id)``` - Recupera um elemento pelo ID.
-  - ```document.getElementsByTagName(name)``` - Recupera um elemento pelo nome.
-  - ```document.getElementsByClassName(name)``` - Recupera um elemento pelo nome da classe.
+
+- ```document.getElementByID(id)``` - Recupera um elemento pelo ID.
+- ```document.getElementsByTagName(name)``` - Recupera um elemento pelo nome.
+- ```document.getElementsByClassName(name)``` - Recupera um elemento pelo nome da classe.
 
 #### Propriedades e métodos para alterar elementos no HTML
-  - ```element.innerHTML``` - Esta propriedade obtém ou altera qualquer elemento no HTML, inclusive tags
-  - ```element.innerText``` - Esta propriedade permite inserir textos no HTML
-  - ```element.value``` - Esta propriedade altera o valor de um elemento HTML
-  - ```element.setAttribute(atributo, valor)``` -  Este método altera o valor de um atributo de um elemento HTML
+
+- ```element.innerHTML``` - Esta propriedade obtém ou altera qualquer elemento no HTML, inclusive tags
+- ```element.innerText``` - Esta propriedade permite inserir textos no HTML
+- ```element.value``` - Esta propriedade altera o valor de um elemento HTML
+- ```element.setAttribute(atributo, valor)``` -  Este método altera o valor de um atributo de um elemento HTML
 
 #### Adicionando e excluindo elementos
-  - ```document.write()``` - Escreve no fluxo de saída do HTML
-  - ```document.appendChild()``` - Adiciona um elemento HTML.
-  - ```document.removeChild()``` - Remove um elemento HTML.
-  - ```document.replaceChild()``` - Substitui um elemento HTML.
-  - ```document.createElement()``` - Cria um elemento HTML.
+
+- ```document.write()``` - Escreve no fluxo de saída do HTML
+- ```document.appendChild()``` - Adiciona um elemento HTML.
+- ```document.removeChild()``` - Remove um elemento HTML.
+- ```document.replaceChild()``` - Substitui um elemento HTML.
+- ```document.createElement()``` - Cria um elemento HTML.
 
 #### Eventos com JavaScript
 
@@ -97,10 +100,62 @@
       }
 ```
 
-  - Esta função é capaz de dizer que quando o robo for clicado, no console irá exibir esta função. Isto faz com que o ```addEventListener("click", clicado)``` funcione __corretamente__
-  - Podemos criar uma constante que será responsável por armazenar o valor do ```document.querySelector('.robo')``` chamada ```robotron```. Assim, utilizaremos ela com o ```addEventListener("click", clicado)```, ficando mais organiado e correto nosso código
+- Esta função é capaz de dizer que quando o robo for clicado, no console irá exibir esta função. Isto faz com que o ```addEventListener("click", clicado)``` funcione __corretamente__
+- Podemos criar uma constante que será responsável por armazenar o valor do ```document.querySelector('.robo')``` chamada ```robotron```. Assim, utilizaremos ela com o ```addEventListener("click", clicado)```, ficando mais organiado e correto nosso código
 - Criamos um arquivo JavaScript para podermos criar códigos JavaScript. Entendemos como funciona o click do elemento por meio de um escutador de eventos e separamos código JavaScript quando armazenado para ser usado muitas vezes.
 - Vemos que nesse caso ele precisa estar dentro de uma função e que os elementos buscados pelo JavaScript podem ficar dentro de uma variável.
 
 #### Funções com JavaScript
+
 - O JavaScript e toda a linguagem de programação tem a opção de armazenar dados. Podemos explicar a função como uma forma de armazenarmos códigos que serão repetidos várias vezes. __A função é usada para que esse código seja chamado mais de um vez.__
+- utilizando a função que criamos, podemos chama-la com ```clicado();```
+- Para isso, nós chamamos esse função colocando o nome dela e abrindo e fechando parênteses, assim a função será executada no momento exato em que ela for lida.
+- Uma função nos ajuda a repetir __blocos de código__, ela é uma __função nomeada__. É o que é chamada de uma __declaração de uma função__
+- No javascript podemos criar uma função anônima também, ou seja, uma __uma função anônima__
+- podemos executá-la da seguinte forma:
+
+  ```js
+      robotron.addEventListener("click", function(){
+        console.log("cliquei no robô");
+      })
+  ```
+
+  - Quando recarregamos a página, a função ```clicado();```, será realizada e depois disto, apenas a função anônima será realizada e repetida ao realizarmos o evento de clique
+- Qual a principal diferentça entre a função anônima e a função declarada?
+  - __A declarada podemos chama-la mais vezes, enquanto a anônima não pode ser executada em outro momento, ela só irá ser executada quando o click ser realizado__
+- A partir da ES6, há uma outra maneira de declarar as funções anônimas
+podemos realizar da seguinte maneira:
+
+```js
+    robotron.addEventListener("click", () => {
+        console.log("cliquei no robô");
+      })
+```
+
+- Criamos uma ```Arrow Function```, que declara uma função que não possuirá nome
+- Um dos principais fatores mais importantes sobre as funções é __podermos manipular os dados__, de forma a enviarmos a mensagem para qualquer elemento.
+- Para que isto ocorra, na nossa função adicionaremos um __parâmetro__. Ele vem dentro __dos parênteses da criação de uma função__
+- Usando o exemplo abaixo:
+
+```js
+    function dizOi(nome) {
+      console.log(nome);
+    }
+
+    dizOi("Arthur");
+```
+
+- Esta função receberá um nome e irá imprimi-lo no console. Quando a chamamos inserindo o texto, ela sempre irá imprimir o nome selecionado
+- nós passamos um texto para uma função, ela recebeu esse texto e fez algo com ele. Se quisemos somar algo, por exemplo "Oi + nome", seria possível.
+- ```console.log("oi" + nome);```, sendo assim, adicionaremos __qualquer nome que for colocado dentro da função dizOi("nome")__. Nós passamos um parâmetro para esta função, e ela executou.
+- Entendemos aqui como passar um texto como parâmetro, mas já existem parâmetros que são padrão da nossa página. Por exemplo, toda vez que um evento acontece, podemos manipular esse evento.
+- E em uma arrow function, __colocamos entre os parênteses o que usaremos, que é o evento. E colocamos no corpo da função do console.log o evento.__
+
+```js
+    robotron.addEventListener("click", (clicado) => {
+      console.log(clicado);
+    }); 
+```
+- através dessa função, toda vez que recarregamos nossa página, ele nos trará todos os eventos que ocorreram
+  -```PointerEvent {isTrusted: true, pointerId: 0, width: 1, height: 1, pressure: 0, …}```
+- Graças a isto, podemos criar uma função onde podemos somar diferentes atributos que possam ser adicionados ao robô que estamos montando
