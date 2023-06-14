@@ -43,19 +43,64 @@
 - É JavaScript manipulando a páginas por meio dessa busca avançado dos elementos, dos eventos e de melhorias em nosso código, que ele realiza seus comportamentos
 
 ### Métodos e propriedades para alteração do HTML
+
 - O DOM (Document Object Model) e o JavaScript, juntos, possuem grande poder de modificar dinamicamente a estrutura de um documento HTML. Sendo assim, temos __alguns__ das funções em JavaScript:
-    #### Métodos para selecionar elementos no HTML
-    - ```document.getElementByID(id)``` - Recupera um elemento pelo ID.
-    - ```document.getElementsByTagName(name)``` - Recupera um elemento pelo nome.
-    - ```document.getElementsByClassName(name)``` - Recupera um elemento pelo nome da classe.
-    #### Propriedades e métodos para alterar elementos no HTML
-    - ```element.innerHTML``` - Esta propriedade obtém ou altera qualquer elemento no HTML, inclusive tags
-    - ```element.innerText``` - Esta propriedade permite inserir textos no HTML
-    - ```element.value``` - Esta propriedade altera o valor de um elemento HTML
-    - ```element.setAttribute(atributo, valor)``` -  Este método altera o valor de um atributo de um elemento HTML
-    #### Adicionando e excluindo elementos
-    - ```document.write()``` - Escreve no fluxo de saída do HTML
-    - ```document.appendChild()``` - Adiciona um elemento HTML.
-    - ```document.removeChild()``` - Remove um elemento HTML.   
-    - ```document.replaceChild()``` - Substitui um elemento HTML.
-    - ```document.createElement()``` - Cria um elemento HTML.
+
+#### Métodos para selecionar elementos no HTML
+  - ```document.getElementByID(id)``` - Recupera um elemento pelo ID.
+  - ```document.getElementsByTagName(name)``` - Recupera um elemento pelo nome.
+  - ```document.getElementsByClassName(name)``` - Recupera um elemento pelo nome da classe.
+
+#### Propriedades e métodos para alterar elementos no HTML
+  - ```element.innerHTML``` - Esta propriedade obtém ou altera qualquer elemento no HTML, inclusive tags
+  - ```element.innerText``` - Esta propriedade permite inserir textos no HTML
+  - ```element.value``` - Esta propriedade altera o valor de um elemento HTML
+  - ```element.setAttribute(atributo, valor)``` -  Este método altera o valor de um atributo de um elemento HTML
+
+#### Adicionando e excluindo elementos
+  - ```document.write()``` - Escreve no fluxo de saída do HTML
+  - ```document.appendChild()``` - Adiciona um elemento HTML.
+  - ```document.removeChild()``` - Remove um elemento HTML.
+  - ```document.replaceChild()``` - Substitui um elemento HTML.
+  - ```document.createElement()``` - Cria um elemento HTML.
+
+#### Eventos com JavaScript
+
+- Entendendo agora o DOM, vamos interagir de fato com o a página utilizando o JavaScript
+- Estamos utilizando o console do navegador, não de fato o JavaScript. Para nós colocarmos as funcionalidades que precisamos, podemos utilizar o JavaScript como um __arquivo.js__
+- isso faz com que __toda e qualquer interação fique salva ao recarregarmos a página__
+- O JavaScript trabalha com __eventos__
+  - Toda vez que algo acontece, ele se manifesta
+- Podemos testar isso através do código inline: ```<img class="robo" src="img/robotron.png" alt="Robotron" onclick = "alert('você clicou no robô')">```
+- porém, o maior __problema do inline__ é sua inflexibilidade e termos que mexer no HTML para mudarmos os elementos do JS
+- para isso, criaremos um arquivo main.js, pois ele é o principal, e este é o nome padrão dos arquivos .js
+- criando o main.js, acessaremos ele através da tag ```<script src="./main.js"></script>```
+- Quando fazemos isto, ele irá chamar o javaScript, executando-o
+- O mais __importante__ é que todo script deve ser carregado __no final do arquivo, antes do fechamento da tag ```</body>```__
+- realizamos isto, pois, se estiver no início, __o JS irá travar a página antes de carregar o HTML__
+- Para podermos realizar a ação do clique, utilizaremos uma função chamada de ```add.EventListener()```. Ela é responsável por __esperar um evento que será especificado entre os parênteses__
+
+  ```js
+  document.querySelector('.robo').addEventListener("click", console.log("Robô foi clicado!")) 
+  ```
+
+  - Quando definimos que a classe do robo será a atingida pela ação do clique, e o que será realizado __após essa função__
+  - Portanto, o ```add.EventListener(função a ser feita, resultado da função)``` funcionará desta forma
+  - Porém, ao recarregarmos a página, esta função já foi executada
+- No JavaScript, quando queremos carregar, quando queremos que alguma coisa execute um pedaço de código, __precisamos extrair isso para uma função__
+- No JavaScript, __a função serve para armazenarmos um pedaço de código__
+- Criaremos a seguinte função:
+
+```js
+      function clicado() {
+        console.log("Robô foi clicado!");
+      }
+```
+
+  - Esta função é capaz de dizer que quando o robo for clicado, no console irá exibir esta função. Isto faz com que o ```addEventListener("click", clicado)``` funcione __corretamente__
+  - Podemos criar uma constante que será responsável por armazenar o valor do ```document.querySelector('.robo')``` chamada ```robotron```. Assim, utilizaremos ela com o ```addEventListener("click", clicado)```, ficando mais organiado e correto nosso código
+- Criamos um arquivo JavaScript para podermos criar códigos JavaScript. Entendemos como funciona o click do elemento por meio de um escutador de eventos e separamos código JavaScript quando armazenado para ser usado muitas vezes.
+- Vemos que nesse caso ele precisa estar dentro de uma função e que os elementos buscados pelo JavaScript podem ficar dentro de uma variável.
+
+#### Funções com JavaScript
+- O JavaScript e toda a linguagem de programação tem a opção de armazenar dados. Podemos explicar a função como uma forma de armazenarmos códigos que serão repetidos várias vezes. __A função é usada para que esse código seja chamado mais de um vez.__
