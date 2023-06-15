@@ -250,4 +250,65 @@ podemos realizar da seguinte maneira:
   - Sendo assim, todos os elementos da função controle serão __manipulados__
 
 #### Alterando vários componentes
+
+- Temos uma função que manipula os dados a partir de um parâmetro e temos uma variável com todos os nossos controles. O que precisamos agora é adicionar em cada controle um escutador de eventos.
+- Podemos manipular arrays utilizando loops como o ```for```, ```while```. Porém, nós temos uma __operação própria para os arrays chamada de ```forEach(parâmetros)```__.
+  - Esta função é simples. Não precisamos inventar muito para executa-la.
+  - Toda vez que executamos um `forEach` , temos __um elemento e um índice__
+  - o elemento é o que __foi clicado__, e o índice é o __índice do array (0, 1, 2, 3...)__
+  - Dentro dessa operação, vamos criar uma função de __seta__ que vai executar algum código. Nesse momento queremos descobrir __qual elemento foi clicado__, então em `forEach()` temos a opção de pegar um elemento, que é a __primeira coisa que irá nos retornar__
+  - Quando chamamos a função no console, ela nos trará __todos os elementos que queríamos e a classe correspondente__
+  - A nosso função fiucará desta forma:
+
+  ```js
+  controle.forEach(element => {});
+  ```
+
+- Assim, nós precisaremos definir um escutador de eventos como o `addEventListner()`, recebendo o __click e realizando alguma função__
+
+```js
+    controle.forEach((elemento) => {
+      elemento.addEventListener("click", () => {
+        console.log(evento)
+      });
+    })
+```
+
+- Nossa função ficará desta forma, porém nós estamos apenas identificando que o botão está funcionando, precisamos saber __qual evento ocorreu__
+
+```js
+    controle.forEach( (elemento) => { 
+      elemento.addEventListener('click', (evento) => {  
+          console.log(evento)
+      })
+    })
+```
+
+- Através desta função anônima, quando clicarmos em qualquer um dos botões de soma, o console nos trará exatamente o que esta ocorrendo no evento, que é identificado como __`pointerEvent`__
+- Porém, ao analizarmos corretamente, veremos que existe um parâmetro chamado de `target`
+  - `target:buttom#somar.controle-ajuste`
+  - Ele nos informa onde __o clique aconteceu__
+  - O `target` está nos trazendo a __tag e a operação realizadas__
+- Agora quando clicamos ele traz o botão e quando somo, ele subtrai. A blindagem, o núcleo, as pernas e os foguetes ainda não estão fazendo isso pelo simples motivo que a função `manipulaDados` ainda não está entendendo isso tudo.
+- Precisamos passar o somar de o botão for "+" e subtrair se o botão for "-". Temos o evento.target e se olharmos no HTML, o conteúdo desse buttom é um - e o conteúdo do outro é +.
+- Não precisamos ficar entendendo se é somar ou subtrair, podemos simplesmente pegar aquele conteúdo.
+- E aquele conteúdo é o `.textContent`. __Toda vez que é um `input` é um `value`, e toda vez que é um texto, é um `textContent`.__
+  - Ficando assim: `console.log(evento.target.textContent);`
+  - E assim, ele retornará o "-" ou o "+" ao clicarmos nos botões
+  - Porém, precisamos ainda identificar para a função `manipulaDados` funcionar corretamente
+- Ela estera um texto chamado "subtrair", e como podemos mudar isto?
+  - Refatoramos nosso código de forma que, ela leia um "-" ou "+", que __identificam os operadores__
+  - retiramos as funções do somar e apenas utilizamos o código da seguinte forma:
+  ```js
+      controle.forEach( (elemento) => { 
+        elemento.addEventListener('click', (evento) => {  
+          manipulandoDados(evento.target.textContent) 
+      })
+    })
+  ```
+  - Porém, há um pequeno problema. Quando nós clicamos, o `manipulaDados` executa o que pedimos, porém, ele realiza a ação apenas para o `braco.value`, seja em qualquer __botão que clicamos__
+  - isto acontece por que definimos somente o braço. precisamos definir que o dado __também seja dinâmico, a partir do elemento que clicarmos__
+
+#### Alterando o elemento
+
 - 
