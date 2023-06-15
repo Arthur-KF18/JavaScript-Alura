@@ -311,4 +311,17 @@ podemos realizar da seguinte maneira:
 
 #### Alterando o elemento
 
-- 
+- Já temos nosso componente funcionando de forma dinâmica, podendo adicionar itens ao robotron 2000, porém, ainda temos aquele detalhe causado pelo `braco.value`
+- Nós realizamos a operação de clique, porém, nós apenas __buscamos o elemento com o identificador do braço__, mas isto __não está sendo refletido no código que queremos__
+- No nosso HTML, o botão e o input são __irmãos, mas não sabemos qual vem primeiro ou depois__, porém sabemos que eles são filhos do `controle`, na árvore do HTML
+- Isto é bom sinal, já que podemos interagir com o DOM de forma tranquila, como foi feito até agora
+- Dentro de uma operação, evento, nós conseguimos __mapear o que ocorreu dentro dele__. Nós podemos ver quem está dentro do elemento, assim como também __podemos enxergar o pai do elemento clicado__
+- Assim, quando temos uma interação com o pai, __poderemos ter com o filho também__
+- Através do código: `console.log(evento.target.parentNode)`, podemos ver no console, __o pai daquele elemento__
+  - Como fomos na `<div class="controle">`, podemos alterar a peça
+- na nossa função `manipulaDados`, iremos mudar a variável `braco` para __`peca`__.
+  - Nossa peça, será trocada toda vez que a __função ser realizada__
+  - no nosso `const peca = document.querySelector(".controle-contador");`, não queremos buscar isso no __documento inteiro, senão vamos encontrar cinco controle-contador__, queremos buscar o `controle-contador` só do __controle, do elemento que foi clicado__.
+  - para isso, passaremos nossa função como __parâmetro__ para nossa função `manipulaDados`
+  - É com a `,` que __separamos mais parâmetros__. E agora estaremos enviando dois blocos de informação para a nossa função `manipulaDados`.
+  - 
