@@ -4,6 +4,8 @@
 - De efeito __adicional fora do curso__, foi implementado o framework __Vite__ como servidor para rodar o projeto
   - Para iniciar o projeto, dentro da pasta "JS-Manipulando-o-DOM", com auxilio do terminal, rodar apenas a linha de comando: ```npm run dev```
   - __Iniciará o servidor local do projeto__
+- Os desafios de aula foram realizados foi utilizado __o pré-processador SASS__ para estilização das páginas 
+
 
 #### Apresentação
 
