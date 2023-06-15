@@ -158,6 +158,64 @@ podemos realizar da seguinte maneira:
       console.log(clicado);
     }); 
 ```
+
 - através dessa função, toda vez que recarregamos nossa página, ele nos trará todos os eventos que ocorreram
   -```PointerEvent {isTrusted: true, pointerId: 0, width: 1, height: 1, pressure: 0, …}```
 - Graças a isto, podemos criar uma função onde podemos somar diferentes atributos que possam ser adicionados ao robô que estamos montando
+
+#### Alterando um item na página
+
+- Sabendo de tudo que vimos até o momento, podemos agora criar o montador de peças para nosso robotron, porém, utilizando as __funções, elementos e eventos__
+
+- Podemos adicionar ou subtrair os pontos existentes no nosso robotron, para isso iremos criar diferentes funções
+
+- Indo no HTML, na nossa classe ```montador```, vamos atribuir um id no contador para cada uma das peças, no contador.
+
+```html
+  <div class="controle">
+      <buttom class="controle-ajuste" id="subtrair">-</buttom>
+          <input type="text" class="controle-contador" value="00" id="braco">
+      <buttom class="controle-ajuste" id="somar">+</buttom>
+  </div>
+``` 
+
+- Na nossa classe ```controle```, teremos contadores responsáveis por subtrair, somar e atribuir o valor da somatória a um __identificador__, podendo ele ser cada das partes do robô
+
+- O que queremos que aconteça no JS é que se clicarmos na subtração ou soma, ele adicione ou retire o valor, este sendo mostrado em tempo real\
+
+```js
+    somar.addEventListener("click", () => {
+        braco.value += 1
+    })
+```
+
+- Através dessa função, será esperado que, toda vez que clicarmos no botão de soma, seja adicionado mais um ao valor do braço.
+- Porém, ela está apenas __adicionando o número 1 lado a lado, e não realizando a soma__
+- Estamos somando o 1 como um __incremento__
+- Um grande problema na manipulação de dados de um formulário, é que o valor que vem para nós, __vem como ```string```__, ou seja, __um texto__
+- Toda vez que no JS temos uma soma de um número com string, __ele vai pegar a string por ser um tipo mais forte e vai transformar tudo em string__. O resultado é a string modificada adicionada ao número__
+  - Queremos que o 1 seja adicionado dinâmicamente, como uma soma ou subtração
+  - Para isso, transformaremos o valor do ```braco.value``` em __número__
+  - Para isto temos uma função chamada de ```parseInt(atributo)```, onde ela realizará a soma, pois ela troca a string para __numeral__
+- A função será então:
+
+```js
+   braco.value = parseInt(braco.value) + 1;
+```
+
+- E para diminuir:
+
+```js
+    subtrair.addEventListener("click", () => {
+      braco.value = parseInt(braco.value) - 1;
+    })
+```
+
+- Em resumo: A função atribuida a somar e subtrair, está pegando o evento de clique e dizendo que ele ocorrerá quando for chamado. Quando ele ocorrer, o ```braco``` que é o id do nosso __input__ irá atribuir um valor ao atributo ```value``` contido na tag HTML. Sendo assim, realizando a soma de acordo com o valor.
+
+- Sendo assim, somos capazes de adicionar ou subtrair valores a diferentes peças do robô.
+
+#### Reaproveitando Código
+
+- Temos de repetir estas funções para cada um dos elementos. Como fazemos isto evitando a repetição de código?
+
