@@ -218,4 +218,36 @@ podemos realizar da seguinte maneira:
 #### Reaproveitando Código
 
 - Temos de repetir estas funções para cada um dos elementos. Como fazemos isto evitando a repetição de código?
+- Vemos da repetição de código entre ambas as funções, e o que podemos fazer é terceiriza-las, de forma que validaremos o que foi pedido em outro lugar, não no mesmo elemento
+- Criaremos uma função chamada ```manipulaDados```, que será a operação. Se ela for subtrair, iremos tirar um número, e se ela for de somar, iremos adicionar os números.
+- Para isso, podemos utilizar uma função chamada de ```if```. O __se__, quer dizer __se nós termos uma soma, utilize esta função, caso não seja ela, realize a outra operação__
+- o ```else``` é o __se não__ que será utilizado para a outra operação
+- Ficará desta forma:
 
+```js 
+    function manipulaDados(operacao) {
+      if (operacao === "subtrair") {
+        braco.value = parseInt(braco.value) - 1;
+      } else {
+        braco.value = parseInt(braco.value) + 1;
+      }
+    }
+```
+
+- Agora trouxemos toda a lógica de manipulação dos dados para um único lugar e só precisamos mandar o dados para aquele lugar que toda a operação será realizada. 
+- Assim, separamos as responsabilidades. A única responsabilidade do evento do click é a avisar para o maniúlaDados() que aconteceu um clique. E a função o manipulaDados() é interagir e realmente mudar o valor.
+- A função do ```manipulaDados``` será apenas de __alterar o valor__
+
+```js
+  somar.addEventListener("click", () => {manipulaDados("somar")});
+  subtrair.addEventListener("click", () => {manipulaDados("subtrair")});
+```
+
+- Ou seja, na nossa função, quando realizamos o clique do valor positivo, ela terá sido declarada como ```manipulaDados("somar")```, que é __diferente da esperada dentro do ```if```__, ocorrendo então a __soma__
+- Sendo assim, adicionaremos uma constante capaz de selecionar o a tag onde a classe ```.controle-ajuste``` está.
+- ```const controle = document.querySelector(".controle-ajuste")```, porém ele apenas buscou um elemento, e nós queremos que ele busque todos. Para que ele selecione todos do documento temos que utilizar a função ```querySelectorAll(tag)```
+  - ```const controle = document.querySelectorAll(".controle-ajuste")```, sendo assim __todos os elementos que tiverem essa classe serão buscados__, e no console haverá a NodeList, ou seja, um  ```Array``` com todos estes elementos. 
+  - Sendo assim, todos os elementos da função controle serão __manipulados__
+
+#### Alterando vários componentes
+- 
