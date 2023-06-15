@@ -324,4 +324,11 @@ podemos realizar da seguinte maneira:
   - no nosso `const peca = document.querySelector(".controle-contador");`, não queremos buscar isso no __documento inteiro, senão vamos encontrar cinco controle-contador__, queremos buscar o `controle-contador` só do __controle, do elemento que foi clicado__.
   - para isso, passaremos nossa função como __parâmetro__ para nossa função `manipulaDados`
   - É com a `,` que __separamos mais parâmetros__. E agora estaremos enviando dois blocos de informação para a nossa função `manipulaDados`.
+  - o primeiro sendo `evento.target.textContent` e a outra `evento.target.parentNode`
+  - Agora passaremos dois blocos de informação `para manipulaDados()`, um é o `operacao` e o segundo vamos chamar de `controle`, que é o __pai do elemento clicado.__
+  - Depois na nossa função inserimos `const peca = controle.querySelector(".controle-contador");`
+  - Ou seja, o pai `controle` será lido, ou seja, __toda vez que clicarmos no controle, irá ser buscado quem é o `".controle-contador"` e vou adicionar ou subtrair um item
+  
+#### Código a prova de falhas
+
   - 
