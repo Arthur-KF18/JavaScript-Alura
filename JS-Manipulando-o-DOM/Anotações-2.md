@@ -411,4 +411,3 @@ podemos realizar da seguinte maneira:
   - Vimos que o valor atual dele vem em forma de texto, então trocaremos para número com `parseInt` no mesmo `text.content`. E por fim, vamos __somar a isso o elemento do valor da posição do objeto que queremos__
   - `[array][posição][item]`: é assim a nossa sequência para definirmos a posição
   - __A cada vez que somamos, ele atualiza os valor de força, poder, energia e velocidade. Para qualquer um das peças que escolheremos, as estatísticas são atualizadas imediatamente.__
-- 

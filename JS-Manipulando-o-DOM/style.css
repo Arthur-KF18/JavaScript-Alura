@@ -37,6 +37,29 @@ main {
   position: relative;
 }
 
+.alterar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  margin: 1rem;
+  color: #FFFFFF;
+  background-color: #000000;
+  border-color: #CCCCCC;
+  border-radius: 2rem;
+  border-style: none;
+  width: 8vw; 
+}
+
+.botoes {
+  position: absolute;
+  left: 50%;
+  bottom: 100%;
+  top: auto;
+  display: flex;
+}
+
 .robo {
   height: 110%;
   z-index: 1;
