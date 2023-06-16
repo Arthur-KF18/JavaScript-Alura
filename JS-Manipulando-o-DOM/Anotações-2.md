@@ -350,4 +350,7 @@ podemos realizar da seguinte maneira:
 - Entretanto, não estamos fazendo o __cálculo para saber se esse é um bom robô para a batalha, nós queremos atualizar força, energia, poder e velocidade__. 
   - Para fazer isso é preciso manipular os dados da nossa calculadora.
 
-## fazer o desafio aula 3
+#### Interagindo com Objetos
+- Já temos nosso componente da engrenagem completamente funcional, atualizamos ele para utilizar um dataset, não dependente de uma classe ou conteúdo facilmente alterável
+- Nós queremos que quando adicionarmos poder aos componentes do robô, o valor atribuído a estes dados, `força, poder, energia e velocidade`, possam ser calculados e proporcionais a nossa decisão
+- 
