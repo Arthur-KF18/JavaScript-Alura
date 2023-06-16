@@ -331,4 +331,23 @@ podemos realizar da seguinte maneira:
   
 #### Código a prova de falhas
 
-  - 
+- Se por uma decisão, fosse alterado o nome da classe ou dos nossos atributos de operação, que são "-" e "+", como faríamos para que a lógica não fosse quebrada?
+- Toda vez que estamos mexendo com os elementos do HTML, podemos utilizar uma lógica mais eficiente, __que não dependa exclusivamente das classes do CSS para funcionar__
+- Podemos utilizar então os __`Data Attributes`__ ou __atributos de dados__
+- No HTML, na tag `<button class="controle-ajuste">` iremos inserir o `data-controle`:
+  - `<button class="controle-ajuste" data-controle="-" >`. 
+  - Nós criamos uma __propriedade do tipo `data` e com o nome controle__ e um valor dentro das "".
+  - adicionamos esse atributo a __todos as tags que possuem a classe `.controle-ajuste`__
+- Com isto, no nosso JS, ao invés de buscarmos a classe, buscaremos nosso `data-atributes`
+  - buscaremos utilizando os __colchetes__, desta forma: `"[data-controle]"`
+  - Desta forma, desacoplamos o JS do CSS, ficando mais correto nosso código, evitando erros.
+  - Como estamos usando os `data-atributes`, __não é necessário buscar o texto do nosso elemento__, utilizaremos a busca `evento.target.dataset.controle`, sendo assim, apenas o data que ter seu atributo controle.
+  - passaremos para a `operacao` o __valor do controle__
+- Desta forma, estruturamos nosso código melhor
+- a constante `peca` ainda está buscando pela classe, então devemos alterar isto para um outro dataset, que podemos chamar de `data-contador`
+  - __Não é necessário atribuir um valor ao dataset, já que ele é modificado via JS__
+- Temos agora nosso contador de peças, nosso montador do Robotron extremamente dinâmico. 
+- Entretanto, não estamos fazendo o __cálculo para saber se esse é um bom robô para a batalha, nós queremos atualizar força, energia, poder e velocidade__. 
+  - Para fazer isso é preciso manipular os dados da nossa calculadora.
+
+## fazer o desafio aula 3
