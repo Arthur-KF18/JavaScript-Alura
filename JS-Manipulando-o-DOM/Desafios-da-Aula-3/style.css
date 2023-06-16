@@ -1,0 +1,84 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Roboto Mono", monospace;
+  min-height: 400px;
+  min-width: 450px;
+  background-size: 80vh;
+  color: rgb(0, 0, 0);
+  background: rgb(2, 0, 36);
+  background: linear-gradient(90deg, rgb(2, 0, 36) 0%, rgb(9, 9, 121) 16%, rgb(0, 212, 255) 100%);
+  background-repeat: no-repeat;
+  height: 100vh;
+  font-size: 24px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+body button {
+  font-size: 24px;
+  font-family: "Futura Lt BT", sans-serif;
+  background-color: black;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+  padding: 8px 20px 8px 20px;
+  color: white;
+  box-shadow: 0px 0px 5px gray;
+  border-radius: 5px 5px 0 0;
+  border: none;
+  transition: 500ms;
+  opacity: 0.8;
+  margin: 30px 0;
+}
+body button button:hover {
+  color: white;
+  background-color: gray;
+}
+body button button:active {
+  color: black;
+  background-color: white;
+}
+body .lista {
+  padding: 20px;
+  list-style-type: none;
+  border: 4mm ridge rgba(234, 122, 11, 0.992);
+}
+body .alura-logo {
+  width: 150px;
+  position: absolute;
+  top: 2%;
+  right: 2%;
+}
+body [cor=laranja] {
+  color: orange;
+}
+body [cor=vermelho] {
+  color: red;
+}
+body [cor=branco] {
+  color: white;
+}
+body [cor=amarelo] {
+  color: yellow;
+}
+body [cor=rosa] {
+  color: pink;
+}
+body [cor=preto] {
+  color: black;
+}
+body [data-lista=mostrar] {
+  display: block;
+}
+body [data-lista=esconder] {
+  display: none;
+}
+
+/*# sourceMappingURL=style.css.map */
