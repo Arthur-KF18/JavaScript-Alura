@@ -353,4 +353,62 @@ podemos realizar da seguinte maneira:
 #### Interagindo com Objetos
 - Já temos nosso componente da engrenagem completamente funcional, atualizamos ele para utilizar um dataset, não dependente de uma classe ou conteúdo facilmente alterável
 - Nós queremos que quando adicionarmos poder aos componentes do robô, o valor atribuído a estes dados, `força, poder, energia e velocidade`, possam ser calculados e proporcionais a nossa decisão
+- adicionaremos então uma variável chamada `pecas`, que contém 5 itens: __bracos, blindagem, nucleos, pernas, foguetes__, e dentro deles hã uma declaração com outro objeto, com mais 4 valores
+- Quando vamos no console e requisitamos esta constante, teremos um objeto com 5 itens e seus respectivos valores.
+- A estrutura do objeto __possui uma chave `{}` valor__, ela nos __permite navegar em um objeto utilizando as referências, as chaves__.
+  - Com `pecas.bracos` conseguimos entrar dentro do item e ter todo o valor, que são mais quatro itens.
+  - Podemos navegar mais um nível naquela estrutura criada, acessando o valor númerico da estrutura criada
+  - podemos também ter a declaração da seguinte forma: `pecas["bracos"]`, buscando o conteúdo, e através disto, encontrar o valor que queremos
+- Estamos buscando os dados de uma forma dinâmica
+- No HTML, iremos adicionar o data attribute `data-estatistica` e dentro dele iremos inserir __o nome dos itens presentes na variável__
+- Após adicionarmos este atributo ao poder do robô, iremos adicionar o data attribute nas __peças, já que elas tem dados que não estão indo à algum lugar__. Precisamos adicionar essas informações no que estamos mexendo
+- Precisamos agora, implementar no nosso código uma nova função chamando estes itens, que atualizará as estatíticas
+
+#### Cálculos dinâmicos
+
+- Com todo terreno preparado para quando clicarmos em um elemento ele possa __alterar as estatísticas__, precisamos agora só configurar nossa lógica
+- É muito importante ter um passo, rever o código, analizar ele corretamente, somos donos do próprio código e devemos entende-lo, aprender com ele e como podemos crescer com isto
+- Atualizaremos as estatisticas com os dados das peças __a cada clique__
+- No evento do clique criaremos uma função que, ao ser chamada, saberemos qual peça terá sido clicada, e com ela vamos manipular os dados.
+- adicionaremos o parâmetro `peca` e nossa função tomará forma assim:
+
+  ```js
+      function atualizaEstatisticas(peca) {  
+      }
+  ```
+
+  - Dentro desta função, iremos colocar qual foi a peça clicada através da função `atualizaEstatisticas` presente no `controle.forEach`.
+    - `atualizaEstatisticas(evento.target.dataset.peca)`: será nossa função que irá __localizar e dizer qual peça que foi clicada__
+  - A nossa lógica precisa ser buscar no objeto `pecas` o item que queremos
+  - para navegarmos no objeto __utilizaremos os colchetes `[]`__
+    - `pecas[peca]`: para vermos os itens presentes dentro da peça, ou seja, os __dados do ponto específico do nosso objeto__
+  - Nós queremos que esta estatistica seja atualizada, e já buscamos eles através da constante `estatisticas`
+  - Como temos um array de elementos, para atualizar cada uma delas é preciso percorrer todas. Assim como fizemos para percorrer todo o array de controle, __vamos fazer o mesmo processo com o `forEach()` em cima de `estatisticas`.__
+  - Nossa intenção é atualizar cada uma das estatísticas, então o elemento em que estamos deve ser atualizado, ou seja, o seu texto deve ser atualizado com um novo valor.
+  - Criamos a função então:
+
+  ```js
+    estatisticas.forEach((elemento) => {
+        console.log(elemento)
+    })
+  
+  ```
+  - Criamos um `forEach()` , e nós queremos atualizar __cada uma das estatíticas__, ou seja, o elemento que estamos, queremos que seja __atualizado__, ou seja, seu __texto, com um novo valor__
+  - O console.log mostrará para nós quando clicamos nos "braços", como os itens presentes no array estarão sendo distribuídos
+  - A cada vez que clicarmos em um item, vamos percorrer __todos os itens da estatística, imprimindo-o__
+  - Estamos percorrendo e capturando o valor da `estatistica`, sendo assim, vamos atualizá-lo com um __conteúdo da peca__
+  - Nós precisamos descer no nível do __dataset da estatística__ para podermos selecionar os itens do array
+  - `console.log(elemento.dataset.estatistica)`: Buscamos o número e o nome do dataset que procuramos
+  - Sendo assim :
+
+  ```js
+  estatisticas.forEach((elemento) => {
+    elemento.textContent = parseInt(elemento.textContent) + pecas[peca][elemento.dataset.estatistica]
+    
+  })
+  ```
+  - Queremos que ao clicar em cada um destes elemento, queremos atualizar o `textContent`, e que vai receber __o valor atual dele, atualizando-o__
+  - Vimos que o valor atual dele vem em forma de texto, então trocaremos para número com `parseInt` no mesmo `text.content`. E por fim, vamos __somar a isso o elemento do valor da posição do objeto que queremos__
+  - `[array][posição][item]`: é assim a nossa sequência para definirmos a posição
+  - __A cada vez que somamos, ele atualiza os valor de força, poder, energia e velocidade. Para qualquer um das peças que escolheremos, as estatísticas são atualizadas imediatamente.__
 - 
