@@ -57,3 +57,27 @@ SubmitEvent {isTrusted: true, submitter: input.cadastrar, type: 'submit', targe
 
 - Nós temos um código capturando os dados do formulário, toda vez que realizamos o evento de `submit`
 - Iremos querer que ao clicarmos no `submit`, adicionar itens à mochila. Essa interação é __dinâmica__, então podemos retirar alguns itens da nossa list
+- Precisaremos criar um __elemento através do JavaScript__
+- É preciso que __todo nome de função, seja o mais direto possível, para sabermos o que ele faz__
+- Precisamos de uma função que colete o __nome e a quantidade, armazene estes itens e que seja capaz de criar um novo item__
+  
+  ```js
+    function criaElemento (nome, quantidade) {
+    console.log(nome);
+    console.log(quantidade);
+    }  
+  ```
+
+  - Essa função, `criaElemento`, será capaz de armazenar os dados do `nome` e `quantidade`. E na nossa função do formulário, iremos __acionar esta função, buscando estes elementos__
+
+    ```js
+    form.addEventListener("submit", (evento) => {
+    evento.preventDefault();
+    criaElemento(evento.target.elements['nome'].value, evento.target.elements['quantidade'].value);
+    })
+    ```
+
+  - Assim ficará nossa função responsável por obter tais dados e armazená-los
+- Para nós adicionarmos um elemento através da __API do documents__, utilizaremos a propriedade `createElement`. e nela, iremos inserir o valor `'li'`, já que é __um item de lista no HTML__
+    - `document.createElement('li')`
+- 
