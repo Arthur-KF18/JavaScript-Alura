@@ -52,3 +52,8 @@ SubmitEvent {isTrusted: true, submitter: input.cadastrar, type: 'submit', targe
 
   - Ele nos traz exatamente os dados a partir do __nome do input__
   - Com essa estrutura, nós já somos capazes de receber esses dados, que a partir de agora eu quero que esses dados apareçam na minha lista.
+
+#### Criando as validações
+
+- Nós temos um código capturando os dados do formulário, toda vez que realizamos o evento de `submit`
+- Iremos querer que ao clicarmos no `submit`, adicionar itens à mochila. Essa interação é __dinâmica__, então podemos retirar alguns itens da nossa list
