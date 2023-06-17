@@ -6,4 +6,4 @@
 
 ---
 
-#### 
+#### Capturando os dados da tela
