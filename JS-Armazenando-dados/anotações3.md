@@ -122,4 +122,51 @@ SubmitEvent {isTrusted: true, submitter: input.cadastrar, type: 'submit', targe
 - Precisamos entender desta interação via JS. Os elementos criados por ele são __objetos__, e precisam ser __manipulados como objetos pelo `appendChild()`
 - todas as vezes que eu estou executando essa função estou criando essa constante `lista` novamente, ela não precisa estar aqui, ela pode estar declarada como uma __variável comum ao nosso código inteiro e só ser chamada aqui na hora de adicionar. Não precisamos que a cada vez que crio um elemento, também buscar esse elemento da lista__
 
+#### O armazenamento na WEB
 
+- No momento, não estamos salvando todos os itens que estamos adicionando automaticamente. Para isso vamos usar o __local Storage__
+  - O local storage é um espaço para __armazenarmos os dados do navegador, as informações do navegador do usuário__
+  - plataformas salvam as informações no seu navegador, na sua máquina para que essas informações possam ser usadas posteriormente.
+  - Estes tipos de armazenamentos são __cookies, bancos de dados, datas...__ 
+  - Há uma variedade de dados salvos, tudo para que o usuário tenha a melhor experiência
+  - localStorage é um recurso utilizado para salvar dados do tipo texto string no navegador da pessoa usuária
+- Se formos no console da página, qualquer uma da Web, podemos ver o que o local storage realiza no dia a dia
+  - `console.log(localStorage)`: Usando esse comando, podemos ver as diferentes informações que podemos acessar.
+- o local storage é um __objeto__, então podemos inserir e retirar informações, podemos __manipulá-lo ao nosso favor__
+  - `localStorage.setItem("chave", "valor")`: para podermos inserir, __precisamos colocar uma chave um valor, já que estamos manipulando um objeto__
+  - __Chave é o que vamos usar para acessar__ e __valor é o que queremos inserir__
+  - `localStorage.setItem("curso", "localStorage")`: estamos adicionando um __curso com um valor associado a `localStorage`__
+    - `localStorage.curso` : Retorna o valor __associado__
+    - `localStorage.getItem("curso")` : Também retorna o valor, porém acessa a chave através do `getItem`
+  - `localStorage.removeItem("curso")`: Remove a chave __que foi cadastrada__
+- `localStorage.clear()`: limpamos de maneira geral, __todo armazenamento local__
+
+#### Inserindo dados no LocalStorage
+
+- Iremos agora fazer a função capaz de pegar o __novo elemento inserido e adicioná-lo ao `localStorage`__
+- Podemos adicionar uma funcionalidade onde, __ao adicionarmos um novo item a lista, o formulário seja limpo automaticamente__
+  - Faremos isto adicionando o valor `""`, ou seja, __vazio__, para toda vez depois de realizarmos a adição de um novo item:
+
+  ```js
+    evento.target.elements['nome'].value = "";
+    evento.target.elements['quantidade'].value = "";  
+  ```
+
+  - Toda vez que recarregamos o formulário, __ele estará vazio__
+- Adicionamos estas funções em duas variáveis `nomeForm` e `qntdForm`, que guardam o valor de `nome` e `quantidade` respectivamente.
+  - `const nomeForm = evento.target.elements['nome'];`
+  - Ela será guardada desta maneira, para podermos __alterar o atributo `value`__
+  - `criaElemento(nomeForm.value, qntdForm.value);` : Assim ficará nossa função `criaElemento`, ficando mais fácil de utilizar a funções
+- Nosso elemento está sendo salvo e agora __quando criarmos este elemento, ele precisa estar salvo no `localStorage`
+  
+  ```js
+    localStorage.setItem("nome", nome);
+    localStorage.setItem("quantidade", quantidade);
+  ```
+
+  - Agora, estamos salvando qualquer item no armazenamento, onde ele tem a chave de `"nome"` e o valor `nome`.'
+- Porém, no console, quando analizamos a ação, veremos que __os dados recém guardados foram sobrescritos__, e precisamos de uma forma de armazenamento múltiplo, __para diferentes dados e sem serem sobreescritos__
+
+#### Múltiplos itens no localStorage
+
+- 
