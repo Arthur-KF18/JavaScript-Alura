@@ -169,4 +169,40 @@ SubmitEvent {isTrusted: true, submitter: input.cadastrar, type: 'submit', targe
 
 #### Múltiplos itens no localStorage
 
+- No JS, quando temos um __par de elementos, uma `chave` e `valor`__ e queremos salvar o __dicionário disto, utilizamos um objeto__
+- Vamos salvar isto em uma constante chamada `itemAtual`, referênciando um objeto, contendo __um nome e uma quantidade__ 
+
+```js
+  const itemAtual = {
+    "nome": nome,
+    "quantidade": quantidade
+}
+```
+
+- Estamos transformando o `itemAtual` em um objeto, onde temos dois objetos chamados `"nome"` e  `"quantidade"`
+- A informação será guardada, porém como `chave:item` e `valor:[object Object]`
+  - Ou seja, está guardando nossas informações, porém, __como objeto__
+  - O localStorage lê apenas __`JSON`, ou seja, uma string__
+  - Precisamos tranformar esse objeto em uma __string__ através da propriedade `JSON.stringify()`
+  - Ele vai pegar nossos objetos criados e __transformá-los em string para serem utilizados corretamente__
+  - o `localStorage` salva __apenas texto__
+  - `localStorage.setItem("item",JSON.stringify( itemAtual));`: Assim ficará nossa função que está armazenando os dados e estão sendo guardados no armazenamento local
+- Nós apenas deixamos mais específico o salvamento destes dados, de forma que fiquem guardados de forma correta, porém, ainda estamos sobrepondo estes dados
+- Precisamos somente de um objeto para armazenar naquele elemento todos os itens, nós precisamos de um array de objetos, nós precisamos de uma sequência de objetos.
+- Para isto, vamos criar um Array, e que colocaremos fora de nossas funções, para utilizar eles diferentes vezes
+  - `const itens = [];` : Criamos a constante para o array
+  - `itens.push(itemAtual)`: Guardamos novos itens no array através do método `push`
+  - `localStorage.setItem("item",JSON.stringify(itens));`: Executamos a função dentro do `localStorage`.
+- Agora, ele vai __somar os itens do array__, inserindo mais itens na lista e armazená-los de forma correta no `localStorage`
+- toda vez que eu preciso criar um grupo de elementos, um grupo de informações referentes aquele mesmo elemento, eu crio um __objeto e aqui eu tenho o par chave valor dentro do objeto__, `nome/nome`, e toda vez que eu preciso juntar esse grupo de informações em um único lugar, eu crio um __array com esses grupos__, nesse caso um array de objetos 
+- O `localStorage` apenas nos permite __salvar `String`__, por isso utilizamos o `JSON.stringify`
+- Agora, cada novo elemento da lista, estará guardado no local storage e precisamos apenas manter estes dados ao __recarregarmos a página__
+- Queremos que ao carregar essa página, __essa lista não exista mais no HTML__, ela exista unicamente na __memória do nosso navegador e eu posso acessa-la e criar os elementos através da lista__
+
+#### Entendendo o localStorage
+
+- Os tipos de dados armazenados no localStorage não devem ser considerados sensíveis, de acordo com a LGPD (Lei Geral de Proteção de Dados). Isso ocorre, pois ele __não possui nenhuma camada de proteção, e os dados podem ser acessados facilmente por terceiros__. Dados considerados sensíveis, devem ser armazenados em __Cookies.__
+
+#### Consultando dados do localStorage
+
 - 
