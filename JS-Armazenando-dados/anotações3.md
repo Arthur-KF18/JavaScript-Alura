@@ -79,5 +79,47 @@ SubmitEvent {isTrusted: true, submitter: input.cadastrar, type: 'submit', targe
 
   - Assim ficará nossa função responsável por obter tais dados e armazená-los
 - Para nós adicionarmos um elemento através da __API do documents__, utilizaremos a propriedade `createElement`. e nela, iremos inserir o valor `'li'`, já que é __um item de lista no HTML__
-    - `document.createElement('li')`
-- 
+  - `document.createElement('li')`
+- Porém, dentro desse elemento, existe uma classe chamada `item`. Para então podermos fazer esta lógica no formulário, iremos criar uma constante __que armazena a criação do elemento `<li>`, para que possamos utilizar o `classList`__
+  
+  ```js
+    const novoItem = document.createElement('li');
+    novoItem.classList.add("item");  
+  ```
+
+  - Esta função, tem a responsabilidade de __adicionar uma tag `<li>` com uma classe `item`__
+  - Faremos o mesmo para a tag `<strong>`, porém, iremos adicionar o número do itme através do atributo `.innerHTML`, que é responsável por __adicionar um elemento HTML através do JS__
+  
+   ```js
+    const numeroItem = document.createElement('strong');
+    numeroItem.innerHTML = quantidade;  
+  ```
+
+  - Agora que temos o `<strong>`, a variável `numeroItem` estará recebendo __a quantidade__
+  - Através do console, vamos verificar que nossa função já está funcionando através do `innerHTML`
+- Precisamos agora que o `novoItem` receba estes dados, através da função `novoItem.innerHTML = numeroItem + nome;`. Ela é responsável por receber os dados e adicioná-los ao __nome do item__
+- Quando vemos isto no console, irá aparecer da seguinte forma:
+  - `<li class="item">[object HTMLElement]camisas</li>`. Isto significa que __quando criamos um elemento do HTML via JS, não adicionamos um elemento dentro um do outro como se fosse um elemento simples de HTML__
+  - __Ele cria um objeto completo quando utilizamos o `innerHTML`__, e agora temos que resolver este objeto, assim, precisamos entender como o JS adiciona um conteúdo dentro do outro, __principalmente para elementos criado via JS__
+- A manipulação destes elementos é diferente. Iremos utilizar o `appendChild()`, que irá __inserir um elemento criado dentro do outro__
+  - `novoItem.appendChild(numeroItem);` terá como resultado a __inserção do elemento dentro do outro__
+
+  ```js
+    novoItem.appendChild(numeroItem);
+    novoItem.innerHTML += nome;
+  ```
+
+  - Terá como resultado a inserção __do elemento e do nome__, exatamente o que precisamos. Agora temos de adicioná-lo na lista. Iremos criar um `id` na lista, deixando a __classe responsável pelo estilo e o id pela lógica__
+  - faremos isto através da constante e do `appendChild()`:
+
+  ```js
+    const lista = document.querySelector("#lista");
+    lista.appendChild(novoItem);
+  ```
+
+  - Quando voltamos no nosso HTML, é criado um novo item da lista, sendo assim funcional, porém, __ele ainda não está somando os mesmos tipos de itens quando são adicionados__
+
+- Precisamos entender desta interação via JS. Os elementos criados por ele são __objetos__, e precisam ser __manipulados como objetos pelo `appendChild()`
+- todas as vezes que eu estou executando essa função estou criando essa constante `lista` novamente, ela não precisa estar aqui, ela pode estar declarada como uma __variável comum ao nosso código inteiro e só ser chamada aqui na hora de adicionar. Não precisamos que a cada vez que crio um elemento, também buscar esse elemento da lista__
+
+
