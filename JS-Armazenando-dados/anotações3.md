@@ -267,3 +267,43 @@ SubmitEvent {isTrusted: true, submitter: input.cadastrar, type: 'submit', targe
 - sessionStorage é similar ao localStorage,__sua diferença é que os dados não são salvos de forma persistente, ou seja, ao fechar o navegador eles são perdidos__. Este tipo de armazenamento é utilizado quando queremos que a pessoa usuária utilize os dados apenas enquanto estiver com o site aberto.
 
 #### Modificar a quantidade de um item
+
+- Queremos que a lista seja atualizada conforme adicionemos novos itens, ou alterem sua quantidade
+- Primeiro vamos __Atualizar a tela__  e depois o __`localStorage`__
+- Para __Atualizar a tela__, buscaremos o elemento que foi criado.
+  - Ao enviarmos o item, ele irá para o formulário e iremos buscá-lo, utilizaremos uma constante chamada `existe`. Ela vai verificar a __existência do elemento__
+  - A minha lista nada mais é do que o Array `const existe = itens.find()`. Eu vou buscar no meu array __itens aquele elemento__. Qual é o elemento que eu estou buscando? Eu estou buscando aqui o elemento:
+    - `.nome`, `const existe = itens.find(elements => elemento.nome).`
+  - Eu estou olhando todos os meus elementos do array na posição nome, um a um, e eu quero que ele seja exatamente igual a `nome.value`, que é exatamente o que eu digitei no meu formulário:
+    - `const existe = itens.find(elements => elemento.nome === nome.value).`
+  - Com o elemento definido, __precisamos criar uma condicional__
+  - Se existe e for diferente de vazio, for diferente de `undefined`, se existe realmente existir, `if (existe) { }`, eu preciso criar um __elemento de controle nos meus itens.__
+    - `itemAtual.id = existe.id`
+  - Iremos criar este id na função `criaElemento`. E nós faremos isto, utilizando as propriedades dos __data attributes__
+  - Precisamos que este id seja __incremental__, o primeiro item da lista seja 1, o próximo 2 e assim por diante. Para isto, precisamos que o `item` tenha uma propriedade `id`:
+    - `numeroItem.dataset.id = item.id`
+  - Se ele existe,__queremos que o id fique o mesmo__, mas se ele __não existe__, se esse elemento não existe, __eu preciso criar esse elemento, jogar esse elemento no array__, mas antes disso eu preciso criar um id para ele. __Se ele não existe, o id atual vai ser o tamanho do meu array__, `itemAtual.id = itens.length`. Se só tiver um item o id vai ser 1, se tiver dois itens o id vai ser 2, e por aí vai.
+  - Ao recarregarmos a página depois de adicionar um item, __teremos um `data-id="0"`__ associado ao nosso `<strong>`
+    - Ao adicionarmos o mesmo item, ele nos trará uma informação da __existência daquele mesmo elemento__
+    - Quando utilizamos o `console.log(existe.id)`, iremos verificar que, no console, o __id associado a tag `<strong>` é 0__
+  - Já criamos uma referência. Se um elemento tenta ser adicionado, e ele já existe, __já teremos o `id`__
+  - Além da função `criaElemento`, preciso aqui ter uma função chamada `atualizaElemento`, que também vai receber como parâmetro o `itemAtual`, que agora já está atualizado com o id, `atualizaElemento(itemAtual)`
+
+    ```js
+    function atualizaElemento(item) {
+    console.log(document.querySelector("[data-id='" + item.id + "']"));
+    }
+    ```
+
+    - Temos uma função `atualizaElemento`, que recebe um `item`, e só precisamos encontrar a tag `<strong>` que criamos e atualizá-la
+      - assim iremos fazer a busca do data attributes:
+      - `[data-id='" + item.id + "']`, onde o `data-id` será igual ao __id que criamos__
+    - No console veremos __a tag `<strong>` associdado ao id que lhe foi atribuído__
+      - `<strong data-id="0">2</strong>`
+      - Isso indica que, ao adicionarmos o mesmo item, __ele estará associado à tag criada__
+      - Quando adicionamos um novo item, ele trará __o próximo id associado__
+    - Assim, teremos de adicionar essa função, associada a quantidade, para atualizarmos o elemento da nossa lista:
+      - `document.querySelector("[data-id='" + item.id + "']").innerHTML = item.quantidade;`
+  - Toda vez que enviamos o formulário, perguntamos se aquele `item` já existe. Se o nome for encontrado, atualizamos o elemento, e quando não for, é criado um novo
+  - Porém, no nosso dataStorage, veremos que o número de itens não foi atualizado. Isto acontece porque __quando nosso array de itens é atualizado quando criamos um elemento e não quando atualizamos este elemento__
+  - Para resolvermos isto, devemos atualizar a nossa lista de arrays sempre que um )__item for atualizado para ir, por fim, atualizar o Local Storage.__
