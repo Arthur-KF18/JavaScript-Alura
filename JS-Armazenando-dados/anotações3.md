@@ -230,3 +230,40 @@ SubmitEvent {isTrusted: true, submitter: input.cadastrar, type: 'submit', targe
 
 - Nós já temos diferentes etapas no nosso projeto, porém, ainda não __são criados os dados com os elementos__, isto significa, que ele apenas adiciona as __características dos itens, mas não salva os itens__
 - Isto é um problema de __lógica na programação__, e devemos resolver isto
+- Um código __evolui conforme as funcionalidades, necessidades e afins durante seu desenvolvimento__. 
+- Não é necessário implementar __todas as funcionalidades de uma única vez. Conforme o projeto cresce, suas necessidades mudam. Então, você utiliza outras funções e propriedades, dando uma melhora no código e em todas suas necessidades__
+- __Podemos ir executando e aprendendo com o desenvolvimento e melhorando nosso código__
+- Podemos pegar toda a lógica de criação do item para o `localStorage` e levá-la para nossa função `form.addEventListener()`
+- Modificaremos também:
+
+```js
+    const itemAtual = {
+        "nome": nome.value,
+        "quantidade": quantidade.value
+    }
+```
+
+- Desta maneira, estaremos armazenando o `itemAtual`, vai ser criado aqui, mas agora o que preenche ele? Não é só o `nome`, porque o nome é só o __elemento do array__, é o `nome.value`. A quantidade também, é `quantidade.value`.
+- O nosso objeto aqui já está funcionando para o Local Storage, ele esperava receber dois valores e o que precisamos é modificar um pouco o `criaElemento`. Ao invés dele receber dois valores, ele vai só passar o `itemAtual`.
+  - `criaElemento(itemAtual);`
+  - Modificamos também:
+  - `function criaElemento(item) {}`
+  - E a inserção dos itens pelo `innerHTML`, será atrelada ao `item`, ficando:
+    - `numeroItem.innerHTML = item.quantidade;`
+    - `novoItem.innerHTML += item.nome;`
+- Agora ao criar um elemento ele pega o objeto, nós também inserimos esse objeto no nosso array e também insere esse array no Local Storage
+- Na página, ao adicionarmos um novo item, veremos que ele continua sendo salvo no `localStorage`. Esta refatoração, __deixou nosso código maius dinâmico__, precisando chamar a função __`criarElemento`__ toda vez que __recarregamos a página__
+- Os elementos permancem salvos, sendo a responsibilidade da `criarElemento` seja única, e exclusivamente __criar um elemento__
+- Mesmo sem nenhum item na lista no HTML, irá ser criado um elemento,mas agora só faltará __somar os itens que forem iguais__
+
+#### Diferentes armazenadores de dados
+
+- Cookies, localStorage e sessionStorage são formas de armazenar dados no navegador, porém existem diferenças na usabilidade de cada um. Vamos conferir estas diferenças abaixo:
+
+- __localStorage__ guarda informações de forma __persistente no navegador__, sendo em média 5MB de armazenamento padrão, podendo variar dependendo do navegador utilizado. Este limite pode ser aumentado pelo usuário quando necessário, no entanto apenas alguns navegadores suportam isso. __Os dados salvos são apenas do tipo string texto.__
+
+- Cookies guardam informações de forma __persistente no navegador__, sendo até 4KB de armazenamento por Cookie, bem menos que localStorage. Cada cookie é como se fosse um arquivo __criado que guarda as informações de acesso da pessoa usuária__, por exemplo, de qual local o site foi acessado, qual e-mail foi utilizado ao realizar login no navegador, e quais produtos de um site foram clicados. Para acessá-los, muitas empresas criam pop ups para confirmar a autorização do uso dessas informações, pois são consideradas sensíveis.
+
+- sessionStorage é similar ao localStorage,__sua diferença é que os dados não são salvos de forma persistente, ou seja, ao fechar o navegador eles são perdidos__. Este tipo de armazenamento é utilizado quando queremos que a pessoa usuária utilize os dados apenas enquanto estiver com o site aberto.
+
+#### Modificar a quantidade de um item
