@@ -205,4 +205,27 @@ SubmitEvent {isTrusted: true, submitter: input.cadastrar, type: 'submit', targe
 
 #### Consultando dados do localStorage
 
+- Nossa página está criando e salvando itens no localStorage. Porém, ao recarregarmos a página, ele não está __trazendo estes dados, os elementos da lista novamente__
+- Iremos realizar uma consulta com nosso localStorage através do atributo `getItem`
+  - Iremos atualizar nossa requisição, sendo assim, nossa estrutura ficará da seguinte forma: 
+  - `const itens = localStorage.getItem("itens") || [];`
+  - Ao carregar os meus itens, ao carregar a minha página, ao carregar esse documento eu preciso pegar tudo que tem lá. 
+  - Ao invés de criarmos um array vazio, vamos primeiro ver se existe alguma coisa lá no `localstorage.getItem` passando aqui os `"itens"`, mas se isso for __falso, utilizando o `||`__ eu quero que ele crie um __array vazio__.
+  - Ela funcionará, e estará guardando os __itens que adicionamos à mochila__, porém, a página, quando recarregada, __não estará com as tags presentes, mostrando os itens visualmente__
+- Precisamos __iterar este array para criar estes elementos__
+- Podemos fazer um loop no array utiizando o `forEach((elemento utilizado) => {})`
+- porém, ao fazermos este lop, teremos um problema, um problema no __tipo de dado__
+- Quando criamos a função responsável por armazenar os dados e transformá-los em string, tivemos um problema de __não deixa-lo especificamente como um Array__
+  - Percebemos isto, quando utilizamos `console.log([])`
+  - Ele nos mostra a __estrutura do Array__, algo que não está acontecendo quando armazenamos os itens no localStorage
+  - O que fizemos é chamado de `Syntax highlighting`
+- isto não ocorre por eles serem uma __string__
+- __Precisamos pegar estes dados e transformá-los pro JS
+- utilizamos então o `JSON.parse()`, e ao recarregarmos a página, ele __identificará como array__.
+- Através do `console.log(elemento.nome, elemento.quantidade)`, veremos a __associação do elemento com a quantidade__
+- Estamos imprindo __todos os itens presentes no nosso local storage__
+-  Na nossa programação inventamos um problema, porque ao criar um elemento nós também nessa função estamos escrevendo uma quantidade de coisas lá no setItem. Vamos fazer um loop aqui para criar o elemento e atualizar a nossa lista que não vai funcionar. Precisamos __refatorar o nosso código para que essa operação seja feita no envio do formulário.__
+
+#### Atualizar página ao cadastrar um item
+
 - 
