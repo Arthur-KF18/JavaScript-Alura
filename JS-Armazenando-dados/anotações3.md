@@ -228,4 +228,5 @@ SubmitEvent {isTrusted: true, submitter: input.cadastrar, type: 'submit', targe
 
 #### Atualizar página ao cadastrar um item
 
-- 
+- Nós já temos diferentes etapas no nosso projeto, porém, ainda não __são criados os dados com os elementos__, isto significa, que ele apenas adiciona as __características dos itens, mas não salva os itens__
+- Isto é um problema de __lógica na programação__, e devemos resolver isto
