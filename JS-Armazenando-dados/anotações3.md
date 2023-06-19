@@ -365,3 +365,44 @@ SubmitEvent {isTrusted: true, submitter: input.cadastrar, type: 'submit', targe
   - Sendo assim apagamos a tag por completo
 - Porém, há de se dizer que apagamos a tag, mas continua salvo no nosso `localStorage` os dados que tinhámos inserido, e agora __precisamos resolvê-los__
 - Percebemos que isto ocorre ao recarregarmos à página
+
+#### Removendo um item do localStorage
+
+- Temos a função `deletaElemento`, e ela precisa retirar o armazenamento do `localStorage`.
+- A gestão do nosso `localStorage` é através do array __`itens`__, a gente sempre atualiza ele e envia para o armazenamento. Então ao apagarmos uma tag da lista, precisamos __remover um item do array e depois escrever no `localStorage`__ 
+- Para remover um item do array, vamos utilizar o `splice`. Porém para que isto possa ser feito, ele precisa ler __o índice do array__
+- No nosso código, esta posição está sendo armazenada no __`id`__
+- Então, a função `deletaElemento` recebe `id` como __parâmetro__
+  -`deletaElemento(tag, id)`
+- Após isto, precisamos também que o `id` seja __enviado__, e faremos isso na função `botaoDeleta(id)` e no `deletaElemento(this.parentNode, id);`
+- Com o envio das informações, com a chamada da função `botaoDeleta`, precisamos que o `id` também exista:
+  - `novoItem.appendChild(botaoDeleta(item.id));`: Fazemos isto com o `item.id`
+- Passamos o `id` para o `botaoDeleta`, e que ele chama o `deletaElemento` quando o botão é clicado passando `id` como __parâmetro__
+- Como retorno, ao apagarmos um elemento e verificarmos no console com `console.log(id);`, veremos que __cada item que é apagado, retorna o seu número do array__
+- Agora que o `id` existe, precisamos removê-lo, e temos de saber __onde está esse elemento com o `id` específico?
+  - Precisamos procurar este elemento específico no __Array__
+  - `itens.splice(itens.findIndex(elemento => elemento.id === id), 1)`
+  - O que ocorre é que: Para procurar um elemento, utilizamos `findIndex`, que retorna o __index de um elemento qualquer__, passamos o `elemento`, e que queremos seu `id`e que seja igual ao `id` recebido.
+  - Ao verificarmos isto no console, veremos que o array terá __reduzido__, indicando que __foi removido o elemento do Array__
+  - Agora precisamos apenas __atualizar o `localStorage`__
+- `localStorage.setItem()`: Para escrevermos no `localstorage`, precisamos __passar os itens utilizando o `stringify`__
+- Estamos conseguindo remover os itens tanto as tags quanto no `localStorage`
+- Porém, ao usarmos `localStorage` no console, iremos perceber que __nosso id deixou de ser único, pois está presente em mais de um item__
+- __Nosso id passou a ser igual ao id anterior__
+- A nossa lógica aqui de adicionar o id igual o tamanho do elemento faz muito sentido quando não temos alterações no elemento, mas agora que o nosso elemento pode ter um item removido do meio, o tamanho do array é completamente irrelevante.
+- O que nós precisamos é encontrar o__último elemento desse array__, a partir do último elemento encontramos o __`id` e soma 1__.
+- Esta evolução é completamente normal
+- Se nós tentarmos diminuir nosso array, iremos ter um problema na lógica de que __um array vazio não pode diminuir, um Array vazio menos zero resulta em erro__
+  - `itemAtual.id = itens[itens.length - 1];` , retornará um erro.
+- Precisamos verificar se __o Array existe__ e ai então teremos uma tomada de decisão
+- Utilizaremos `if` e `else` porém com um __operador ternário__, é uma `?`.
+  - Se for positivo, faça algo, se negativo, faça outra.
+  - Se o array não existe, __daremos o `id` 0
+  - Se já tiver algo no `id`, __queremos encontrar no último elemento o `id` e ai sim, podemos adicionar 1 a ele__
+-  `itemAtual.id = itens[itens.length - 1] ? (itens[itens.length - 1]).id + 1 : 0;`
+- Ao fazermos isto, ao retiramos os elementos e depois adicionar os novos, os __`id` estarão sendo atualizados e somados a cada vez que um item é adicionado__
+- Porém, quando adicionamos o mesmo item __o id é alterado__, ele está pegando aqui na hora o `id`, ele está pegando o item atual e eu não quero que seja só o `ìd` do `existe.id`, eu preciso realmente encontrar o meu __elemento para fazer isso.__
+- `itens[itens.findIndex(elemento => elemento.id === existe.id)] = itemAtual;`
+  - Estamos garantindo que estamos buscando o __elemento correto e atualizando o conteúdo daquele elemento correto__.
+  - Através do `findIndex()`, procuramos o id do elemento e indicando o elemento correto a ser selecionado.
+- Assim, olhando o `localStorage`, os elementos são alterados, __seu `id` é incremental e não altera quando nós adicionamos o mesmo item__
