@@ -2,15 +2,31 @@
 <html lang="pt-br">
 
 <head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vite App</title>
+	<meta charset="UTF-8" />
+	<link rel="icon" type="image/svg+xml" href="/vite.svg" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+		integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" href="style.scss">
+	<title>Número Secreto</title>
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap" rel="stylesheet">
 </head>
 
 <body>
+	<h1>Acerte o número secreto</h1>
+	<h3 class="subtitulo">O número está entre<span id="menor-valor">0</span> e <span id="maior-valor">100</span></h3>
 
-  <script type="module" src="/main.js"></script>
+	<div id="chute" class="mensagem"></div>
+	<div>Você disse:</div>
+	<span class="box">20</span>
+	<div>O número secreto é maior <i class="fa-solid fa-arrow-up"></i></div>
+
+
+	<script src="/main.js"></script>
 </body>
 
 </html>
