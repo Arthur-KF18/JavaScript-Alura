@@ -1,6 +1,8 @@
 html {
-  background: rgb(75, 41, 1);
-  background: linear-gradient(90deg, rgba(75, 41, 1, 1) 11%, rgba(199, 125, 34, 1) 52%, rgba(255, 210, 82, 1) 100%);
+  background-image: url(./public/james-eades-bfwhP9xodvE-unsplash.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   height: 100%;
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;

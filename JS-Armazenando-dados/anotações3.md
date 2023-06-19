@@ -334,4 +334,34 @@ SubmitEvent {isTrusted: true, submitter: input.cadastrar, type: 'submit', targe
   - `const elementoBotao = document.createElement("button");`
   - ` elementoBotao.innerHTML = "x";`
   - A primeira __cria o botão__ e a segunda insere o __`"x"` dentro do botão__
-- 
+- Com o botão adicionado, agora devemos arrumá-lo, pois adicioná-los via JS, faz com que __não recebam o `addEventListener`__ na leitura da página
+- Criamos o botão dinamicamente, então precisamos criar este elemento __com o evento associado__
+  - `elementoBotao.addEventListener("click", () => {})`
+  - com o `console.log("click");` veremos que os botões estão sendo identificados e retornando no console o `"click"`.
+- Utilizando a arrow function, entendemos e conseguimos realizar as atividades. Porém, no nosso botão, ao __clicarmos nele__, queremos saber __em qual elemento nós realizamos o clique__
+- a arrow function __não carrega o `this` para frente__, então devemos ter uma __declaração de uma função para que possamos utilizar o `this`__
+
+  ```js
+    elementoBotao.addEventListener("click", function() {
+    console.log(this);
+    })
+  ```
+
+- Assim, ao clicarmos em um dos botões, no console, saberemos __qual foi elemento em que clicamos o botão__
+- Queremos chamar uma função que delete este elemento:
+  - `deletaElemento(this)`
+  - A função `deletaElemento` vai receber o parâmetro, uma __tag HTML__, e vai remover aquela tag
+  
+  ```js
+    function deletaElemento(tag) {
+    tag.remove();
+    }
+  ```
+
+  - Porém, nós __excluímos o botão__ e não a tag por __inteiro__
+  - Se olharmos com atenção, o __botão é filho do `<li>`__
+  - então passaremos o __parente do elemento__
+    - `deletaElemento(this.parentNode);`
+  - Sendo assim apagamos a tag por completo
+- Porém, há de se dizer que apagamos a tag, mas continua salvo no nosso `localStorage` os dados que tinhámos inserido, e agora __precisamos resolvê-los__
+- Percebemos que isto ocorre ao recarregarmos à página

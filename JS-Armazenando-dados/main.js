@@ -61,5 +61,13 @@ function botaoDeleta() {
     const elementoBotao = document.createElement("button");
     elementoBotao.innerHTML = "x";
 
+    elementoBotao.addEventListener("click", function() {
+        deletaElemento(this.parentNode);
+    })
+
     return elementoBotao;
+}
+
+function deletaElemento(tag) {
+    tag.remove();
 }
