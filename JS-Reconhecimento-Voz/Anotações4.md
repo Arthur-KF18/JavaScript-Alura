@@ -5,7 +5,12 @@
 - O projeto foi construído utilizando o framework __Vite__ para subir a aplicação web
 - A estilização utilizará o pré-processador __SASS__
 
-#### Iniciando o projeto
+#### Iniciando o projeto e escolhendo fontes e cores
 
 - `ctrl + j`: Cria um terminal
 - Esta etapa será apenas da estilização do website e todas suas características
+- Utilizaremos a CDN do font-awesome
+
+#### Número aleatório com Math.random()
+
+- 
