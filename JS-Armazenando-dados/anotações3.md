@@ -327,4 +327,11 @@ SubmitEvent {isTrusted: true, submitter: input.cadastrar, type: 'submit', targe
 
 #### Removendo um item da mochila
 
+- Como podemos remover um item da nossa lista? Queremos que ao clicar no item, seja possível resolvê-lo
+- Primeiro, adicionaremos esta funcionalidade. Vamos personalizar nossa página e depois com o localStorage
+- Podemos criar um botão que ao ser clicado, delete nosso item
+- Iremos criar uma função responsável por criar um botão que irá deletar o conteúdo presente na nossa interface chamada de `botaoDeleta()` e dentro dela iremos colocar dois parâmetros:
+  - `const elementoBotao = document.createElement("button");`
+  - ` elementoBotao.innerHTML = "x";`
+  - A primeira __cria o botão__ e a segunda insere o __`"x"` dentro do botão__
 - 
