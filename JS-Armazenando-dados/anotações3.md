@@ -307,3 +307,24 @@ SubmitEvent {isTrusted: true, submitter: input.cadastrar, type: 'submit', targe
   - Toda vez que enviamos o formulário, perguntamos se aquele `item` já existe. Se o nome for encontrado, atualizamos o elemento, e quando não for, é criado um novo
   - Porém, no nosso dataStorage, veremos que o número de itens não foi atualizado. Isto acontece porque __quando nosso array de itens é atualizado quando criamos um elemento e não quando atualizamos este elemento__
   - Para resolvermos isto, devemos atualizar a nossa lista de arrays sempre que um )__item for atualizado para ir, por fim, atualizar o Local Storage.__
+
+  #### Atualziando um item do localStorage
+
+  - Agora precisamos atualizar nosso localStorage. Nós já estamos salvando as informações e elas estão aparecendo na tela, porém o armazenamento destas informações
+  - Ao analisarmos isto no console, podemos perceber que os dados são continuamente guardados, mas __não alterados__
+  - O `localStorage` __não é um banco de dados__, utilizando a função `localStorage.key()`, podemos acessar como um __Array__, podemos acessar qualquer elemento, como o 0 por exemplo.
+    - Porém o elemento 0 é o `"itens"`, é elemento __chave__ não nosso valor
+    - A chave é o `"itens"` e o valor é __toda a string, o conjunto de dados que é criado ao adicionarmos um novo item na lista__
+  - O `localStorage` por armazenar uma __String__, eele armazena um objeto "descartável"
+  - Todas as vezes que a gente quer atualizar o localStorage, __ele escreve por cima__, ou seja, descarta o anterior e armazena o novo item.
+  - Ou seja, para que atualizemos o localStorage, __precisamos atualizar nosso Array__
+    - Para isso, encontramos a __posição onde está nosso conteúdo e sobrescreve-lo__
+    - A posição onde está nosso conteúdo é o: `existe.id`
+  - `itens[existe.id] = itemAtual;` :  Aqui eu já estou fazendo um `setItem` passando os itens com o __array itens transformado no `stringify`__, isso aqui sempre vai __acontecer__. 
+    - Quando eu crio um elemento, __eu estou dando um push no meu array e estou passando itens e quando eu atualizo o meu elemento__, se o elemento já existe eu só __troco o conteúdo no meu array e passo para o Local Storage.__
+  - Ele vai __atualizar a tela e o `localStorage`__, sendo assim ele sobre escreveu o localStorage com novos itens
+    -  Por ser uma string, por ser um conteúdo de texto temos que tratar e sobrescrever.
+
+#### Removendo um item da mochila
+
+- 
