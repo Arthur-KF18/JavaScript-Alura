@@ -106,3 +106,26 @@
 - Agora que temos o microfone conectado no navegador, podemos __podemos pegar a mensagem que estamos falando e colocar no console para ser exibida__
 - Vamos criar um evento onde, __ao realizarmos a fala, vamos exibir a nossa mensagem no console__
   - `recognition.addEventListener('result', onSpeak)`
+  - o `onSpeak` vai exibir __tudo que estarmos falando no console__
+  - Nossa função ficará da seguinte forma: 
+  
+  ```js
+    function onSpeak(e){
+      console.log(e);
+    }
+  ```
+
+- No console, ao falarmos, nos exibirá um evento chamado `SpeechRecognitionEvent`, e veremos que estaremos a língua correta, e o que queremos está no `results`
+- Dentro dele haverá um `transcript`, que __trará as informações de fala que foram ditas__
+- Agora, nós precisamos apenas que ele pegue o dado __que transmite as informações de fala apenas__
+  - Faremos da seguite forma:
+  - `console.log(e.results);`: Irá trazer a lista de resultados, incluindo a nossa voz
+  - `console.log(e.results[0][0]);` irá nos trazer a __frase dita dentro do array `SpeechRecognitionAlternative`__
+  - Para acessarmos o `transcript`, basta:
+    - `console.log(e.results[0][0].transcript);`
+    - Ao fazermos isto, vai apenas trazer __a frase que falamos__
+- Agora, queremos pegar este número dito no console e enviálo __a tag `<span>` que contém o número que iremos informar__
+
+#### Mostrando a mensagem na tela
+
+- 
