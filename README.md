@@ -3,6 +3,7 @@
 ![logo JS](./javascript.svg "logo JS")
 
 </div>
+
 ## JavaScript-Alura
 
 - Repositório contendo os arquivos de aula de __JavaScript da Alura__
