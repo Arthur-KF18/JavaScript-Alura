@@ -39,4 +39,32 @@
 #### Manipulando menor e maior valor
 
 - Nossa aplicação terá um valor entre 0 e 100, e precisamos que este valor altere-se no javascript quanto na página
--
+- Iremos criar duas constantes contendo __o maior e menor valor__
+  - `const menorValor = 1`
+  - `const maiorValor = 100`
+- Queremos que ao alterar estes valores, ele altere automaticamente os valores que estão aparecendo no website
+- Porém, ao fazermos o sorteio dos valores, para que fiquem no intervalo solicitado, precisamos editar a função `parseInt`. Ao invés de multiplicar por 100, iremos colocar a constante `maiorValor`, mas ela deve ser __inclusiva__
+  - Isso quer dizer que, __quando formos sortear um número entre 1 e 10, queremos que realmente seja 1 e 10__
+  - `return parseInt(Math.random() * maiorValor + 1)`
+  - Agora sim, teremos um valor entre 1 e 10, sendo o 10 __incluído__
+  - No console, ao imprimirmos esta função, em um dos números aleatórios gerados, iremos ter o 100
+- Nós queremos que as duas constantes e os valores, __sejam exibidos na tela__
+  - Iremos realizar essa manipulação buscando estes elementos, que estão sendo inseridos através da tag `<span>`
+  - `const elementoMenorValor = document.querySelector('#menor-valor');`
+  - Ele está buscando o id do elemento e assim poderemos manipulá-lo
+  - `elementoMenorValor.innerHTML = menorValor`: O conteúdo da tag será alterado com __o valor presente na constante `menorValor`__
+  
+  ```js
+  const elementoMenorValor = document.querySelector('#menor-valor');
+  elementoMenorValor.innerHTML = menorValor;
+
+  const elementoMaiorValor = document.querySelector('#maior-valor');
+  elementoMaiorValor.innerHTML = maiorValor;
+  ```
+
+  - A primeira função, irá pegar o menor valor e a segunda o maior valor que foi inserido __através do javascript__
+- Agora precisaremos configurar o __input de fala__ da pessoa para que ela possa sortear o número
+
+#### Web speech API
+
+- 
