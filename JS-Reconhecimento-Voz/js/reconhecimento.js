@@ -1,9 +1,12 @@
-import ("./validacao");
+const elementoChute = document.getElementById('chute');
 
-const elementoChute = document.querySelector('#chute')
+const SpeechRecognition =
+  window.SpeechRecognition || window.webkitSpeechRecognition;
+const SpeechGrammarList =
+  window.SpeechGrammarList || window.webkitSpeechGrammarList;
+const SpeechRecognitionEvent =
+  window.SpeechRecognitionEvent || window.webkitSpeechRecognitionEvent;
 
-const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-const SpeechGrammarList = window.SpeechGrammarList || window.webkitSpeechGrammarList;
 
 const recognition = new SpeechRecognition();
 
@@ -13,9 +16,9 @@ recognition.start();
 recognition.addEventListener('result', onSpeak);
 
 function onSpeak(e) {
-    const chute = e.results[0][0].transcript;
+    chute = e.results[0][0].transcript;
     exibeChuteNaTela(chute);
-    verificaChute(chute);
+    verificaChute(chute);    
 }
 
 function exibeChuteNaTela(chute) {
@@ -25,5 +28,4 @@ function exibeChuteNaTela(chute) {
     `
 }
 
-recognition.addEventListener("end", () => recognition.start())
-
+recognition.addEventListener('end', () => recognition.start())

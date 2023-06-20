@@ -253,3 +253,11 @@
 - Para que isso não ocorra, vamos no nosso código de reconhecimento de voz e vamos adicionar mais um evento de `end`
   - `recognition.addEventListener('end', () => {recognition.start()})`
   - Ou seja, quando a nossa função acabar, ele liga novamente o reconhecimento de voz até __descobrirmos qual é o número secreto__
+
+#### Criando o botão jogar novamente
+
+- Ao acertarmos o número, temos um problema de que precisamos recarregar a página toda vez para jogar novamente. Para nós podermos atualizá-la novamente, utilizaremos um botão por ser uma maneira mais __eficiente de jogar novamente__
+
+- Iremos criar este botão no `if` responsável por validar o elemento 
+  - Estilizaremos nosso botão, de forma que tenha um estilo próprio e funcional
+  - na nossa validação, iremos criar uma função, que vai pegar o botão e dar a funcionalidade de gerar novamente o valor
