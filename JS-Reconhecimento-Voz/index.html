@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="UTF-8" />
-	<link rel="icon" type="image/svg+xml" href="/vite.svg" />
+	<link rel="icon" type="image/svg+xml" href="./public/vite.svg" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
 		integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
@@ -16,6 +16,7 @@
 </head>
 
 <body>
+	<span class="material-symbols-outlined"><img src="./public/mic.svg" alt="microfone" class="microfone"></span>
 	<h1 class="titulo">Acerte o número secreto</h1>
 	<h3 class="subtitulo">O número está entre <span id="menor-valor">0</span> e <span id="maior-valor">100</span></h3>
 
@@ -25,7 +26,12 @@
 		<div>O número secreto é maior <i class="fa-solid fa-arrow-up"></i></div> -->
 	</div>
 
+	<footer>
+		<p class="agradecimento">Feito com 💙</p>
+	</footer>
+
 	<script src="./js/main.js"></script>
+	<script src="./js/reconhecimento.js"></script>
 	<script src="./js/validacao.js"></script>
 </body>
 

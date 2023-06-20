@@ -193,4 +193,63 @@
 
 #### Acertando o número secreto
 
-- 
+- Agora que possuímos todas as funções e lógica, iremos mostrar na tela __quando as respostas estão erradas, se o valor é invalido e mostrar se acertamos o resultado__
+- no nosso `if` referente ao valor inválido, iremos inserir uma `<div>`:
+  
+  ```js
+    if (chuteForInvalido(numero)) {
+        elementoChute.innerHTML += '<div>Valor inválido</div>';
+    }
+  ```
+
+- Ele retorna essa mensagem de erro, __toda vez que nós falarmos uma frase, na qual não se encaixa como número__
+- Faremos isto para a função `numeroForMaiorOuMenor`, retornando o __intervalo que o número deve estar__
+
+  ```js
+    if (numeroForMaiorOuMenor(numero)) {
+        elementoChute.innerHTML += `
+        <div>valor inválido: O número secreto precisa estar entre ${menorValor} e ${maiorValor} 
+        </div>`
+    }
+  ```
+
+- Agora precisamos criar uma forma de validação se o usuário acertou o número falado:
+  
+  ```js
+    if (numero === numeroSecreto) {
+        document.body.innerHTML = `
+            <h2 class = "acertou">Você Acertou! Parabéns</h2>
+            <h3 class = "acertou__numero">O número secreto era: ${numeroSecreto}</h3>
+            <footer>
+		        <p class="agradecimento">Feito com 💙</p>
+	        </footer>
+        `
+    }
+  ```
+
+  - Ele vai inserir todos os novos elementos assim que a resposta for correta
+- Podemos agora inserir algumas dicas caso ela não tenha acertado o número secreto
+
+#### Criando as dicas
+
+- Criamos as funções que podem inserir dados caso não acertemos o valor, ou, se acertarmos será recompensado. Porém, não possuímos uma funcionalidade onde __se errarmos o valor, sabemos o quanto falta para chegarmos naquele determinado valor__
+- Primeiro, __em ambas as funções, iremos adicionar o método `return`__, ou seja, quando for invocada uma ou a outra função, __essa função não vai ser mais invocada a partir do momento que já realizou sua função.__
+- Então na função `if(numero === numeroSecreto)` adicionaremos o `elseif`. __Se o número for válido, mas não for igual ao número secreto, iremos criar duas funções, caso ele seja maior ou menor__
+  
+  ```js
+    }else if (numero > numeroSecreto) {
+        elementoChute.innerHTML += `
+            <div>O número secreto é menor <i class="fa-solid fa-arrow-down"></i></div>
+        `
+    } else {
+        elementoChute.innerHTML += `
+            <div>O número secreto é maior <i class="fa-solid fa-arrow-up"></i></div>
+        `
+    }
+  ```
+
+  - Tendo assim, duas funções que vão inserir as tags de dica __caso o número seja maior ou menor__
+- Porém, quando falamos, encontramos o problema de que __o jogo termina no exato momento da respota__
+- Para que isso não ocorra, vamos no nosso código de reconhecimento de voz e vamos adicionar mais um evento de `end`
+  - `recognition.addEventListener('end', () => {recognition.start()})`
+  - Ou seja, quando a nossa função acabar, ele liga novamente o reconhecimento de voz até __descobrirmos qual é o número secreto__

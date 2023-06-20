@@ -1,6 +1,7 @@
-<div style="text-align: center;">
+<div style=" display:flex; flex-direction:row; text-align: center;">
 
-![logo JS](./javascript.svg "logo JS")
+![logo JS](./javascript.svg "logo JS") 
+![logo Vite](./vite.svg "logo JS") 
 
 </div>
 
