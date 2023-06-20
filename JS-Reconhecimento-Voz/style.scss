@@ -46,17 +46,18 @@ html {
                 margin: 1.2rem;
                 align-items: center;
             }
+        }
 
-            .btn-jogar {
-                border-style: none;
-                border-radius: 8px;
-                padding: 0.7rem;
-                background-color: $bg-color-secundaria;
-                color: $bg-color-principal;
-                font-size: 1.3rem;
-                font-family: $fonte-principal;
-                font-weight: $fonte-pr-peso;
-            }
+        .btn-jogar {
+            border-style: none;
+            border-radius: 8px;
+            padding: 0.7rem;
+            margin: 2rem;
+            background-color: $bg-color-secundaria;
+            color: $bg-color-principal;
+            font-size: 1.3rem;
+            font-family: $fonte-principal;
+            font-weight: $fonte-pr-peso;
         }
 
         .acertou{
