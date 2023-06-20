@@ -1,7 +1,7 @@
 <div style=" display:flex; flex-direction:row; text-align: center;">
 
 ![logo JS](./javascript.svg "logo JS") 
-![logo Vite](./vite.svg "logo JS") 
+![logo Vite](./JS-Reconhecimento-Voz/public/vite.svg "logo JS") 
 
 </div>
 
