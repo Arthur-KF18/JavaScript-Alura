@@ -1,5 +1,5 @@
-## JavaScript-Alura
-- Repositório contendo os arquivos de aula de JavaScript da Alura
+##  ![JS](./javascript.svg) JavaScript-Alura 
+- Repositório contendo os arquivos de aula de __JavaScript da Alura__
 ---
 ### Bem-vindo/Welcome!
 
