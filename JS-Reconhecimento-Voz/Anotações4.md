@@ -38,4 +38,5 @@
 
 #### Manipulando menor e maior valor
 
-- 
+- Nossa aplicação terá um valor entre 0 e 100, e precisamos que este valor altere-se no javascript quanto na página
+-

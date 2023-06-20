@@ -1,3 +1,4 @@
+const menorValor = 1;
 const numeroSecreto = gerarNumeroAleatorio();
 
 function gerarNumeroAleatorio() {
