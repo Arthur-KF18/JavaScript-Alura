@@ -1,3 +1,5 @@
+const elementoChute = document.querySelector('#chute')
+
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 const SpeechGrammarList = window.SpeechGrammarList || window.webkitSpeechGrammarList;
 
@@ -9,5 +11,15 @@ recognition.start();
 recognition.addEventListener('result', onSpeak);
 
 function onSpeak(e) {
-    console.log(e.results[0][0].transcript);
+    const chute = e.results[0][0].transcript;
+    exibeChuteNaTela(chute);
+    console.log(e.target.lang)
 }
+
+function exibeChuteNaTela(chute) {
+    elementoChute.innerHTML = `
+        <div>Você disse</div>
+        <span class="box">${chute}<span>
+    `
+}
+

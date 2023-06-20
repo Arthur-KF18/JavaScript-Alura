@@ -128,4 +128,25 @@
 
 #### Mostrando a mensagem na tela
 
+- Iremos criar uma `<div>` __contendo o que dizemos e a caixa contendo o valor que dizemos__
+- Para isso, iremos pegar o id `chute` e passar toda requisição para se obter a nossa fala:
+  - `const chute = e.results[0][0].transcript;`
+  - `exibeChuteNaTela(chute);`: irá exibir na tela nosso chute
+- Criaremos a função que exibirá na tela:
+
+```js
+  function exibeChuteNaTela(chute) {
+      elementoChute.innerHTML = `
+          <div>Você disse</div>
+          <span class="box">${chute}<span>
+      `
+  }
+```
+
+- Para podermos inserir o valor, podemos criar as tags utilizando o `innerHTML`, e quando escrevemos as tags, __utilizamos o $ para chamarmos a constante `chute`__
+- Como resultado, será exibido na tela o __texto e o número que falamos__
+- Agora precisamos comparar se __o número que falamos foi igual ao número secreto__
+
+#### Criando a lógica do jogo
+
 - 
