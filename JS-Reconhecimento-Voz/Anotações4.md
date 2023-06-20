@@ -67,4 +67,42 @@
 
 #### Web speech API
 
-- 
+- Agora que o projeto, já escolhe o número secreto, precisamos agora conectar nosso microfone e o computador __reconheça o que estamos falando__
+- Vamos utilizar a Web speech API na MDN.
+- Ela permite que a gente __incorpore dados de voz em nosso aplicativos de voz__.
+- Existem dois tipos de funcionalidades, __o que permite reconhecer a fala e o que tem a capacidade de falar de acordo com o que está lendo__
+- Vamos utilizar apenas o __reconhecimento de fala__ 
+- Podemos analisar também se ele é compatível com os outros navegadores existentes
+- É necessário utilizar um navegador que tenha __suporte à funcionalidade__
+- Acessado conforme o microfonem, e que ele irá conseguir entender
+- Para que seja possível utilizar o API, precisaremos importar no javascript __as funcionalidades existentes para que, qualquer atualziação que ocorra, funcione corretamente__
+
+  ```js
+  const SpeechRecognition =
+  window.SpeechRecognition || window.webkitSpeechRecognition;
+
+  const SpeechGrammarList =
+  window.SpeechGrammarList || window.webkitSpeechGrammarList;
+  ```
+
+  - A primeira, se trata do __reconhecimento de voz__ e a segunda __a gramática aplicada quando o reconhecimento é realizado__
+- Iremos importar as seguintes linhas de código em um arquivo separado `reconhecimento.js`
+  - __Durante o curso, a importação deste arquivo ocorreu via HTML, porém aqui foi utilizado a propriedade `import()`__
+- Agora que temos ele configurado, precisaremos de uma __instância para que possamos utilizar este reconhecimento e controlar as informações.__
+  
+  ```js
+  const recognition = new SpeechRecognition();
+  const speechRecognitionList = new SpeechGrammarList();
+  ```
+- Essa instância vai permitir com que possamos inserir os dados necessários para que o reconhecimento seja feito, além de utilizar um método chamado `SpeechGrammarList.addFromString().`
+  - Este método aceita como parâmetro a __cadeia de caracteres que queremos adicionar e, opcionalmente, um valor de peso que especifica a importância desta gramática em relação a outras gramáticas disponíveis na lista(pode ser de 0 a 1, inclusive)__
+- Após adicionarmos o `const recognition = new SpeechRecognition();`, __devemos inserir a língua que será reconhecida através do método `recogniion.lang = 'pt-Br'`
+- Iniciamos o reconhecimento com `recognition.start();`
+- Na página, veremos que o microfone estará ativado, se não, __basta permitir acesso ao microfone__
+  - `console.log(recogniton)`: mostra quais valores estão sendo armazenados em um __array de itens__
+
+#### Exibindo a mensagem no console
+
+- Agora que temos o microfone conectado no navegador, podemos __podemos pegar a mensagem que estamos falando e colocar no console para ser exibida__
+- Vamos criar um evento onde, __ao realizarmos a fala, vamos exibir a nossa mensagem no console__
+  - `recognition.addEventListener('result', onSpeak)`

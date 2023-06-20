@@ -1,3 +1,5 @@
+import("./reconhecimento");
+
 const menorValor = 1;
 const maiorValor = 1000;
 const numeroSecreto = gerarNumeroAleatorio();
@@ -13,4 +15,3 @@ elementoMenorValor.innerHTML = menorValor;
 
 const elementoMaiorValor = document.querySelector('#maior-valor');
 elementoMaiorValor.innerHTML = maiorValor;
-
