@@ -147,6 +147,50 @@
 - Como resultado, será exibido na tela o __texto e o número que falamos__
 - Agora precisamos comparar se __o número que falamos foi igual ao número secreto__
 
-#### Criando a lógica do jogo
+#### Validações
+
+- Para realizarmos a verificação do chute, iremos criar um novo arquivo que será capaz de fazer a validação de voz de nosso chute chamado `validacao.js`
+- Iremos criar uma função chamada `verificaChute(chute)`, que tem como parâmetro o `chute`
+- Primeiro iremos pegar este número e transformá-lo em __um número inteiro__ e depois iremos ver se for um número, ele irá verificar se está correto
+  
+  ```js
+  function verificaChute(chute) {
+    const numero = +chute;
+
+    if (Number.isNaN(numero)) {
+        console.log('Valor inválido');
+    }
+  }
+  ```
+
+  - Através desta função, será possível visualizar, ao falarmos, __se o número estará correto ou não
+  - `const numero = +chute;`: o `= +chute` vai transformar __o chute que vem em forma de string, em um número inteiro__, só de somar, ele já vai tentar converter esse número para inteiro.
+- Se falaramos um frase, __ele não conseguirá transformá-la em inteiro, exibindo o erro `Valor inválido`__
+- Além disto, iremos criar outra função que irá verificar se o valor __está entre os intervalos que fizemos anteriormente__
+  - Função que verifica se o número for errado:
+
+   ```js
+  function chuteForInvalido(numero) {
+    return Number.isNaN(numero);
+  }
+
+   if (chuteForInvalido(numero)) {
+        console.log('Valor inválido');
+  } 
+  ```
+
+  - Função que verifica se __o valor está no intervalo__
+
+   ```js
+  function numeroForMaiorOuMenor(numero) {
+    return numero > maiorValor || numero < menorValor
+  }
+
+  if (numeroForMaiorOuMenor(numero)) {
+        console.log(`valor inválido: O número secreto precisa estar entre ${menorValor} e ${maiorValor}`)
+  }
+  ```
+
+#### Acertando o número secreto
 
 - 

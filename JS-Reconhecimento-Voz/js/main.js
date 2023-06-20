@@ -1,4 +1,5 @@
 import("./reconhecimento");
+import("./validacao");
 
 const menorValor = 1;
 const maiorValor = 1000;

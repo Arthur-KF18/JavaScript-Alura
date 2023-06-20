@@ -1,3 +1,5 @@
+import ("./validacao");
+
 const elementoChute = document.querySelector('#chute')
 
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -13,7 +15,7 @@ recognition.addEventListener('result', onSpeak);
 function onSpeak(e) {
     const chute = e.results[0][0].transcript;
     exibeChuteNaTela(chute);
-    console.log(e.target.lang)
+    verificaChute(chute);
 }
 
 function exibeChuteNaTela(chute) {
