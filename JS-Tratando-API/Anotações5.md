@@ -39,9 +39,9 @@
 
 - Agora que entendemos ambas estas formas de comunicação, porém, __como que funciona esta leitura de ação para ação?__
 - Podemos separar isto em __3 partes__
-  1 - Event Loop
-  2 - Call Stack
-  3 - Task Queue
+  1 - Event Loop: O Event Loop é um ciclo que __monitora e executa as ações que mandamos para o JavaScript.__ O processo de leitura do código __só é finalizado quando não existem mais ações a serem executadas.__
+  2 - Call Stack : A pilha de chamadas (call stack) __é um mecanismo que organiza como irá funcionar o script quando existem muitas funções:  qual função está sendo executada, quais estão sendo chamadas dentro de alguma função, etc.__
+  3 - Task Queue: A task queue __é a fila de tarefas assíncronas.__ Se algo precisa __ocorrer em segundo plano ou mais tarde, é nessa fila que ele será adicionado e executado mais tarde.__
 - Na nossa função, a primeira ação, ou seja, o primeiro `console.log()` foi para ela, assim como a nossa função `mandaMensagem`, por serem __chamadas até terminarem de serem executadas__. Ou seja, __ele irá chamar todas as funções que serão realizadas e depois a chamada terminará sua execução__
   - Praticamente o que ocorreu foi uma __Call Stack__
 - Vamos fazer uma pequena associação do que cada função da leitura realiza:
