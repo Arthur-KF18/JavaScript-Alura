@@ -57,4 +57,6 @@
 - Ele cálcula em __milessegundos__
 - deixamos o código em segundo plano para se __preparar e depois puxa de volta para rodar na sua tela.__ Essa função do `mandaMensagem` está sendo enviada como um __parâmetro do `setTimeOut`__. Isso é chamado de __Call Back__.
 
-#### 
+#### Callback
+
+- 
