@@ -51,4 +51,10 @@
 
 #### Task Queue
 
-- 
+- Através do nosso código exemplo, nós iremos adicionar uma função chamada de `setTimeout(função, tempo de execução)`
+- O código irá funcionar corretamente, porém, a nossa função que criamos __será chamada depois de 5 segundos__
+- Ele é um método __Assíncrono__, ou seja, está executando no plano de fundo e logo será ativado, sendo assim o __Task Queue__
+- Ele cálcula em __milessegundos__
+- deixamos o código em segundo plano para se __preparar e depois puxa de volta para rodar na sua tela.__ Essa função do `mandaMensagem` está sendo enviada como um __parâmetro do `setTimeOut`__. Isso é chamado de __Call Back__.
+
+#### 

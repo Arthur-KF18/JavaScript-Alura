@@ -6,13 +6,6 @@ function mandaMensagem() {
     console.log("Solicitação recebida");
 }
 
-mandaMensagem();
-
+setTimeout(mandaMensagem, 5000);
 console.log("Tchau")
 
-function mandarMensagem() {
-  console.log("Estou aprendendo a programar.");
-  }
-  console.log("“O javascript é legal.”");
-  mandarMensagem();
-  console.log("“Eu gosto de HTML e CSS.”");
