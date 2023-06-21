@@ -13,4 +13,33 @@
 
 #### Síncrono ou Assíncrono?
 
-- 
+- O que são estes termos e no que são utilizados?
+  - Síncrono é quando __uma tarefa é concluída após a outra__, sendo este o __padrão__. Por exemplo quando uma imagem carrega, depois outra e assim sucessivamente
+  - Assíncrono __é quando se há tarefas ocorrendo uma atrás da outra, porém, há tarefas em segundo plano que também serão executadas, porém, com um pequeno tempo__
+- Vamos aplicar este processo padrão, por exemplo, simulando uma pequena conversa:
+  
+  ```js
+  console.log("Mandando oi pro amigo");
+
+  function mandaMensagem() {
+      console.log("Tudo bem?");
+      console.log("Vou te mandar uma solicitação!");
+      console.log("Solicitação recebida");
+  }
+
+  mandaMensagem();
+
+  console.log("Tchau")
+  ```
+
+  - Apesar de simples, __estes diferentes métodos e funções, ocorrem de forma síncrona, uma atrás da outra__
+  - Precisamos fazer um processo assíncrono como, sendo assim, __Poderíamos realizar nossas tarefas, enquanto esta conversa acontecia ao mesmo tempo, sendo uma melhor funcionalidade__
+
+#### Event Loop e Call Stack
+
+- Agora que entendemos ambas estas formas de comunicação, porém, __como que funciona esta leitura de ação para ação?__
+- Podemos separar isto em __3 partes__
+  1 - Event Loop
+  2 - Call Stack
+  3 - Task Queue
+- Na nossa função, a primeira ação, ou seja, o primeiro `console.log()` foi para ela, assim como a nossa função `mandaMensagem`, por serem __chamadas até terminarem de serem executadas__. Ou seja, __ele irá chamar todas as funções que serão realizadas e depois a chamada terminará sua execução__
