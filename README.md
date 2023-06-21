@@ -1,7 +1,9 @@
 <div style=" display:flex; flex-direction:row; text-align: center;">
 
-![logo JS](./javascript.svg "logo JS") 
-![logo Vite](./JS-Reconhecimento-Voz/public/vite.svg "logo JS") 
+![logo JS](./HTML5_Badge.svg "logo JS")
+![logo JS](./javascript.svg "logo JS")
+![logo Vite](./JS-Reconhecimento-Voz/public/vite.svg "logo JS")
+![logo Vite](./Sass%20Logo%20(Color).svg "logo JS")
 
 </div>
 
