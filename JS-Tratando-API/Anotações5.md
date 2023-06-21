@@ -7,3 +7,10 @@
   - Utilizaremos conceitos JS como: __Assíncrono e síncrono, Event Loop, Call Stackm Task Queue, Fetch API e Promises.
   - Entenderemos por completo sobre o JavaScript
 
+#### Importando JS no HTML
+
+- Vamos agora cuidar do cadastro de novos clientes, primeiro iremos importar o JavaScript no HTML
+
+#### Síncrono ou Assíncrono?
+
+- 
