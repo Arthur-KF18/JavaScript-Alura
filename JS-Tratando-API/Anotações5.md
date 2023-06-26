@@ -143,4 +143,36 @@
 
 #### Tratando erros com catch
 
+- O método `then()` irá pegar a requisição, e fará algo com o valor retornado, __se aquela promessa foi resolvida__
+- O que aconteceria se a promessa fosse rejeitada? O que deveríamos fazer?
+- para isso, iremos utilizar um outro método chamado __`catch()`__
+  - O `catch()` iremos definir __quando ocorrer um erro, o que será informado sobre ele__
+  - Se nós retiramos algum elemento que está no nosso link da API, iremos ter um erro a mostra, como por exemplo `TypeError: Failed to fetch`
+  - Isto ocorre graças ao `catch(erro => console.log(erro));`
+  - Ele irá __pegar o erro e irá imprimir o que há de errado com nosso link__
+- __Toda `Promise` nos retorna estes dois métodos, o `then` e o `catch`.__  O `then` para quando __ela for resolvida__ ou retorna o __`catch` se ela for recusada__
+- `catch` podemos traduzir para __"pegue"__
+- Porém, só estamos tendo essa resposta no navegador. Precisamos deixá-la mais refinada __para que seja possível entender o porque do erro ocorrer__
+
+```js
+    .then(r => {
+      if (r.erro) {
+          throw Error('Este CEP é inexistente')
+      }else
+      console.log(r)})
+    .catch(erro => console.log(erro));
+```
+
+- Neste código, iremos dizer que, se __O CEP informado estiver errado, ele devolva a mensagem de erro que colocamos__
+  - Se estar correto, será impresso no console os valores do JSON
+- No ViaCEP, quando um __CEP não é identificado, ele irá puxar o erro 400__
+  - Vale ressaltar que o erro só aparecerá quando também __existir a formatação, porém não existir o CEP__
+- Então, para CEPs que não existem, ele não vai voltar `reject`, ele não vai no `catch`, __mas no `then`__. Para podermos pegar este erro, __utilizaremos uma condicional__
+  - Se o retorno for `erro === true`, ou seja, `r.erro`, ele vai jogar um erro chamado __o CEP não existe__, e o `catch` vai pegar o erro que jogamos. Caso não esteja incorreto, ele vai continuar a executar normalmente
+  - Então, qauando conseguimos outras maneiras de jogar erro, podemos jogar com `throw`, e ai fará mais sentido o `catch`
+- E com os outros condicionais, __podemos dar um jeito de imprimir mensagens customizadas direto no `catch`__, sem ser esse caso do "CEP não existe", que ele passa como `Resolve`.
+
+
+#### Finally
+
 - 
