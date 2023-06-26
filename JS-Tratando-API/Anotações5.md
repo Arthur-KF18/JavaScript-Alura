@@ -203,3 +203,73 @@
   - 4XX : Erro do cliente - houve um erro na solicitação;
   - 5XX : Erro do servidor - houve uma falha no servidor durante a solicitação.
 
+#### Leitura do artigo: Começando co fetch no JS
+
+- Na pasta `Fetch-no-JS` existirá o código exemplo do artigo estudado
+- Foi utilizado o `TailwindCSS` para estilização
+- Estaremos criando um formulário para preenchimento automático quando realizada uma compra
+- Atualmente a pessoa que fez a compra precisa preencher todos os campos de maneira correta para que __haja validação e a compra seja finalizada com sucesso.__
+- Porém, pode ser que alguns dos campos seja digitado de maneira incorreta resultando em um endereço errado. Sendo assim teremos problemas na validação, finalização da compra e o descontentamento do cliente em relação a loja pois não conseguiu efetuar a finalização da compra.
+
+- Após adicionarmos os estilos ao formulário, iremos inserir o js, que irá __preencher automaticamente todas as caixas__
+- Primeiro iremos criar uma constante que irá armazenar o __id do botão pesquisar,, o `btnPesquisar`__
+- Após isso, vamos adicionar um evento de clique em uma função anônima `btnPesquisarCEP.addEventListener("click", event => {})`
+- Vamos implementar algumas coisas dentro dessa função, primeiro `event.preventDefault`, responsável por __cancelar o comportamento natural do botão que seria uma submissão para o servidor__.
+- Para cada função que será colocada, é necessário que ocorra __apenas quando o usuário realizar a busca de seu CEP__, ou seja, __toda a lógica de procura estará dentro do `btnPesquisarCEP.addEventListener("click", event => {})`__
+- Com o comportamento natural do botão cancelado, iremos implementar a busca do CEP e pegar o valor que está contido no campo do CEP:
+  
+  ```js
+  const inputDoCep = document.querySelector("#cep");
+  const valorDoCep = inputDoCep.value;
+  ```
+
+- Após isso, iremos trabalhar com a API do ViaCEP, para trazer toda __a validação do CEP__
+- Utilizaremos o `fetch()` para termos a __requisição__, se encontrada, __faremos uma função retornando a resposta em JSON__
+  - const url = `https://viacep.com.br/ws/${valorDoCep}/json/`
+  - É necessário utilzar estas aspas para que a variável `${valorDoCep}` possa funcionar, recebendo os __dados inseridos pelo usuário__
+- O `fetch` devolve uma __promessa de que algo será retornado__, essa promessa é chamada de `Promise`. __Essa promessa pode tanto ser boa, ter retornado os dados, quanto ter falhado por algum motivo - como no caso da conexão com o servidor cair.__
+- Para ambas as situações, __precisaremos fazer um tratamento dos dados__, com isso, faremos este tratamento utilizando `then()`
+- Iremos tratar o caso de __sucesso__, onde, __se for um sucesso, `then` vamos pegar a resposta com as informações do CEP:
+
+```js
+    fetch(url).then(response =>{
+        return response.json();
+    }).then(data =>{
+        
+    })
+```
+
+- Com o retorno da data(dados), vamos atribuir ele para os campos e fazer uma função __pegar o id dos campos e atribuir valores para eles__, como por exemplo `const rua = document.querySelector("#rua");` e seu valor: `rua.value = data.logradouro;`
+  - Estes atributos, como o `.logradouro` pertencem a API e fazem com que os valores __sejam melhor distribuídos__
+- Após isso, iremos adicionar, dentro do evento de clique, a função de atribuir os campos:
+
+```js
+  .then(data => {
+      atribuirCampos(data);
+  })
+```
+
+- Mas como sabemos, o CEP pode ser digitado de maneira errada, então vamos fazer uma exceção que mostre para a pessoa que foi um CEP incorreto ou inexistente.
+- Para isso criamos um alert dentro do then para mostrar que o CEP está inválido.
+
+```js
+  .then(data => {
+    if(data.erro){
+        alert("O CEP está inválido");
+        return;
+    }else{
+        atribuirCampos(data);
+    }
+```
+
+- Foi adicionada uma função extra ao desafio, __A interação do botão limpar com js__
+- Fora do evento, foi criado uma constante chamada `const bntLimpar = document.querySelector("#btnLimpar");` que __guarda a interação, o id do botão limpar__
+- Após isso, foi adicionado a um evento de `click`, onde a constante `limpaFormulario` guarda a informação __da tag `<form>`__
+- Após isso, usando o método `reset()`, ele irá __limpar o formulário para que seja digitado novamente um CEP__
+
+```js
+  bntLimpar.addEventListener("click", evento => {
+    const limpaFormulario = document.querySelector("#formulario");
+    limpaFormulario.reset();
+  })
+```

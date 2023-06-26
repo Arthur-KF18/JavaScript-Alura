@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compra Formulário</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+
+    <div class="flex flex-col justify-center items-center h-screen">
+        <form id="formulario" class="
+        flex flex-col 
+        bg-slate-100 
+        p-5 justify-center items-center gap-4 
+        rounded-lg
+        w-96
+        border-solid border-2
+        ">
+            <div class="font-semibold text-xl p-2 hover:text-teal-500 duration-500">Insira seu endereço</div>
+            <div class="form-group font-weight-bold flex flex-col">
+                <label class="font-semibold text-xl">CEP</label>
+                <input type="text" id="cep" pattern="\d{5}-?\d{3}"
+                    class="form-control w-56 p-1 rounded border-solid border-2" required placeholder="Insira o seu CEP">
+            </div>
+            <div class="form-group font-weight-bold flex flex-col">
+                <label class="font-semibold text-xl">Rua</label>
+                <input type="text" class="form-control w-56 p-1 rounded border-solid border-2" id="rua" placeholder="...">
+            </div>
+            <div class="form-group font-weight-bold flex flex-col">
+                <label class="font-semibold text-xl">Complemento</label>
+                <input type="text" class="form-control w-56 p-1 rounded border-solid border-2" id="complemento" placeholder="...">
+            </div>
+            <div class="form-group font-weight-bold flex flex-col">
+                <label class="font-semibold text-xl">Bairro</label>
+                <input type="text" class="form-control w-56 p-1 rounded border-solid border-2" id="bairro" placeholder="...">
+            </div>
+            <div class="form-group font-weight-bold flex flex-col">
+                <label class="font-semibold text-xl">Cidade</label>
+                <input type="text" class="form-control w-56 p-1 rounded border-solid border-2" id="cidade" placeholder="...">
+            </div>
+            <div class="form-group font-weight-bold flex flex-col">
+                <label class="font-semibold text-xl">Estado</label>
+                <input type="text" class="form-control w-56 p-1 rounded border-solid border-2" id="estado" placeholder="...">
+            </div>
+            <div class="flex flex-row p-2 gap-2">
+                <button type="submit" id="btnPesquisar"
+                    class="btn btn-primary hover:bg-teal-300 duration-500 p-2 rounded-lg font-medium text-lg">Pesquisa</button>
+                <button type="button" id="btnLimpar"
+                    class="btn btn-danger hover:bg-teal-300 duration-500 p-2 rounded-lg font-medium text-lg">Limpar</button>
+            </div>
+
+        </form>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>
