@@ -93,4 +93,36 @@
 
 #### Promises
 
+- Ao fazer a requisição, tivemos a `promise`, ou seja, uma promessa. É uma promessa, ou seja, é __a promessa de que algo irá acontecer__
+- O retorno dela pode ser __resolvida ou rejeitada__, isso permite que __métodos assíncronos se tornem síncronos__ ou seja, ao invés de retornar um valor específico, ele retorna __uma promessa de que este valor irá chegar__
+  - Podemos comparar isto com uma entrega. Este pedido pode ser entregue ou acontecer algo, mas foi prometido que ele irá chegar em sua residência
+ 
+```js
+  const entrega = new Promise(function (resolve, reject) {
+      if (recebeu === true) {
+          resolve('Ana recebeu a encomenda!')
+      }else{
+          reject('Não foi possível receber a encomenda!')
+      }
+  })
+```
+
+- No exemplo acima, veremos como a `promise` funciona, na qual é composta por parâmentros, `resolve` e `reject`. Caso a função ser atendida, será chamada a variável `resolve`, caso não, a `reject` será chamada
+  -  Na `Promise` de entrega, quando acontece a entrega da encomenda, __mandamos uma mensagem avisando que a pessoa recebeu a encomenda.__ Se ela __não recebeu__, chamamos a função de `Reject` e enviamos uma mensagem indicando que __não foi possível essa entrega.__
+- Na maior parte dos casos __a gente não constroí uma `Promise` do zero, ela é gerada a partir de uma coisa Síncrona, que é nosso `fetch API`. Ele está fazendo uma Promise por trás dos panos que foi gerada através da nossa requisição.__
+- Pode acontecer de a __requisição demorar para carregar__. Então, ao invés de dar um valor final de erro, __ele gera uma promessa, e no futuro teremos o resultado da requisição__
+- Uma última curiosidade dentro dessa anatomia da Promise: estamos enviando uma __função como parâmetro para ela e aparecem Callbacks__. E é isso que o `Resolve` e `Reject` são, __dois Callbacks da função da `Promise`.__
+- No console iremos perceber que há três tipos de categoria:
+  - __`Prototype`__ diz que é uma `Promise` está afirmando que __ela é uma promessa__
+  - __`PromiseResult`__ que é o resultado da `Promise`
+  - __`PromiseState`__ que é o estado da promessa, __se foi completada, em execução ou rejeitada__
+- É recomendável que utilizemos o `https://` na __frente da URL no `fetch()`__ porém, em alguns casos __não será necessário__
+- `var consultaCEP = fetch('viacep.com.br/ws/01001000/json/');`
+  - Esta variável guarda o fetch API da nossa ViaCEP. É importante dizer, que ela se comunica como Banco de Dados de servidores, assim podendo trazer as informações necessárias.
+  - Quando analizamos o resultado desta `Promise`, ele nos trará `pending`, ou seja __ela está em espera de ser utilizada__ com seu resultado de `Response`, que __é a resposta__
+  - Sobre o objeto `Response`, para o acessarmos,__precisamos usar os métodos das Promises, que vão retornar outras Promises.__
+  - Estes sendo: __`Then`, `Catch` e o `Finally`.__ Eles nos permitirão mostrar na tela __todo esse valor do que estamos recebendo__
+
+#### Then e JSON
+
 - 
