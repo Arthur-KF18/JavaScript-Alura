@@ -59,4 +59,16 @@
 
 #### Callback
 
-- 
+- Ações que tomamos e que geram outras ações, é o que chamamos de __`callbacks`__
+- Por exemplo, um almoço. Quando nós vamos esquentar nossa comida, é esperado que ela volte quente para nós. Apesar de óbvio esta frase, é imporante dizer que ela é __fundamental__
+  - Por exemplo:
+  - `almoço(esquentarcomida)`: aqui defineremos o `callback`
+  - `almoço(esquentarcomida, 5000)`: aqui haverá o tempo de espera
+  - `almoço()`: O resultado de nosso `callback`
+- Nós vemos estas __interações entre variáveis e constantes no JS__
+- No nosso código, o nosso `callback` é a função `setTimeOut(mandaMensagem, 5000)`
+- Basicamente, `callbacks` são __funções que são enviadas com parâmetros para outras funções__
+- Acontecem __depois de um tempo ou uma interação com o usuário com a tela__
+- As mais usadas são __as requisições__
+- Uma maneira de exemplificar e justificar o uso de `Callbacks` no assíncrono é literalmente o `setTimeout()` que fizemos agora. Ele transformou a execução da função __`mandaMensagem` em cinco segundos após o início do código__.
+- Callbacks são assíncronos, portanto são funções que são ativadas por algum fator pré-determinado, podendo ser um tempo específico, a partir de uma ação do usuário, depois da conclusão de alguma coisa.
