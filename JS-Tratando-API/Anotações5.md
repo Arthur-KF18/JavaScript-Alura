@@ -72,3 +72,25 @@
 - As mais usadas são __as requisições__
 - Uma maneira de exemplificar e justificar o uso de `Callbacks` no assíncrono é literalmente o `setTimeout()` que fizemos agora. Ele transformou a execução da função __`mandaMensagem` em cinco segundos após o início do código__.
 - Callbacks são assíncronos, portanto são funções que são ativadas por algum fator pré-determinado, podendo ser um tempo específico, a partir de uma ação do usuário, depois da conclusão de alguma coisa.
+
+#### Fetch API
+
+- O caso mais comum de comunicações assíncronas, os `callbacks`, são através de __requisições__
+- Para nós podermos solucionar o problema de cadastro dos clientes, iremos utilizar a API do ViaCEP, acessaremos o webservice de CEP, a validação do CEP, uma explicação dos possíveis erros e os formatos de retorno.
+  - Isto fará com que, quando um cliente digitar seu endereço, __ele utilizará o CEP__
+- No website deles, veremos que __ao colocarmos o CEP do cliente, ele retornará o endereço do cliente, sem margem de erro__
+- Antes de utilizarmos, temos que pensar no que são as APIs
+  - API é __Interface de Programação de Aplicações__, ele permite que __dois componentes de software se comuniquem entre si__, e chamamos esses lados de __cliente e servidor__
+  - O cliente faz uma requisição pela API e que ela irá enviar ao servidor. Como resposta, o servidor envia os dados exigidos para a API e que dela chega ao cliente
+  - A API fica no meio, __realizando a comunicação__
+  - ou seja, __O cliente faz uma solicitação para essa API, ela faz os trâmites e pede ao servidor para retornar a resposta.__
+- Com isto tudo abordado, iremos utilizar a URL de comunicação com o servidor do ViaCEP através do __`fetch()`__
+  - o `fetch()` é um método no qual __inicia o processo de busca de um recurso da rede, retornando uma promessa que é cumprida assim que a resposta estiver disponível.__
+  - __A promessa é resolvida para o objeto `Response` que representa a resposta à sua solicitação.__
+  - `var consultaCEP = fetch('viacep.com.br/ws/01001000/json/');`
+- Quando analisamos no console, ele retornará uma `Promise`, ou seja, __uma promessa__
+- O método `fetch()` é um método __assíncrono__ que tem como parâmetro a __URL da API__, e colocamos esse valor dentro de uma variável para __conseguirmos consultar o retorno__, que é o __CEP__
+
+#### Promises
+
+- 
