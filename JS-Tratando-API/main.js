@@ -5,7 +5,8 @@ var consultaCEP = fetch('https://viacep.com.br/ws/01001000/json/')
         throw Error('Este CEP é inexistente')
     }else
     console.log(r)})
-.catch(erro => console.log(erro));
+.catch(erro => console.log(erro))
+.finally(mensagem => console.log('processamento concluído'));
 
 
 console.log(consultaCEP);

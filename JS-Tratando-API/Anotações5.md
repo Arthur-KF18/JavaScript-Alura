@@ -175,4 +175,31 @@
 
 #### Finally
 
-- 
+- Vimos que temos dois métodos com suas respectivas funções, o de que o `then` __é quando a nossa promessa é resolvida__, e o `catch` é __quando a nossa promessa foi rejeitada__.
+- Há mais um método que existe nos nossos `promises`
+- Para podermos usá-lo, __iremos inseri-lo ao final do `fetch`__.
+  - `.finally(mensagem => console.log('processamento concluído'));`
+  - Isso quer dizer o __fim do processamento, das informações que foram analizadas__
+  - Independente da resposta da promessa, __ele vai imprimir o que colocamos nele.__
+  - E quando realmente não nos importamos em qual vai ser esse resultado, temos uma frase padrão que vai retornar na tela
+
+  #### Arrow Functions
+
+  - Em uma função tradicional,__caso você crie uma variável dentro dela, seu contexto é referente a função onde ela está.__ Para entender melhor: se você usar a palavra chave `.this`, você está se __referindo a essa função em si__.
+  - Já em uma `arrow function` temos um __contexto externo__. Por exemplo, se essa `arrow function` for criada dentro de outra função seu __contexto será aquela função que ela está dentro.__ Caso a função for aplicada __fora de outra função__, seu contexto será __global, o código inteiro.__
+  - A `Arrow Function` é representada por: `()=>`
+
+#### Retorno de requisições
+
+- Quando estamos realizando uma requisição para a API,__estamos trocando mensagens HTTP’s.__ `HTTP` é um __protocolo, uma forma de conversa entre duas máquinas__, que permite transferir hiper-texto de um lado a outro. Daí o nome _Hyper Text Transport Protocol._
+
+- Uma requisição é composta __de uma `request` (solicitação) e uma `response `(resposta)__. `Request` e `Response` são dois tipos de __mensagem diferentes quando falamos de HTTP.__
+
+- Em uma `response` é retornado um `response code` (código de resposta) e um motivo, que dá __significado ao código__. A estrutura padrão desse código tem __três dígitos, sendo o primeiro referente a classificação dele__
+  - É dividido em:
+  - 1XX : Informativo - a solicitação foi aceita ou está em andamento;
+  - 2XX : Confirmação - a solicitação foi concluída ou entendida;
+  - 3XX : Redirecionamento - faltou alguma coisa na solicitação;
+  - 4XX : Erro do cliente - houve um erro na solicitação;
+  - 5XX : Erro do servidor - houve uma falha no servidor durante a solicitação.
+
