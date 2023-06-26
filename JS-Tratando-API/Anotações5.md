@@ -125,4 +125,22 @@
 
 #### Then e JSON
 
+- Quando nós usamos de exemplo sobre a entrega, lembramos que estavámos esperando receber o pacote, ou seja, __como uma promessa.__ E quando ela era entregue, essa __promessa era resolvida, e quando acontecia alguma coisa com o entregador, a promessa era rejeitada?__
+- Então, em qualquer uma dessas situações, __a resposta que vai chegar em nós, é um objeto do tipo `Response`__
+- No nosso código, para termos a `response`, utilizaremos o método `then()`
+- Em um panorama mais geral, __uma promessa sempre vai retornar um objeto do tipo `response`, seja ela rejeitada ou resolvida__. 
+- E o `then()` funciona assim, como a sua tradução. __Ele é basicamente um “então”. Que é: faça o fetch, ele vai lá e faz a requisição.__
+  - `var consultaCEP = fetch('viacep.com.br/ws/01001000/json/').then();`
+- A responsta vinda do objeto `response` vem de uma forma que não conseguimos acessar. Precisamos convertê-la.
+  - `.then(resposta => resposta.json());`
+  - O objeto do tipo `Response` nos trouxe um corpo de resposta que não conseguíamos acessar. Ele trouxe um amontoado de bytes. __Usamos o JSON para ele converter essa resposta em json, que é um formato muito usado no desenvolvimento em JavaScript, porque ele parece um objeto JavaScript.__
+  - __O corpo da resposta de uma requisição chega em formato de bytes. Desta forma o .json() transforma o corpo e retorna um json formatado. O formato JSON (JavaScript Object Notation) possui basicamente a mesma sintaxe que a de um objeto JS.__
+  - `.then(r => console.log(r));` : Quando nós fizemos a conversão do JSON, faltou apenas __imprimirmos este documento,, por isso utilizamos o console__
+  - Utilizamos outro `then` ao final do anterior, e iremos associar à uma variável `r`, dentro de uma `arrowFunction`
+  - No navegador vai realizar __a promessa e depois vai imprimir no navegador o valor dela__
+- Teremos uma cadeia de `then()` em nosso código graças ao `fetch` realizando a requisição, e com ela __convertemos ela para o formato `.JSON`__ e por final, __imprimimos os dados dentro deste JSON através do console__, sendo __referente a tarefa da conversão, a promessa anterior__
+- __Eu tenho uma promessa, “então”, ela vai realizar algum comando quando ela for resolvida ou rejeitada.__
+
+#### Tratando erros com catch
+
 - 
