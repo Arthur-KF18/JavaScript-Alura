@@ -2,8 +2,9 @@
 
 ![logo HTML](./HTML5_Badge_32.png "logo JS")
 ![logo JS](./javascript.svg "logo JS")
-![logo Vite](./JS-Reconhecimento-Voz/public/vite.svg "logo JS")
-![logo Vite](./Sass%20Logo%20(Color).svg "logo JS")
+![logo Vite](./JS-Reconhecimento-Voz/public/vite.svg "logo Vite")
+![logo Vite](./Sass%20Logo%20(Color).svg "logo Sass")
+![logo Vite](./tailwindcss-logotype.svg "logo Tailwind")
 
 </div>
 
