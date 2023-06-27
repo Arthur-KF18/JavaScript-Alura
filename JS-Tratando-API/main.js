@@ -1,5 +1,4 @@
 // Primeiro tipo de callback:
-
 // .then(resposta => resposta.json())
 // .then(r => {
 //     if (r.erro) {
@@ -8,6 +7,11 @@
 //     console.log(r)})
 // .catch(erro => console.log(erro))
 // .finally(mensagem => console.log('processamento concluído'));
+
+// Funcionalidade do Promise:
+// let ceps = ['01001000', '01001001'];
+// let conjuntoCeps = ceps.map(valores => buscaEndereco(valores));
+// Promise.all(conjuntoCeps).then(respostas => console.log(respostas));
 
 async function buscaEndereco(cep) {
 
