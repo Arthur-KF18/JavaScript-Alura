@@ -415,4 +415,20 @@ Após isto, nós iremos criar duas __váriaveis de escopo__, `ceps` e `conjuntoC
   - Promises com `.then()` são processadas em paralelo
 - Isto que faz com que este método do `async/await` seja mais __rápido.__ O `async/await` __simplifica a escrita e a interpretação do código, mas não é tão flexível e só funciona com uma Promise por vez.__
 
+#### Consulta dinâmica
 
+- Lembrando do nosso objetivo, os clientes estavam __cadastrando o nome de uma mesma rua de formas diferentes, mesmo sendo vizinhos, queremos evitar que isso aconteça__. 
+- Então, vamos consumir a API do ViaCEP e fazer o autocomplete. __O cliente vai preencher o CEP e terá como retorno o bairro, a cidade, etc., tudo automaticamente.__
+
+- O primeiro passo que devemos dar é __selecionar o campo do CEP, que é marcado pela `id="cep"`, para criar toda a lógica envolta dele__
+  - Primeiro, iremos criar a váriavel __que irá armazenar o `id=cep`__, ou seja, a `tag` HTML que contém o id:
+  - `var cep = document.getElementById('cep');`
+  - Depois, iremos criar um evento no qual vai esperar, ou __ouvir__, a __perda do foco, `focusout`__, onde em uma função de seta, __iremos buscar o valor armazenado dentro da função `buscaEndereco`__:
+    - `cep.addEventListener("focusout", () => buscaEndereco(cep.value));`
+  - Podemos analizar isto em execução ao __inserirmos um CEP válido dentro da caixa no formulário e tirá-la do foco. No console irá aparecer o endereço que foi inserido__
+  - Quando ele acontece, chama o `buscaEndereco`, e manda o __valor do CEP__. Lembrando que tínhamos feito essa parte mais dinâmica no `promise.all`? Ele recebe um __parâmetro e altera - conforme o parâmetro que recebe - a URL do viaCEP?__
+  - ``https://viacep.com.br/ws/${cep}/json/``: Ele irá __trocar o `${cep}` pelo valor do cep inserido na `tag` HTML que armazena o `id="cep"`.
+  - Isto é chamado de `template Strings`, que é basicamente composto __dessas crases e de valores dinâmicos colocados através do cifrão e das chaves ${}.__
+- cada vez que eu __coloco algo e tiro, ele faz uma requisição nova.__ Já está uma consulta muito dinâmica. Agora precisamos fazer com que essas informações que foram retornadas, como logradouro, estado e cidade, sejam __completadas automaticamente__.
+
+#### 
