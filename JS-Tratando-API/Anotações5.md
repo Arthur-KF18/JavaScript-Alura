@@ -405,3 +405,14 @@ Após isto, nós iremos criar duas __váriaveis de escopo__, `ceps` e `conjuntoC
 - Vamos apagar essas linhas que fizemos fora da função. E o que precisamos fazer agora? Nós já temos uma __busca dinâmica, que ele pega um parâmetro e altera na URL. Mas só mostramos no console, na Ferramenta do Desenvolvedor. Precisamos que ela apareça em nosso formulário__
 
 #### Para saber mais: Then ou Async Await?
+
+- Quando produzimos um código assíncrono com o uso do `.then` nós fazemos uso de `callback` dentro deles. O maior problema com `callbacks` é que __eles não são bem dimensionados mesmo para códigos assíncronos moderadamente complexos, onde temos vários `.then` em seguida do outro__.
+- O código resultante geralmente se torna __difícil de ler, fácil de quebrar e difícil de depurar. Isso é o que chamamos de `callback hell`.__
+- Para resolver isso, foi desenvolvido outra forma de construir um código assíncrono: o `async/await`, que __funciona de forma semelhante ao then mas o código fica mais “bonito”__. Esse “embelezamento” em códigos é o que chamamos de `syntax sugar`.
+- Em ciência da computação, `syntax sugar` ou açúcar sintático (em tradução literal), __é a sintaxe dentro de uma linguagem de programação que foi concebido para tornar as coisas mais fáceis de ler ou expressar__. Isso torna a linguagem "mais doce" para uso humano: __as coisas podem ser expressas de forma mais clara, de forma mais concisa, ou em um estilo alternativo que alguns podem preferir.__
+- O `async/await` apesar de ser uma opção mais "legível" ao `.then()` é importante frisar que __não são logicamente equivalentes__: 
+  - o `async/await` faz o processamento de forma sequencial, 
+  - Promises com `.then()` são processadas em paralelo
+- Isto que faz com que este método do `async/await` seja mais __rápido.__ O `async/await` __simplifica a escrita e a interpretação do código, mas não é tão flexível e só funciona com uma Promise por vez.__
+
+
