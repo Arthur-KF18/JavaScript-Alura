@@ -35,7 +35,10 @@ async function buscaEndereco(cep) {
         console.log(consultaCEPConvertida);
         return consultaCEPConvertida;
     } catch (erro) {
-        mensagemErro.innerHTML = `<p>CEP inválido</p>`
+        mensagemErro.innerHTML = `
+        <img class = "erro__imagem"></img>
+        <p class = "erro__texto">CEP inválido</p>
+        `
         console.log(erro);
     }
 }
