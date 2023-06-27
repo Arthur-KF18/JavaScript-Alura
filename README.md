@@ -4,7 +4,7 @@
 ![logo JS](./javascript.svg "logo JS")
 ![logo Vite](./JS-Reconhecimento-Voz/public/vite.svg "logo Vite")
 ![logo Vite](./Sass%20Logo%20(Color).svg "logo Sass")
-![logo Vite](./tailwindcss-logotype.svg "logo Tailwind")
+![logo Vite](./tailwind-css.svg "logo Tailwind")
 
 </div>
 
