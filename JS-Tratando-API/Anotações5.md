@@ -317,3 +317,91 @@
 
 - Como retorno, no console, __irá imprimir o CEP que nós temos dentro do link__
 
+#### Tratamento de Erros
+
+- Lembrando da consulta, quando nós realizamos o pedido para a secretária, __ela gerou uma promessa para gente__, ela tentou conseguir um horário, porém, __não conseguiu nenhum horário__
+- Para que ela avisasse que não havia um horário, ela utilizou `catch` para avisar que __não houve um horário disponível__
+  - Ou seja, vendo como os métodos do JS:
+  - `try{}`: Fator de tentativa de __obter a consulta__, o __tentar__
+  - `Promise`: Promessa da secretária
+  - `catch`: Informa se __houve um erro__
+- No nosso código ficará da seguinte forma, dentro da __função assíncrona__
+
+```js
+    try {
+        var consultaCEP = await fetch('https://viacep.com.br/ws/01001000/json/');
+        var consultaCEPConvertida = await consultaCEP.json();
+        console.log(consultaCEPConvertida);
+    } catch (erro) {
+        console.log(erro);
+    }
+```
+
+- __Se o CEP estar correto, ele irá funcionar, caso não esteja, ele irá retornar o seguinte erro__:
+  - `{erro: true}`, e dirá que o __`prototype` é um objeto__
+  - Está ocorrendo pois:
+    - Foi informado __todos os 8 caracteres, porém, foi detectado que não existe o CEP informado__
+    - __Não aparecerá essa mensagem caso a quantidade de números não tenha sido mudada corretamente__
+      - Retorna o erro: `TypeError: Failed to fetch`, indicando que __a busca de rede não ocorreu corretamente por erro de digitação__
+- Estamos __captando o erro__, e a partir daquele ciclo que aconteceu na consulta, é bem fácil de entender fazendo essa tradução. Porque ele vai __tentar fazer tudo aquilo para captar o endereço, aquela lista que diz endereço, cidade, estado, etc__. __Senão, ele vai pegar o erro e mostrar na tela.__
+- Quando estavámos tratando erros utilizando `then/catch`, a ViaCEP envia um erro diferente. caso sejam CEPs com os __dígitos que são necessários, mas ele não exista, eles mandam um erro igual a true__. Eles __não mandam um erro 400__, mas sim dessa maneira, então precisaremos fazer __uma condicional novamente__.
+  - ``{erro: true}`: Exatamente a __resposta obtida pela API__
+- Faremos nossa condicional `if`, e dentro dela utilizaremos o `throw`, que irá "jogar" o erro que foi captado caso __for digitado de forma incorreta o CEP__
+
+```js
+    try {
+        var consultaCEP = await fetch('https://viacep.com.br/ws/01001200/json/');
+        var consultaCEPConvertida = await consultaCEP.json();
+
+        if (consultaCEPConvertida.erro) {
+            throw Error('CEP não existente');
+        }
+        console.log(consultaCEPConvertida);
+    } catch (erro) {
+        console.log(erro);
+    }
+```
+
+- Agora já temos um erro personalizado, ou seja, __o usuário entenderá por que o erro terá ocorrido__
+- Porém, e se quiséssemos fazer várias requisições em simultâneo? Como podemos fazer isto sem __repetição de código e de forma refatorada o suficiente para lermos, entendermos e a função funcionar corretamente?__
+
+#### Promise All
+
+- Imaginemos que nosso exemplo anterior, não quiséssemos apenas a consulta no dia ou na semana, __e se fosse mensalmente?__
+- Teríamos de realizar várias requisições, solicitando dias, horários diferentes, para termos nossa consulta. __Isso não é diferente da nossa API da ViaCEP__
+  - E se nós __fossemos ver diferentes CEPs ao mesmo tempo? Como faríamos?__
+- Para que isto ocorra, __utilizaremos o conjunto do `Promisse All`__
+- Para chegarmos no `Promisse All`, iremos transformar a função `buscaEndereco()` __em algo que está esperando um parâmetro__
+- Na função, iremos passar o parâmetro `cep` e dentro dela, na nossa busca, iremos alterar o link da seguinte forma: ``https://viacep.com.br/ws/01001200/json/``
+  - Isso faz com as crases colocadas __``__ façam do nosso link __dinâmico__
+  - Colocamos no início e no final. E onde tinha o valor do CEP, __agora vamos colocar um cifrão (“$”), abre e fecha chaves. Dentro delas, vamos colocar aquele valor que esperamos receber como parâmetro.__
+    - `${cep}`: Vamos colocar o valor que será o parâmetro
+- Após isso, vamos colocar um retorno do `consultaCEPConvertida()`, após o __fechamento das chaves do `if`__:      
+  - `return consultaCEPConvertida;`
+  - Ele irá __retornar para essa quem estar chamando esta função, esse valor.__
+Após isto, nós iremos criar duas __váriaveis de escopo__, `ceps` e `conjuntoCeps`:
+
+  ```js
+    let ceps = ['01001000', '01001001'];
+    let conjuntoCeps = ceps.map(valores => buscaEndereco(valores));
+  ```
+
+  - No `ceps` declaramos um __Array Aleatório de CEPs__
+  - no `conjuntoCeps` estaremos tendo o array de conjunto dos CEPs. Ele vai buscar o endereço e dentro dos parênteses, __ele vai colocar os valores que estava pegando__.
+  - Por __realizar várias buscas, utilizaremos o `map()`, e dentro dele terá uma `Arrow Function`__.
+    - Utilizando a variável `valores`, na qual vai pegar o endereço e __dentro dos parênteses ele vai colocar esses valores que ele estava pegando__
+    - Então, __aqui ele vai fazer um novo array com o que retornar daquela função `buscaEndereco`__, para __cada um dos valores de dentro do CEP. Esses valores vão ser promessas, e precisamos resolver essas promessas.__
+- Antes de utilizarmos o `Promise.all`, precisamos entender, __o que é o `map()`__
+  - De acordo com a MDN Docs, o método `map()` significa:
+  - O método`map()` __invoca a função `callback` passada por argumento para cada elemento do Array e devolve um novo Array como resultado.__
+  - A função `callback` é chamada __apenas para os elementos do array original que tiverem valores atribuídos__. Os elementos que estiverem como `undefined`, que tiverem sido removidos ou os que nunca tiveram valores atribuídos __não serão considerados__.
+- O `map()` pega __cada item do Array, os que foram guardados na variável `let ceps`, e aplica a função neles, no caso, a `valores => buscaEndereco(valores)`__
+- Após isso, iremos utilizar o `Promise.all`, no qual, receberá `conjuntoCeps`, pois está __pegando todas as promessas com esta variável__, e __então__ guardaremos esta informação em uma variável `respostas` dentro de uma `Arrow Function` e dela imprimiremos o resultado:
+  - `Promise.all(conjuntoCeps).then(respostas => console.log(respostas));`
+- No console deverá aparecer o lado __ímpar, o `000`, e o lado par. o `001`__
+- O `Promise.all` __retorna um Array com as duas promessas resolvidas__
+- usando o `console.log(conjuntoCeps)`, iremos ver que os dados armazenados são `(2) [Promise, Promise]`, sendo as promessas. E que logo após,com o `Promise.all` teremos nosso __array de promessas__
+- Entendendo para que funciona o `promise.all`, já podemos tirar essa chamada gigante, __que não vamos fazer várias requisições para resolver esse problema que estamos tentando solucionar para a API do viaCEP, sendo aquela normalização de dados.__
+- Vamos apagar essas linhas que fizemos fora da função. E o que precisamos fazer agora? Nós já temos uma __busca dinâmica, que ele pega um parâmetro e altera na URL. Mas só mostramos no console, na Ferramenta do Desenvolvedor. Precisamos que ela apareça em nosso formulário__
+
+#### Para saber mais: Then ou Async Await?
