@@ -458,4 +458,9 @@ Após isto, nós iremos criar duas __váriaveis de escopo__, `ceps` e `conjuntoC
 
 #### Evitando Problemas
 
-- 
+- Um usuário pode preencher de forma errada o CEP, como podemos __Exibir na tela se for inserido um valor inválido?__
+- iremos criar uma `<div>` contendo o `id = "erro"`, assim atribuindo um identificador para a `tag`.
+- Em seguida, no JS, iremos criar uma váriavel que armazene essa `tag`, e dentro dela, utilizando o `innerHTML`, iremos atribuir uma mensagem __caso o usuário digite o CEP errado__
+  - `var mensagemErro = document.getElementById('erro');`
+  - `mensagemErro.innerHTML = "";`: Inicialmente __Deve vir vazio o conteúdo__
+- Com isso, conseguimos normalizar boa parte do nosso problema dos dados. Agora, quando o usuário digitar o CEP, todos que possuírem o mesmo CEP, a rua, o nome da cidade, o estado, até o bairro
