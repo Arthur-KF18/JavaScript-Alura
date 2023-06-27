@@ -276,4 +276,44 @@
 
 #### Async e Await
 
-- 
+- Não há apenas uma maneira de fazer um __código assíncrono__, assim como nestes nossos casos de __Situações Assíncronas__
+- Vamos pensar então em "marcar uma consulta com um dentista"
+  - Ligamos para o consultório e a secretária irá procurar o dia especificado por nós. Isso irá gerar uma __promessa__
+  - Esta promessa é aguardada, o que n  o JS chamariamos de `await`, e ela tem dois retornos:
+    - Horário disponível: `resolved`
+    - Horário indisponível: `rejected`
+  - Porém, vamos supor que __tem vários horários para terça-feira__. Você só __declarou querer na terça, não especificou o horário.__
+  - A secretária ia ter que procurar cada horário e ver se dá para você __comparecer__.    
+  - Por exemplo. "Eu tenho horários às 2h. Você pode vir?", "Eu tenho horário às 5h. Você pode vir?"
+  - Pensando de outra forma, __podemos ter vários `then`__, e dentro de cada um deles temos uma `Arrow Function`. Estas funções enviadas como parâmetros para outras funções, são as `Callbacks`
+  - Com vários `then` e `Callbacks` temos uma situação chamada de `Callback Hell`. Isto é __um ponto negativo, dificultando nossa leitura__
+  - Para resolvermos esta situação, iremos analizar uma __segunda forma de criar um código Assíncrono, porém de forma organizada e correta__
+- Iremos utilizar o `async` e o `await`, porém, sua definição de acordo com a __MDN Docs__:
+  - `async`: É uma __função Assíncrona__, quando ela é chamada, __ela retorna uma `Promise`, ou seja, uma promessa__. Quando a função assíncrona __retorna um valor__, a `Promise` será __resolvida com o valor retornado__. Quando a função assíncrona lança uma __exceção ou algum valor__, a `Promise` será __rejeitada com o valor lançado__.
+  - `await`: Uma função assíncrona pode conter uma expressão `await`, __que pausa a execução da função assíncrona e espera pela resolução da `Promise` passada__, e depois __retoma a execução da função assíncrona e retorna o valor resolvido.__
+  - A proposta das funções `async/await` é de __simplificar o uso de forma síncrona das `Promises` e executar alguns procedimentos em um grupo de `Promises`.__ Assim como `Promises` são __similares a `callbacks` estruturados__, funções `async/await` são similares à junção de __generators com `Promises`.__
+- É importante lembrar que __JS lê os comandos linha por linha, e o `async/await` vem com a ideia de realizar de forma assíncrona suas funções. Ocorrendo por debaixo dos panos__
+- Sabendo da função de ambos métodos, no nosso código, iremos __Criar uma função assíncrona, que irá esperar a resolução da promessa__:
+
+```js
+  async function buscaEndereco() {
+    var consultaCEP = await fetch('https://viacep.com.br/ws/01001000/json/');
+    console.log(consultaCEP);
+  }
+```
+
+- No código acima, nós teremos a função, e o `await` estará na __frente da comunicação com a API do ViaCEP__. Ao pedirmos que seja impressa a variável `consultaCEP`, teremos como resultado __a `Response`, com seu tipo, se foi redirecionada e seu status__
+  - Por nós não termos configurada ela corretamente estará assim:
+  - `Response {type: 'cors', url: 'https://viacep.com.br/ws/01001000/json/', redirected: false, status: 200, ok: true, …}`
+- Ela foi muito mais __rápida em comparação ao `then`__
+- Essa questão do `Async/Await` foi declarada pela ES em 2017 para __facilitar a leitura dos códigos assíncronos__. Porque, __apesar de ser assíncrono, ele é construído como um código síncrono__. Ou seja, __parece que é feito linha por linha, mesmo que, no fundo, ele esteja esperando uma coisa acontecer antes de fazer a outra.__
+- Apenas __definindo a função como `async`, podemos usar essa palavra `await`__. Ou seja, se você tentar colocar esse __`await` em qualquer lugar que não seja uma função assíncrona, vai dar problema. Ele vai te cobrar que ela só é aceita dentro de uma função assíncrona.__
+- Agora, só precisamos __converter o retorno do `fetch` em JSON__:
+
+```js
+    var consultaCEPConvertida = await consultaCEP.json();
+    console.log(consultaCEPConvertida);
+```
+
+- Como retorno, no console, __irá imprimir o CEP que nós temos dentro do link__
+
