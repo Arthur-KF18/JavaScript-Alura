@@ -431,4 +431,31 @@ Após isto, nós iremos criar duas __váriaveis de escopo__, `ceps` e `conjuntoC
   - Isto é chamado de `template Strings`, que é basicamente composto __dessas crases e de valores dinâmicos colocados através do cifrão e das chaves ${}.__
 - cada vez que eu __coloco algo e tiro, ele faz uma requisição nova.__ Já está uma consulta muito dinâmica. Agora precisamos fazer com que essas informações que foram retornadas, como logradouro, estado e cidade, sejam __completadas automaticamente__.
 
-#### 
+#### Preenchimento automático
+
+- A primeira coisa que devemos fazer para que haja o preenchimento automático, __é selecionar os campos de: cidade, bairro, UF, número, complemento e endereço__
+  - `id="endereco"`, `id="numero`, `id="complemento"`, `id="bairro"`, `id="cidade"` e `id="estado"`, são __todas os campos e seus respectivos id__
+- Iremos adicionar 3 variáveis nas quais irão modificar quando o __CEP for inserido__
+  
+  ```js
+      var cidade = document.getElementById('cidade');
+      var logradouro = document.getElementById('endereco');
+      var estado = document.getElementById('estado');
+  ```
+
+  - Após isso, agora que podemos acessá-las, iremos colocar o valor vindo do CEP:
+
+  ```js
+      cidade.value = consultaCEPConvertida.localidade;
+      logradouro.value = consultaCEPConvertida.logradouro;
+      estado.value = consultaCEPConvertida.uf;
+  ```
+
+  - Iremos atribuir __um novo valor no interior das `tags`, sendo ele vindo da API consumida__.
+  - É importante dizer que `localidade`, `logradouro` e `uf`, __são atributos dos elementos da API utilizada__. Eles eram impressos quando nós pediámos ao console para exibir o resultado do CEP, porém __agora estão presentes no nosso formulário__
+- Vamos entender como funcionou. Antes tinhámos __feito a variável com esses elementos__. Tendo o elemento, __eu consigo acessar o valor__. Pegamos o __nome da variável `.value` e acessei o campo do valor dele__. Depois atribuí, com o `igual`, o __valor retornado da API que eu mostrei agora no `console.log`.__
+- É dessa forma que nós iremos inserir os valores de forma correta. Além de atribuir erros na tela __caso o usuário digite uma informação errada__
+
+#### Evitando Problemas
+
+- 
