@@ -53,3 +53,33 @@
   - Em detalhes, veremos que existem os parâmetros de cada livro, sendo __preco, autor, imagem, alt, quantidade e categoria__
 - Se nós retirarmos o `await` da variável `livros`, __não dará tempo de ser processado o arquivo json que foi prometido, trazendo valores pendentes e vazios, porém sabendo que o resultado é o array de 12 itens__
 - Dessa forma temos os __livros da API__. Trouxemos as informações que estavam no endpoint para nossa aplicação. Mas agora queremos montar na tela, manipular o DOM. Como faremos isso utilizando métodos especiais de arrays com JavaScript? 
+
+#### Como funciona o forEach
+
+- Como poderemos pegar as informações do JSON, que estão guardadas na nossa função `getBuscaLivrosDaAPI` e exibi-las na tela?
+- Poderíamos fazer um `for` para falar pegarmos o livro no __índice 0, que tem o título 0, que tem o preço 0 e montar na tela, essa estrutura da classe de livro que comentamos__. Dentro dessa classe de livro, iríamos colocar dentro os links entre outros elementos que fariam aparecer o livro.
+- Porém, se formos utilizar o `for` ficaria muito __verboso, pois seria com cada livro diferente__. Para resolvermos isto, devemos pensar de forma dinâmica, então, podemos utilizar o `forEach`.
+- O `forEach` __executa uma dad função em cada elemento de um array__. Isso funciona perfeitamente para o nosso código, já que __queremos pegar cada elemento do array e criar uma classe de livro, com todas as características que ele tem__
+
+- Nosso código por exemplo com for:
+
+```js
+    let livros = ['Js', 'Python',  'HTML'];
+
+    for (let i = 0; i < livros.length; i++) {
+    console.log(livros[i]);    
+    }
+```
+
+- Neste exemplo, quando imprimimos eles, irão aparecer os itens em sequência. Porém é muito __verboso__, temos de definir muitos fatores antes da impressão do nosso array. Para isso, podemos utilizar uma forma mais fácil utilizando o `forEach`
+
+```js
+    let livros = ['Js', 'Python',  'HTML'];
+
+    livros.forEach(livro => {
+        console.log(livro);
+    })
+```
+
+- Fica menos verboso, ou seja, __para cada livro, imprima-o__. Lembrando de que a Arrow Function é uma __função anônima, que recebe o parâmetro e imprime-o__
+- Podemos receber mais de um parâmetro no `forEach`, como __elemento, index e o array__
