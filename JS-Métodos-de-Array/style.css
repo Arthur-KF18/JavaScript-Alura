@@ -31,6 +31,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   height: 278px;
+  width: 100dvw;
 }
 
 .nav {
@@ -123,7 +124,7 @@ body {
 }
 
 .livros__disponiveis {
-  width: 100%;
+  width: 100dvw;
   height: 80px;
   background-color: var(--text-description-color);
   margin-top: 1rem;
@@ -142,7 +143,7 @@ body {
 }
 
 .rodape {
-  width: 100%;
+  width: 100dvw;
   height: 104px;
   background: linear-gradient(96.48deg, #002f52 36.3%, #326589 99.56%);
   margin-top: 1rem;
