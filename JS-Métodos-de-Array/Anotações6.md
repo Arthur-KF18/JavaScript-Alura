@@ -83,3 +83,68 @@
 
 - Fica menos verboso, ou seja, __para cada livro, imprima-o__. Lembrando de que a Arrow Function é uma __função anônima, que recebe o parâmetro e imprime-o__
 - Podemos receber mais de um parâmetro no `forEach`, como __elemento, index e o array__
+
+#### foreach de livros
+
+- Agora que entendemos do `forEach()`, podemos inseri-lo na nossa página para cada livro. vamos pegar esse elemento, de `<section>` de livros e vou inserir cada livro dentro dessa `<section>`
+
+```javascript
+    const insereLivro = document.getElementById('livros');
+```
+
+- Depois disso, na nossa função Assícrona, __iremos criar uma função responsável por exibir o livro na tela, a `exibeLivro`__
+- Dentro dela, iremos passar como parâmetro a variável `livros`
+
+```javascript
+    exibeLivro(livros);
+```
+
+- Após isso, iremos criar a função `exibeLivro` e dentro dela iremos criar um __"para cada livro", ou seja, o `forEach`__.
+- Dentro dele, iremos inserir as __`tags` HTML responsáveis pela criação dos livros__:
+
+```javascript
+    function exibeLivro(listaDeLivros) {
+    listaDeLivros.forEach(livro => {
+        insereLivro.innerHTML += `
+        <div class="livro">
+            <img class="livro__imagens" src="imagens/Cangaceiro-Javascript.png"
+            alt="Capa do livro Cangaceiro JavaScript" />
+            <h2 class="livro__titulo">
+                Cangaceiro JavaScript:
+                Uma aventura no sertão da programação
+            </h2>
+                <p class="livro__descricao">Flávio Almeida</p>
+                <p class="livro__preco" id="preco">R$29,90</p>
+            <div class="tags">
+                <span class="tag">Front-end</span>
+            </div>
+        </div>
+        `
+    });
+}
+```
+
+- Sendo assim, __inserimos o elemento e seu conteúdo, que será o livro e todas suas informações__
+- Porém, ele foi inserido 12 vezes, mas não é isso exatamente que queremos, __queremos as informações que estão contidas no livro que utilizamos.__
+-  Vamos pegar então essas informações que temos no livro, __como título, preço, autor, imagem, alt, quantidade e categoria__.
+- Primeiro __iremos alterar o source da imagem do nosso livro__, para isso, iremos criar um local que acesse essa informação, o `${livro}`.
+  - Por estarmos mexendo com a nossa API, na tabela que vimos anteriormente, vemos que, __cada livro tem uma categoria chamada `imagem`, onde armazena a imagem do livro__
+  - Com isto, iremos __adicionar a imagem para cada elemento HTML, porém, eles irão vir de acordo com a sequência do JSON, e que precisamos então organizá-los corretamente__
+- Iremos inserir estes mesmos dados e associação em todo elemento para todo o nosso elemento:
+
+```html
+    <div class="livro">
+        <img class="livro__imagens" src="${livro.imagem}"
+        alt="${livro.alt}" />
+        <h2 class="livro__titulo">
+            ${livro.titulo}
+        </h2>
+            <p class="livro__descricao">${livro.autor}</p>
+            <p class="livro__preco" id="preco">R$ ${livro.preco}</p>
+        <div class="tags">
+            <span class="tag"> ${livro.categoria}</span>
+        </div>
+    </div>
+```
+
+- Então já __fizemos a requisição e utilizamos o `forEach` para criar cada um desses elementos de livro.__
