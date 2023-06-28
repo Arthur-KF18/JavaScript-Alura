@@ -167,3 +167,45 @@
 - Essa função `map` ela é __invocada da mesma forma que o `forEach`, só que diferente dele, a função `map` retorna um valor__
 - Então o `map` vai __alterar os valores para a nova array que utilizaremos, mas ele não altera a array principal__. E diferente do `forEach`, teremos __um retorno para essa nossa função__.
 
+#### Desconto com o map
+
+- Vamos aplicar um desconto a cada um dos livros apresentados na página utilizando o `map`, porém, __primeiro devemos refatorar nosso código e deixá-lo mais organizado__
+- Criando 3 arquivos JavaScript diferentes:
+
+ 1. main.js: Contém a função anônima
+ 2. inserirLivro.js: Contém a função para inserir o livro na página
+ 3. mapeamento: Contém o `map` dos Arrays
+
+- No nosso `main.js` iremos criar uma função na qual irá receber o desconto e ela será guardada em uma variável `livroDesconto`
+
+```javascript
+    let livroDesconto = aplicaDesconto(livros)
+    exibeLivro(livroDesconto);
+```
+
+- Após feito isso, iremos no nosso `mapeamento.js` e iremos criar a função `aplicaDesconto`, onde criará o desconto em todos os livros em `mapeamento.;js`. Então ficará: `function aplicarDesconto(livros)`.
+- Como poderemos aplicar este desconto? Vamos definir o quanto de desconto queremos através de uma constante `desconto = valor de desconto`.
+- E agora, iremos passar os livros com desconto em uma função de seta.
+- Tendo isso, iremos criar o `.map(livro => {})`, ou seja, estaremos fazendo o mapeamento:
+
+```javascript
+    const desconto = 0.3;
+    livroDescontado = livros.map(livro => {        
+    })
+```
+
+- __A função `map` precisa retornar alguma coisa, e esse nosso retorno deverá ser apenas a mudança no valor do livro__
+- Para isso, iremos utilizar `{...livro, preco: livro.preco - (livro.preco * desconto)}` após o `return`
+  - Os 3 pontos irão fazer com que __haja uma cópia de todo nosso Array ou objeto existente para um novo e depois irá existir a alteração do preco__
+  - Sendo assim, o `preco` irá receber um novo valor vindo do ``(livro.preco * desconto)` e que será substituído na nossa página
+  - Após definirmos isto, iremos criar um `return` dentro da função `aplicaDesconto` com o novo valor do `livroDescontado`:
+
+  ```javascript
+    const desconto = 0.3;
+    livroDescontado = livros.map(livro => {
+        return {...livro, preco: livro.preco - (livro.preco * desconto)};
+    })
+    return livroDescontado;
+    ```
+- Ou seja, no `main.js` pegamos os livros, depois aplicamos o desconto, __retornando um objeto__ e que guardamos dentro da variável `livroDesconto` e depois exibe `exibeLivro(livroDesconto)` na tela
+- no `inserirLivro.js` iremos alterar o preço para `${livro.preco.toFixed(2)}`, para que fique em __duas casas decimais o valor__
