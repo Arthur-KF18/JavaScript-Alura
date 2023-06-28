@@ -148,3 +148,22 @@
 ```
 
 - Então já __fizemos a requisição e utilizamos o `forEach` para criar cada um desses elementos de livro.__
+
+#### Como funciona o map
+
+- Nosso próximo desafio é __aplicar um desconto em cada um destes livros presentes na tela__
+- Para fazermos isto, utilizaremos o __método `map`__, que tem como função __invocar a função `callback` passada por argumento para cada elemento do Array e devolve um novo Array como resultado__
+- Um exemplo de como este método é aplicado:
+
+```javascript
+    const array1 = [1, 4, 9, 16];
+    const mapa1 = array1.map(x => x * 2);
+
+    console.log(mapa1);
+```
+
+- Esse exemplo diz que __ele tem um array e uma constante `const array1 = [1, 4, 9, 16]`__, e ele vai passar para uma função `map`. Ele cria uma nova constante `const map1 = array1.map`, pega cada valor, cada elemento do array e faz __ele vezes dois__.
+- O método `map` __não altera o valor do array original, ele faz uma cópia, ou seja, ele passa por cada elemento do nosso array que é invocado, executa uma função que esperamos, e retorna um novo array contendo os valores retornados__
+- Essa função `map` ela é __invocada da mesma forma que o `forEach`, só que diferente dele, a função `map` retorna um valor__
+- Então o `map` vai __alterar os valores para a nova array que utilizaremos, mas ele não altera a array principal__. E diferente do `forEach`, teremos __um retorno para essa nossa função__.
+
