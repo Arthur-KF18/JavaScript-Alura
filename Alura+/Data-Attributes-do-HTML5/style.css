@@ -1,0 +1,73 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.conteudos{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border: 2px solid #e67817;
+  width: 60vw;
+}
+
+.abas{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 62.5vw;
+}
+
+.abas button{
+  background-color: #fff;
+  border: 2px solid #E67817;
+  color: #E67817;
+  cursor:pointer;
+  flex-grow: 1;
+  font-size: 1.25rem;
+  font-weight: bold;
+  outline: none;
+  padding: 10px;
+  text-transform: uppercase;
+  transition: all .5s;
+}
+
+.conteudos{
+  border: 2px solid #E67817;
+  min-height: 300px;
+  padding: 20px;
+}
+
+.form{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.form input{
+  padding: 10px;
+  border: 2px solid #E67817;
+}
+
+.form button{
+  padding: 10px;
+  background-color: #E67817;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-weight: bold;
+}
+
+.hide {
+  display: none;
+}
+
+.abas .ativa{
+  background-color: #E67817;
+  color: #fff;
+
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF-8" />
+	<link rel="icon" type="image/svg+xml" href="/vite.svg" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Data Atributes</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<section class="container">
+		<div class="abas">
+			<button class="ativa" data-aba="entrar">Entrar</button>
+			<button data-aba="Cadastrar">Cadastre-se</button>
+		</div>
+
+		<div class="conteudos">
+			<div data-conteudo="entrar">
+				<form class="form">
+					<input type="text" name="email" placeholder="Seu e-mail">
+					<input type="password" name="senha" placeholder="Sua senha">
+					<button>Entrar</button>
+				</form>
+			</div>
+
+			<div class="hide" data-conteudo="Cadastrar">
+				<form class="form">
+					<input type="text" name="email" placeholder="Seu e-mail">
+					<input type="password" name="senha" placeholder="Sua Senha">
+					<input type="password" name="senha" placeholder="Repita">
+					<button>Cadastrar</button>
+				</form>
+			</div>
+		</div>
+	</section>
+	<script src="/main.js"></script>
+</body>
+
+</html>
