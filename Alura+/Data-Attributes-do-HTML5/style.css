@@ -79,7 +79,7 @@ html {
   font-size: 1rem;
 }
 
-.form input::placeholder{
+.form input::placeholder {
   color: var(--cor-principal);
   font-family: var(--fonte-principal);
   font-weight: var(--fonte-p-peso);
@@ -94,7 +94,7 @@ html {
   font-size: 1.2rem;
   border: none;
   outline: none;
-  color: #fff; 
+  color: #fff;
   border-radius: 1rem;
 }
 
@@ -105,5 +105,10 @@ html {
 .abas .ativa {
   background-color: var(--cor-principal);
   color: #fff;
+}
 
+.mensagem {
+  display: flex;
+  position: absolute;
+  bottom: 0;
 }
