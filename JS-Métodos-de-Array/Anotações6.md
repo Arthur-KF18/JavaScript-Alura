@@ -552,4 +552,38 @@ var total = values.reduce((a, b) => a + b, 0);
 
 #### Valor total com reduce
 
-- 
+- Agora que já sabemos que o `reduce` pode fazer, vamos fazer isto com os valores e imprimir no valor total dos livros
+- Primeiro iremos criar o `reduce.js` e nele iremos fazer a lógica do `reduce`
+- No `filter.js` fazemos o filtro de livros disponíveis e ele exibe os livros na tela. Quando clicarmos na opção de "Livros disponíveis", queremos calcular __o valor total dos livros exibidos na tela__
+- `const valorTotal = calculaValorTotal(livrosFiltrados)`
+- Essa constante vai guardar os valores que serão feitos o `reduce` na `calculaValorTotal`
+- No `reduce.js` iremos criar nossa função:
+
+```javascript
+    function calculaValorTotal(livros) {
+        return livros.reduce((acumulador, livro) => acumulador + livro.preco, 0)
+    }
+```
+
+- Dentro desta função, usaremos o parâmetro `livros` como melhor entendimento. Iremos criar um `return` onde usaremos o `reduce` para __pegar todos os livros presentes na tela, os `livrosFiltrados` e será somado seu valor, `livro.preco`__. O 0 __é o primeiro índice__
+
+- Com isto feito, iremos adicionar no `filter.js`:
+
+```javascript
+// Adicionamos o `valorTotal` para ser exibido na tela
+    if (categoria == 'disponivel') {
+        const valorTotal = calculaValorTotal(livrosFiltrados)
+        exibeValorTotalTela(valorTotal)
+    }
+
+// Após isso, adicionamos na função a constante e dentro do HTML
+    function exibeValorTotalTela(valorTotal) {
+        elementoValorTotal.innerHTML = `
+        <div class="livros__disponiveis">
+            <p>Todos os livros disponíveis por R$ <span id="valor">${valorTotal}</span></p>
+        </div>  
+        `
+    }
+```
+
+- Com isto, o valor total será exibido na tela
