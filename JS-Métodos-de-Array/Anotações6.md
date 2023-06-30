@@ -209,3 +209,115 @@
     ```
 - Ou seja, no `main.js` pegamos os livros, depois aplicamos o desconto, __retornando um objeto__ e que guardamos dentro da variável `livroDesconto` e depois exibe `exibeLivro(livroDesconto)` na tela
 - no `inserirLivro.js` iremos alterar o preço para `${livro.preco.toFixed(2)}`, para que fique em __duas casas decimais o valor__
+
+#### Filter
+
+- Com nosso projeto já definido, trazendo todas as informações da nossa API, temos algumas interações na página que precisam ser definidas, já sendo elas  as __categorias dos produtos__
+- Por exemplo, ao clicarmos em "livros de front-end", __exibirá na tela apenas os livros desta categoria__
+- Para isto, iremos utilizar um método especial chamado __`filter`__. Ele é um método responsável por **criar um novo array com todos os elementos que passaram no teste implementado pela função fornecida**, ou seja __ele irá filtrar os itens do array pela forma que especificarmos__, por exemplo:
+ 
+ ```javascript
+ const letras = ['spray', 'carro', 'limite', 'java']
+ const resultado = letras.filter(letra => letra.lenght > 5);
+
+ console.log(resultado);
+ ```
+
+ - Através deste exemplo, no nosso Array definido, especificamos que __queremos no nosso `filter` apenas palavras que contenham mais do que 5 caracteres__. Fazemos isto com a criação da `Arrow Function` nomeada `letra`, onde ela irá percorrer o array e irá trazer __apenas frases que possuem mais de 5 letras__
+
+
+ - Sobre as Arrow Functions, vale lembrar como elas foram adaptadas de funções normais para funções mais simples:
+
+```javascript
+//antiga forma que se era escrita, onde utiliza-se o `map` para verificar todo o array de itens, além de criar uma nova função element, que usa `return`. Ou seja, iremos pegar o array e quando formos atualizá-lo com os itens corretos, iremos guardar isto em uma nova função
+elements.map(function(element) {
+  return element.length;
+})
+// A forma mais correta de se utilizar as arrow functions, pois existe apenas um parâmetro e a sua única sentença sendo o `return`
+elements.map(element => element.length);
+```
+
+- Comparando ambas, é possível perceber a inexistência do `this` e sendo extremamente mais curta. __Ela sempre irá guardar os novos valores dentro de uma função que será impressa__
+- __Quando precisamos de uma simples função com um único argumento, a sintaxe da `Arrow Function` pode se representada apenas como `identificador => expressão`. Isto evita com que escrevemos `function` e `return`, assim como parênteses e semi colunas__
+- Para funções de __múltiplos argumentos, parâmetros REST ou padrões, simplemente adicionaremos parênteses envolta da lista de argumentos__:
+
+```javascript
+// Forma antiga, mais verbosa em relação ao ES5
+var total = values.reduce(function (a, b) {
+  return a + b;
+}, 0);
+
+// Forma nova, mais compacta do ES6, no qual podemos entender de forma clara e concisa em uma única linha
+var total = values.reduce((a, b) => a + b, 0);
+```
+
+- Um outro exemplo de aplicação do `filter` poderia ser:
+
+```javascript
+    const idades = [10, 22, 42, 16, 50]
+    const podeDirigir = idades.filter(idade => idade>= 18)
+
+    console.log(podeDirigir)
+    // Resultado esperado: > Array [22, 42, 50]
+```
+
+- Com isto, o `filter` irá __criar um novo array de itens, onde apenas idades maiores ou igual a 18 serão impressas__
+- Podemos testar quais idades não podem dirigir:
+
+```javascript
+    const idades = [10, 22, 42, 16, 50]
+    const podeDirigir = idades.filter(idade => idade>= 18)
+    const naoPodeDirigir = idades.filter(idade => idade<18)
+
+    console.log(podeDirigir)
+    // Resultado esperado: Array [22, 42, 50]
+    console.log(naoPodeDirigir)
+    // Resultado esperado: [10, 16]
+```
+
+- A função dentro da `Arrow Function` é __restrita apenas para a constante. Isso quer dizer que somente ela pode acessar a `Arrow function` e não é global. Isto permite que possamos utilizar o mesmo nome de função em duas constantes diferentes__
+
+- Então reparamos que o método `filter`, a principal diferença dele, para entendermos como ele funciona, é o seguinte: _temos um array, com determinados valores, sejam eles idades, categorias, alguma coisa e queremos filtrar, criando um novo conjunto de elementos, uma nova array._
+- Então essa função, __sempre que passamos por ela, a função vai retornar um valor booleano, ou seja, `true` ou `false`__
+  - __se o valor for verdadeiro, ele vai então colocá-lo em uma nova array__, ou seja, __se o valor da idade for maior ou igual a 18, ou seja `true`, ele irá armazenar na variável `podeDirigir`, se não for,ou seja `false`, ele não irá utilizar aquele valor__
+- Voltando ao nosso código, precisamos aplicar as `Arrow Functions` e o `filter` para nosso array de livros. __Se um livro for de Front-end, existirá um filtro onde neste novo array, apenas existirá os livros de front-end__
+
+#### Como funciona o filter
+
+- Primeiro, iremos criar um novo documento chamado `filter.js`, nele iremos criar __o filtro de livros da nossa página__
+
+- Dentro dele iremos criar uma variável constante chamada `livrosFront`, que irá armazenar a tag que filtra os livros de front, a `id="btnFiltrarLivrosFront"`. Com isto iremos precisar criar um evento de clique, no qual vai ativar a função `filtrarLivros`:
+
+```javascript
+    const livrosFront = document.querySelector('#btnFiltrarLivrosFront');
+
+    livrosFront.addEventListener('click', filtrarLivros);
+```
+
+- Com isto, agora precisamos criar a função `filtrarLivros` na qual vai __pegar o array de livros, ou seja, a varíavel global `livros`, que já está retornando o array de livros, e iremos filtrá-la, senod assim `function filtrarlivros(){}`, sem parâmetros.__
+- Primeiro filtraremos esses livros e esses livros __serão armazenados em uma variável, já que o `filter` retorna valores booleanos__. Depois iremos criar a variável `let livrosFiltrados = livros`, __já que `livros` é um array vazio que ao ser executado faz o `get` do `BuscaLivrosDaAPI` e insere dentro da varíavel `livros`__
+- Com isto, usaremos `filter` para separar os livros __de acordo com sua categoria__, dentro de uma `Arrow Function`
+
+```javascript
+    function filtrarLivros() {
+        let livrosFiltrados = livros.filter(livro => livro.categoria == `front-end`)
+        console.table(livrosFiltrados)
+    }
+```
+
+- Com isto, iremos imprimir o resultado da nossa função, de acordo com a categoria que deixamos para ela. Porém, __isto não é eficiente, já que queremos que ao clicarmos em qualquer uma destas categorias, seja colocado de acordo com o selecionado, sem repetir o código__
+
+#### Filter de livros
+
+- Agora queremos fazer com que a constante __pegue mais de um botão e atribuir nesse mesmo botão a mesma função para otimizarmos nosso código e evitarmos a duplicidade de código__. 
+- No nosso HTML, veremos que __para cada botão que temos, temos uma classe associada chamada `btn-tipo de livro`__
+- No console, iremos digitar `document.querySelectorAll('.btn')` que irá retornar __todos os botões que filtram os livros__
+- no código, iremos retirar nossa antiga variável `livrosFront` e iremos atribuiur uma nova chamada `botoes`, onde ela irá selecionar __todas as tags que possuem a classe `btn`__
+- Após isso, __como queremos que para cada um destes botões seja realizado o evento de clique, iremos utilizar o `forEach`, onde nele iremos passar o parâmetro `btn`:
+
+```javascript
+    botoes = document.querySelectorAll('.btn');
+    botoes.forEach(btn => btn.addEventListener('click', filtrarLivros));
+```
+
+- Com isto, na nossa
