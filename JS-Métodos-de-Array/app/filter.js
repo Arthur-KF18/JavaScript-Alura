@@ -28,3 +28,8 @@ function exibeValorTotalTela() {
     </div>  
     `
 }
+
+const precos = [10, 20, 70]
+const precoTotal = precos.reduce((acumulador, atual) => acumulador > atual ? acumulador : atual);
+
+console.log(precoTotal);

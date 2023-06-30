@@ -528,3 +528,28 @@ var total = values.reduce((a, b) => a + b, 0);
         return livros.filter(livro => livro.quantidade > 0);
     }
 ```
+
+#### Valor total com o Reducer
+
+- Agora que temos tudo pronto, agora precisamos que __o banner apresente a somatória em relação aos livros que estão presentes na tela. E para isso, usaremos o método `reducer`__
+- Este método __executa uma função `reducer` para cada elemento do array, resultando em um único valor de retorno__
+- Para um melhor entendimento, temos __três funções nas quais mexemos com os Arrays. A `map` transforma um array em um novo array, a `filter` remove tudo que não faz parte do filtro que criamos, deixando apenas os elementos que queremos, e o `reduce` pega todos os elementos do array e produz um único valor__
+- Vamos fazer um exemplo:
+
+```javascript
+    const precos = [10, 20, 70]
+    const precoTotal = precos.reduce((acumulador, atual) => acumulador + atual);
+```
+
+- Então, criamos uma função onde temos um array de itens chamado `precos`. Com a variável `precoTotal`, iremos realizar o `reduce`.
+- Essa função do `reduce` vai receber, geralmente, __um parâmetro que vai ser o responsável por acumular todos os valores__. O primeiro parâmetro é o acumulador, e o segundo item é o valor atual de cada elemento.
+- Vamos criar uma `Arrow Function` e vamos fazer o seguinte: __eu queremos somar todos esses valores que eu tenho dentro de `precos` e reduzir essa minha lista em apenas um único valor.__
+- O `acumulador + atual`, irá __pegar todos os itens do array e somar, porém podemos utilizar outras operações como `-`, `*`, e até mesmo verificar qual é o maior valor, `>`__
+- `const precoTotal = precos.reduce((acumulador, atual) => acumulador > atual ? acumulador : atual);`
+- se o `reduce` for __maior que o atual eu vou perguntar, eu quero devolver, se o acumulador foi maior que o atual, eu quero devolver o acumulador. Senão, eu quero devolver o atual.__
+- sempre usaremos a função de redução para combinar dois valores e produzir um único valor
+
+
+#### Valor total com reduce
+
+- 
