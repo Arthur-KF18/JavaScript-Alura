@@ -404,4 +404,26 @@ var total = values.reduce((a, b) => a + b, 0);
 - Se rodarmos, terá o mesmo resultado
 - o `sort` vai __classificar os elementos do array e retornar um array ordenado__. Quando __chamarmos esse `sort` com elementos que sejam undefined, esse undefined vai sempre para o final da nossa lista e eles são ordenados com base no unicode.__
 - Então devemos lembrar que, __ele transformou tudo para string, a ordenação dele não vai ser estável. E caso precisamos de uma ordenação que seja estável, aí criamos uma função para fazer essa ordenação de comparação.__
-- 
+
+
+#### Sort de livros
+
+- Primeiro, iremos criar um arquivo chamado `sort.js`, onde iremos fazer a ordenação dos elementos.
+- Iremos criar uma váriavel chamada `btnOrdenaPreco`, na qual vai pegar o __id do botão de ordenar preço__
+- após isso, iremos criar uma função de evento de clique no qual vai ativar a função `ordenaPreco`
+- Com isso, iremos criar a função `ordenaPreco()` e dentro dela iremos criar nossa ordenação.
+- Graças ao `livros`, que o __array que guarda todos os livros, iremos criar uma variável `livrosOrdenados` que irá ter a ordenação dos livros. E após isto, iremos chamar a função  `exibeLivro` com parâmetro `livrosOrdenados` para que todos os livros sejam ordenados de acordo com seu valor__
+
+```javascript
+    let btnOrdenaPreco = document.getElementById('btnOrdenarPorPreco');
+
+    btnOrdenaPreco.addEventListener('click', ordenaPreco)
+
+    function ordenaPreco() {
+        let livrosOrdenados = livros.sort((a, b) => a.preco - b.preco)
+        exibeLivro(livrosOrdenados)
+    }
+```
+
+- Nossa função ficaará desta forma, e basta mudar o `a, b` para definir de irá do maior pro menor ou vice-versa
+
