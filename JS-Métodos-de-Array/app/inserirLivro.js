@@ -3,9 +3,10 @@ const insereLivro = document.getElementById('livros');
 function exibeLivro(listaDeLivros) {
     insereLivro.innerHTML = ''
     listaDeLivros.forEach(livro => {
+        let disponibilidade = livro.quantidade > 0 ? 'livro__imagens' : 'livro__imagens indisponivel'
         insereLivro.innerHTML += `
         <div class="livro">
-            <img class="livro__imagens" src="${livro.imagem}"
+            <img class="${disponibilidade}" src="${livro.imagem}"
             alt="${livro.alt}" />
             <h2 class="livro__titulo">
                 ${livro.titulo}
@@ -19,3 +20,14 @@ function exibeLivro(listaDeLivros) {
         `
     });
 }
+
+/*
+// Função que verifica disponibilidade mais extensa
+function verificaDisponibilidade(livro) {
+    if (livro.quantidade > 0) {
+        return 'livro__imagens'
+    }else {
+        return 'livro__imagens indisponivel'
+    }
+}
+*/

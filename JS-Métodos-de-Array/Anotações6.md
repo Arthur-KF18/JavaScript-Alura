@@ -427,3 +427,43 @@ var total = values.reduce((a, b) => a + b, 0);
 
 - Nossa função ficaará desta forma, e basta mudar o `a, b` para definir de irá do maior pro menor ou vice-versa
 
+#### Livros Indisponíveis
+
+- Agora que conseguimos deixar nosso código correto e funcional, precisamos adequar os detalhes faltante. Se nós olharmos novamente nosso Json, veremos que __não utilizamos a informação sobre a quantidade de livros__
+- Essa quantidade __Vai definir se temos ou não o livro em estoque__
+- Nós já temos uma classe no css responsável por definir o estilo de um livro quando ele está indisponível. Porém, precisamos apenas colocá-la __quando o livro em questão não estar disponível__
+- no `inserirLivro.js` iremos inserir uma nova varíavel na função `exibeLivro` chamada de `disponibilidade` e que irá ter como parâmetro o `livro` 
+- Iremos criar essa função e nela iremos passar uma condição. __Se a quantidade do livro for maior que 0, queremos que ela aplique a classe `livro__imagens`, caso contrário, ela passará `livro__imagens indisponivel`__:
+
+```javascript
+
+// Inserimos a função na qual verifica se o livro está disponível
+    function exibeLivro(listaDeLivros){
+        // ...
+        listaDeLivros.forEach(livro => {
+            let disponibilidade = verificaDisponibilidade(livro)
+            // ...
+            // Inserimos no `innerHTML` a variável `disponibilidade`
+            `<img class="${disponibilidade}" src="${livro.imagem}"
+            alt="${livro.alt}" />`
+        })
+    }
+
+
+// Função responsável por verificar se o livro existe ou não
+    function verificaDisponibilidade(livro) {
+        if (livro.quantidade > 0) {
+            return 'livro__imagens'
+        }else {
+            return 'livro__imagens indisponivel'
+        }
+    }
+```
+
+- Assim, a variável `disponibilidade` verificará se o livro está disponível ou não, e será retornado __a condição estabelecida com base na quantidade de livros__
+- Podemos refatorar nossa validação através de __um operador ternário, o `?`__
+- Então, se fizermos: `let disponibilidade = livro.quantidade > 0 ?`. A pergunta que é feita é __livro.quantidade é maior do que 0? se for retorna `livro__imagens`, se não for, retorna `livro__imagens indisponivel`
+- `let disponibilidade = livro.quantidade > 0 ? 'livro__imagens' : 'livro__imagens indisponivel'`
+- Com uma única linha, conseguimos abreviar toda função que fizemos anteriormente. O que fizemos foi __criar a variável `disponibilidade` e guardamos nela a variável `livro.quantidade`, já que este era o parâmetro que buscavámos, e ela se torna a comparação, a condição, onde `se(?)` for verdade vai devolver `livro__imagens` `se não (:)` retorna `livro__imagens indisponivel`
+- Ambas funcionam corretamente, podem ser usada de acordo com sua necessidade, e fica a seu critério
+- Agora precisamos definir o botão relacionado ao livros disponíveis
