@@ -342,4 +342,9 @@ var total = values.reduce((a, b) => a + b, 0);
 
 #### Livros filtrados na tela 
 
+- Agora que conseguimos pegar todos os livros que são selecionados no console de acordo com seu filtro, precisamos agora __exibir a seleção deles na tela__
+- Na nossa função `filtrarLivros()` iremos trocar o `console.table(livrosFiltrados)` por `exibeLivro(livrosFiltrados)`.
+- Quando vemos nossa página, __os livros existentes na tela ainda continuam aparecendo, porém,, ao selecionarmos uma das opções, teremos todos os livros e será adicionado os livros de acordo com o filtro, porém, tudo estará presente__
+- E os livros aparecem embaixo, ou seja, __ele está colocando esses elementos, conforme eu vou clicando, embaixo__. Então, nós temos todos os elementos, conforme clicamos nos botões para filtrar os novos livros, eles estão aparecendo embaixo.
+- A Forma de resolvermos isto, é indo no `inserirLivro.js` e adicionarmos dentro da função `exibeLivro`, o `insereLivro.innerHTML = ''`, ou seja, vamos pegar o elemento `insereLivro` e dizer que __dentro dele, seu conteúdo, sempre será uma String vazia, limpa. Ou seja, toda vez que clicarmos em um elemento de filtro, ele irá limpar e só mostrar o apenas os livros que estamos visualizando__
 - 
