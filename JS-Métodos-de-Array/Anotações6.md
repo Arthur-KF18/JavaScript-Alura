@@ -347,4 +347,61 @@ var total = values.reduce((a, b) => a + b, 0);
 - Quando vemos nossa página, __os livros existentes na tela ainda continuam aparecendo, porém,, ao selecionarmos uma das opções, teremos todos os livros e será adicionado os livros de acordo com o filtro, porém, tudo estará presente__
 - E os livros aparecem embaixo, ou seja, __ele está colocando esses elementos, conforme eu vou clicando, embaixo__. Então, nós temos todos os elementos, conforme clicamos nos botões para filtrar os novos livros, eles estão aparecendo embaixo.
 - A Forma de resolvermos isto, é indo no `inserirLivro.js` e adicionarmos dentro da função `exibeLivro`, o `insereLivro.innerHTML = ''`, ou seja, vamos pegar o elemento `insereLivro` e dizer que __dentro dele, seu conteúdo, sempre será uma String vazia, limpa. Ou seja, toda vez que clicarmos em um elemento de filtro, ele irá limpar e só mostrar o apenas os livros que estamos visualizando__
+
+#### Como funciona o sort
+
+- Nosso próximo desafio será __ordenar os livros baseado nos seus preços__. Quando clicamos no botão "ordenar por preço", não aparecerá __nada, pois não foi definido um conteúdo que deve ser inserido clicarmos no botão__
+- O método de array responsável pela __ordenação dos elementos é o `sort()`__
+- O método `sort()` __ordena os elemento do próprio array e retornar o array. A ordenação não é necessariamente estável, ou seja, que preserva a ordem de chave de registro iguais__. Em outras palavras, __não é uma ordenação que esperamos__
+- __O tempo de execução vai depender do quando de memória vamos usar__
+- Quando passamos a um array que seja ordenado, __conseguimos passar uma `função de comparação`, ela irá definir exatamente a ordem dos elementos.__
+- A razão pela qual ela é instável, __se deve ao fato de que o array é ordenado de acordo com a pontuação unicode de cada um dos caracteres, de acordo com a conversão de cada elemento para string. O que vai acontecer é que, quando chamarmos esta função, ela vai transformar nossos elementos em string baseado no Unicode para depois realizar a ordenação__
+- Um exemplo disto:
+
+```javascript
+    var fruta = ['cereja', 'banana', 'macas'];
+    fruta.sort();
+    // O resultado será: ['banana', 'cereja', 'macas']
+
+    var pontos = [1, 10, 2, 21];
+    pontos.sort();
+    // O resultado será: [1, 10, 2, 21]. O 10 vem antes do 2, por que 10 vem antes de 2 em ponto de código Unicode
+```
+
+- Se a ordenação vai precisar de uma função de comparação para colocar exatamente os itens em uma ordenação estável, precisaremos realizar um teste:
+
+```javascript
+    let precos = [29.98, 11, 1, 101, 110]
+    let precosOrdenados = precos.sort()
+
+    console.log(precos)
+    // Resultado: [29.98, 11, 1, 101, 110]
+    console.log(precosOrdenados)
+    // Resultado: [1, 101, 11, 110, 29.98]
+```
+
+- Para que os valores sejam ordenados corretamene, precisamos passar uma __função dentro do `precosOrdenados`, e nela vamos passar dois valores, `a, b`__
+- O valor de `a, b` será __o primeiro elemento e o segundo elemento__. E nele iremos inserir que __a ordem estável seja menor para o maior, o que ficará:__
+
+```javascript
+    let.precosOrdenados = precos.sort(function(a, b){
+        return a - b;
+    })
+
+    console.log(precosOrdenados)
+    // Resultado: [1, 11, 19.98, 101, 110]
+```
+
+- Para fazer __do maior pro menor faremos `b - a`, resultando em `[110, 101, 29.98, 11, 1]`.
+- Um detalhe importante é que, __se um elemento retorna `Undefined`, ele vai ser classificado no final da nossa matriz__
+- __Sempre que pensarmos na ordenação e precisarmos de uma ordenação estável, nós vamos precisar de uma função__
+- Podemos utilizar um `Arrow Function` também:
+
+```javascript
+    let.precosOrdenados = precos.sort((a, b) => a - b); 
+```
+
+- Se rodarmos, terá o mesmo resultado
+- o `sort` vai __classificar os elementos do array e retornar um array ordenado__. Quando __chamarmos esse `sort` com elementos que sejam undefined, esse undefined vai sempre para o final da nossa lista e eles são ordenados com base no unicode.__
+- Então devemos lembrar que, __ele transformou tudo para string, a ordenação dele não vai ser estável. E caso precisamos de uma ordenação que seja estável, aí criamos uma função para fazer essa ordenação de comparação.__
 - 
