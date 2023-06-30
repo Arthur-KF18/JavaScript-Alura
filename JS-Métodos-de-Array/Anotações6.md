@@ -320,4 +320,26 @@ var total = values.reduce((a, b) => a + b, 0);
     botoes.forEach(btn => btn.addEventListener('click', filtrarLivros));
 ```
 
-- Com isto, na nossa
+- Com isto, na nossa função `filtrarLivros()` iremos precisar que __a categoria selecionada seja de acordo com o botão__, pois se continuarmos colocando o nome da categoria, __qualquer botão que selecionarmos vai trazer o array relacionado a categoria definida__
+- Uma das formas para resolver isto, é percebermos que __no console, ao digitarmos `btn`, ele irá procurar a classe existente, e quando colocamos `bnt.value`, ele vai nos trazer o valor desta tag__
+- Sendo assim, uma das formas de conseguir pegar a categoria, __seria através do `value`__.
+
+- Então, dentro da função `filtrarLivros` iremos criar duas constantes. __Uma que irá pegar o id do botão selecionado e outra que irá selecionar o `value` deste botão:"
+
+```javascript
+    const elementoBtn = document.getElementById(this.id)
+    const categoria = elementoBtn.value 
+```
+
+- Desta forma, iremos pegar o id e guardar na constante `categoria` que deverá ser acessada através da variável `livrosFiltrados`:
+
+```javascript
+    let livrosFiltrados = livros.filter(livro => livro.categoria == categoria)
+```
+
+- Como resultado, no `console.table(livrosFiltrados)`, __quando um botão ser selecionado, sua respectiva categoria irá ser exibida como tabela__
+- Com isto, faltará apenas que seja exibida na tela __apenas os livros que foram selecionados__
+
+#### Livros filtrados na tela 
+
+- 
