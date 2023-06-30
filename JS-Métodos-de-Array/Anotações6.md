@@ -467,3 +467,17 @@ var total = values.reduce((a, b) => a + b, 0);
 - Com uma única linha, conseguimos abreviar toda função que fizemos anteriormente. O que fizemos foi __criar a variável `disponibilidade` e guardamos nela a variável `livro.quantidade`, já que este era o parâmetro que buscavámos, e ela se torna a comparação, a condição, onde `se(?)` for verdade vai devolver `livro__imagens` `se não (:)` retorna `livro__imagens indisponivel`
 - Ambas funcionam corretamente, podem ser usada de acordo com sua necessidade, e fica a seu critério
 - Agora precisamos definir o botão relacionado ao livros disponíveis
+
+#### Filtrando livros disponíveis
+
+- No nosso projeto, todos os botões estão quase funcionando, porém, precisamos agora que __o botão de livros disponíveis funcione corretamente__
+- Iremos no nosso `filter.js` e precisaremos criar uma lógica para a variável `livrosFiltrados`
+- Primeira coisa, temos um método para filtrar os nossos livros. Dentro desse método, o que é que fazemos? __Verificamos, pegamos as configurações do botão e pegamos o valor que esse botão tem.__ Então vamos ver qual é o valor que temos no `index.html`, do botão, para fazer o filtro.
+- o `value` que está presente se chama `disponivel`. Podemos então __na nossa variável que pega os livros filtrados, colocar que `categoria == 'disponivel'`, pegando eles e dizendo que se a quantidade for maior que 0, apareça apenas eles__:
+
+```javascript
+ let livrosFiltrados = categoria == 'disponivel' ? livros.filter(livro => livro.quantidade > 0) : livros.filter(livro => livro.categoria == categoria)
+```
+
+- __Queremos fazer um filtro de apenas os livros que tenham a quantidade maior do que zero. Senão, queremos fazer o filtro normal da categoria. Se a `categoria` for `== 'disponivel' ?`, queremos pegar o livro e fazer um `filter` deles. Para cada livro, queremos que ele tenha uma `quantidade > 0`.__
+- __Se a categoria for disponível, vamos pegar o livro e fazer um filtro com base na quantidade maior do que zero. Senão, eu vou fazer um filtro com base na categoria que já tínhamos.__
