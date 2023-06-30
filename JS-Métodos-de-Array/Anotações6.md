@@ -481,3 +481,50 @@ var total = values.reduce((a, b) => a + b, 0);
 
 - __Queremos fazer um filtro de apenas os livros que tenham a quantidade maior do que zero. Senão, queremos fazer o filtro normal da categoria. Se a `categoria` for `== 'disponivel' ?`, queremos pegar o livro e fazer um `filter` deles. Para cada livro, queremos que ele tenha uma `quantidade > 0`.__
 - __Se a categoria for disponível, vamos pegar o livro e fazer um filtro com base na quantidade maior do que zero. Senão, eu vou fazer um filtro com base na categoria que já tínhamos.__
+
+#### Manipulando HTML com JS
+
+- No final da nossa página, temos uma seção que mostra __o preço de todos os livros disponíveis na loja__
+- Nosso desafio é __selecionar apenas os livros disponíveis e adicionar esta informação de seu preço total__
+
+- No `inserirLivro.js` iremos criar uma constante `elementoValorTotal` na qual vai __selecionar o id da nossa tag responsável por conter todo o valor total de livros exibidos na página__
+- `const elementoValorTotal = document.getElementById('valor_total_livros_disponiveis');`
+- O primeiro a se fazer é __limpar este elemento na nossa função `exibeLivro`, sempre que o livro ser exibido na tela, queremos acessar o conteúdo desse elemento e não exibir nada__
+- `elementoValorTotal.innerHTML = ''`
+
+- Iremos ir até o `filter.js` e faremos o seguinte. __Se a categoria deste livro for disponível, iremos exibir os livros.__
+- Podemos fazer uma condição, uma pergunta se a __categoria for ou não disponível__:
+
+```javascript
+// Dentro da `filtrarLivros`
+    if (categoria == 'disponivel') {
+        exibeValorTotalTela()
+    }
+
+// Função criada para exibir o valor total na tela
+    function exibeValorTotalTela() {
+        elementoValorTotal.innerHTML = `
+        <div class="livros__disponiveis">
+            <p>Todos os livros disponíveis por R$ <span id="valor">299,00</span></p>
+        </div>  
+        `
+    }
+```
+
+- Com isto, ao acessarmos a aba de "livros disponíveis", iremos ter o banner contendo o valor dentro
+- Precisamos pegar o `<span>` e atribuir a ele __a soma de todos os valores dos livros que aparecem na tela__
+- Antes de fazermos isto, iremos selecionar `livros.filter(livro => livro.categoria == categoria);` e colocaremos a opção __adicionar variável de escopo global, criando assim:__
+
+```javascript
+// Dentro do `filtrarLivros`:
+ let livrosFiltrados = categoria == 'disponivel' ? filtrarPorDisponibilidade() : filtrarPorCategoria(categoria)
+
+// livros por categoria
+    function filtrarPorCategoria(categoria) {
+        return livros.filter(livro => livro.categoria == categoria);
+    }
+// Livros por disponibilidade
+    function filtrarPorDisponibilidade() {
+        return livros.filter(livro => livro.quantidade > 0);
+    }
+```
