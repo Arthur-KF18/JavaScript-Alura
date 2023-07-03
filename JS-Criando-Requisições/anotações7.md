@@ -30,4 +30,6 @@
 
 #### Json-server
 
+- Agora com o Node.js, iremos criar um servidor local.
+- __Json significa `JavaScript Object Notation`, onde ele é um tipo de formato de texto que ajuda a transferir dados de um sistema para o outro.__
 - 
