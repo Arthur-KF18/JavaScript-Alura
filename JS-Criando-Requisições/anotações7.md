@@ -37,3 +37,48 @@
   - `npm install -g json-server` : __Pedimos ao npm para que instale o json-server para podermos utilizá-lo no nosso projeto__
 - A instalação é feita e então usamos o comando `json-server --watch db.json`, assim ele 
 - Usamos o comando `json-server`, que é o próprio nome do pacote, e o `--watch`, que vai fazer ele ficar olhando se tem alguma alteração.
+
+#### Requisição GET
+
+- Iremos criar uma pasta contendo os arquivos javascript responsáveis __por realizar a comunicação do servidor__
+- Dentro da pasta temos a `conectaAPI.js`, que vai ter as __funções principais do projeto__
+- Iremos criar uma função __assíncrona chamada `listaVideos`, na qual, dentro dela teremos uma constante responsável por conter a conexão com a API.__ O nome da constante será __`conexao` e utilizaremos o `await` para o `fetch` armazenado que contém o link para nossa API que lista os vídeos que vão ser utilizados no website__
+
+```javascript
+  async function listaVideos() {
+      const conexao = await fetch('http://localhost:3000/videos');
+      console.log(conexao)
+  }
+
+  listaVideos();
+```
+
+- Temos que utilizar os métodos assíncronos pois __a função `listaVideos` deve esperar a resposta do `fetch` para ser executada__ 
+- __O `fetch` ele é um método assíncrono, que ele tem como o único parâmetro obrigatório dele a URL da Api, e quando pedimos ele o `fetch` para API ele vai retornar uma promessa.__ 
+- E é por isso que ele é um método assíncrono, __porque ele não está retornando já o resultado, ele está retornando uma promessa, e as promessas funcionam prometendo que algo vai acontecer alguma hora, e também essa promessa pode ser resolvida, ou ela pode ser rejeitada.__
+- Quando for rejeitada, __podemos inserir páginas de erro e afins, o que ajuda em definir os problemas existentes__
+- Quando nós __não coloca mais nenhum parâmetro, já que o único obrigatório é a URL, estamos fazendo uma requisição GET__
+  - __Uma requisição GET, estamos solicitando para a API retorne vários dados para nós, nào queremos fazer nada com e;a, só queremos receber aqueles valores__
+  - Como por exemplo uma __lista de produtos, usuários e afins, estamos fazendo solicitações GET__
+- __Assimilando o conhecimento sobre assincronicidade, e assimilando o conhecimento do `fetch` que retorna uma `Promise`. Nós vamos conseguir o acesso dessa promessa resolvida ou rejeitada, mandando aguardar isso ser resolvido. Por isso que botamos esse `await` antes do `fetch`.__
+- __Um pequeno detalhe. Quando usado Vite, pode existir um conflito, por isto, será realizado todo o curso, porém, o live server será quem usaremos subir o website__
+- Quando verificamos o nosso GET no console do navegador, iremos ver uma resposta. Essa resposta estará da seguinte forma:
+
+```javascript
+  Response {type: 'cors', url: 'http://localhost:3000/videos', redirected: false, status: 200, ok: true, …}
+```
+
+- Isso indica que __a resposta aguardada ocorreu,não retornando uma promessa, já que tinhámos esperado a promessa ser resolvida. Ele resolveu e trouxe a resposta para nós.__
+  - Porém, os valores dentro do json não foram acessados, e para isso, __iremos vamos na `conectaAPI.js`, depois da `conexao` iremos declarar outra função constante, onde chamaremos de `conexaoConvertida`, com um `await conexao.json()`, que irá transformar os dados recebidos em Json e iremos imprimí-lo no `console.log(conexaoConvertida)`__
+  - Ao reabrirmos o navegador, iremos ver que tivemos como resultado __um array de vários objetos, 12 itens nos quais trazem os dados dos vídeos que utilizaremos__
+  - O método `json` transforma __todos os dados em formato de bytes e tranforma em um objeto no qual podemos acessar estes valores.__
+  - Agora, como poderemos acessar nossa requisição em outros lugares que acabamos de fazer? vamos importar este valor `conexaoConvertida`
+
+  ```javascript
+    return conexaoConvertida
+  ```
+
+  - __Nossa importação ocorre através do retorno da nossa função `conexaoConvertida`, onde há uma lista na qual está com todos os objetos do `db.json`. Quando chamar essa função ele vai retornar aquela lista cheia de objetos para onde for chamada__
+  - Para nós conseguirmos importar em outro arquivo, __vamos utilizar o método `export` para uma constante `conectaAPI` na qual vai receber a função `listaVideos`__
+    - Ele irá exportar o que estivermos pedindo, no caso, __ele vai exportar uma variável chamada `conectaAPI` que vai receber um objeto cheio de funções. Nós conseguimos passar tudo ali dentro e usar só o que queremos__
+  
