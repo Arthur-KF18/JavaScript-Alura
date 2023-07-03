@@ -32,4 +32,8 @@
 
 - Agora com o Node.js, iremos criar um servidor local.
 - __Json significa `JavaScript Object Notation`, onde ele é um tipo de formato de texto que ajuda a transferir dados de um sistema para o outro.__
-- 
+- Iremos utilizar os comandos para instalação do Json-server:
+  - `npm init` : inicializou o node package manager (npm) dentro do projeto. O npm __é um repositório de projetos OpenSource, além de ser uma ferramenta de linha de comando que permite a instalação de pacotes e bibliotecas__
+  - `npm install -g json-server` : __Pedimos ao npm para que instale o json-server para podermos utilizá-lo no nosso projeto__
+- A instalação é feita e então usamos o comando `json-server --watch db.json`, assim ele 
+- Usamos o comando `json-server`, que é o próprio nome do pacote, e o `--watch`, que vai fazer ele ficar olhando se tem alguma alteração.

@@ -1,14 +1,14 @@
 {
-  "name": "js-criando-requisi-es",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "name": "js-criando-requisicoes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "devDependencies": {
-    "vite": "^4.3.9"
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "json-server": "^0.17.3"
   }
 }
