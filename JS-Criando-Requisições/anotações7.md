@@ -82,3 +82,57 @@
   - Para nós conseguirmos importar em outro arquivo, __vamos utilizar o método `export` para uma constante `conectaAPI` na qual vai receber a função `listaVideos`__
     - Ele irá exportar o que estivermos pedindo, no caso, __ele vai exportar uma variável chamada `conectaAPI` que vai receber um objeto cheio de funções. Nós conseguimos passar tudo ali dentro e usar só o que queremos__
   
+#### Manipulando o DOM
+
+- Já fizemos a conexão com a API e que ela irá retornar os dados para nós, além de utilizar o `export` para utilizá-la em outros arquivos
+- Para que estes dados apareçam na tela, __devemos criar um novo arquivo javaScript responsável por realizar essa função__
+- Criando o `mostraVideos.js`, iremos importá-lo no HTML, porém da seguinte forma:
+  - `<script src="./js/mostrarVideos.js" type="module"></script>`
+  - Quando trabalhamos com __`import`, `export` para poder usar trechos de código em outro arquivo, estamos trabalhando com o modularização, então precisamos declarar que isso está acontecendo, e para fazer isso é só botar um `type"module"`.__
+- Como podemos selecionar o elemento da lista, já __que queremos a lista dinâmica?__
+- Utilizando os __`data-attributes` iremos realizar a organização da lista de forma dinâmica e que irá aparecer na nossa tela__
+- No `mostrarVideos.js`, iremos fazer da seguinte forma:
+  - Criaremos uma constante chamada __`lista` que irá receber o `data-lista` que foi inserido na tag `<ul>` que possui a lista de vídeos__
+  - Com ela, iremos individualizar os elementos de forma a __manipular os elementos dentro dele e forma única, apenas para aquele elemento__
+  - `const lista = document.querySelector("[data-lista]")`
+  - utilizamos o `...-lista` para deixar __bem específico sobre o que estamos tratando__
+- Tendo isso, temos que construir os `<li>` que temos de elementos dentro da lista, e para isso utilizaremos o `.createElement("li")`
+  
+  ```javascript
+    function constroiCard() {
+    const video = document.createElement("li");
+    video.className = "videos__item";
+  }
+  ```
+
+- Iremos criar uma função `constroiCard` na qual __irá ser responsável pro criar esse card que contém os vídeos.__
+  - Dentro dela, iremos criar uma __Variável constante chamada `video`, onde irá criar um elemento `<li>` e dentro dele iremos passar a classe `videos__item`, que tem os estilos dos nossos itens__
+- Após a criação, __precisamos inserir os elementos presentes na `<li>`, que é nosso vídeo, através do `innerHTML`
+
+```javascript
+  video.innerHTML = `
+    <iframe width="100%" height="72%" src="https://www.youtube.com/embed/AL5Dr2tS16o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <div class="descricao-video">
+        <img src="./img/logo.png" alt="logo canal alura">
+        <h3>Qual é o melhor hardware para programação com Mario Souto</h3>
+        <p>236 mil visualizações</p>
+    </div>
+    `
+```
+
+- No fim, iremos utilizar o `return video;`, __para a criação do elemento e como ele deverá ficar, além de podermos utiliza-lo em outro lugar.__
+- Porém, ainda precisamos inserir corretamente os valores, de forma que __ele traga os dados do nosso `db.json`, já que estamos realizando uma forma dinâmica__
+- Agora precisamos __acessar os valores da lista, ou seja, a requisição que está trazendo os dados da list, iremos realizar o `import` na primeira linha, já que nosso arquivo `mostrarVideos.js` é um módulo__
+  - `import { conectaAPI } from "./conectaAPI";`
+  - agora __conseguimos usar o `conectaAPI` e as funções dentro dele
+  - E por fim, precisamos somente criar a função necessária para consumir os dados daquela API:
+
+ ```javascript
+  async function listaVideo() {
+      const lista = await conectaAPI.listaVideos();
+  }
+ ```
+
+- Iremos criar uma função assíncrona, na qual irá ter uma constante onde __ela vai esperar a `conectaAPI` retornar a lista de vídeos que temos no `db.json`__
+- Assim poderemos utilizá-la para __criar cards ou elementos para nossa página__
+- Sendo assim, __importamos a variável que estávamos exportando do `conectaAPI.js` e fizemos a questão da assincronidade para aguardar as coisas serem resolvidas, tendo acesso aos valores__
