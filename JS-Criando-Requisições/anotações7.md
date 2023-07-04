@@ -179,4 +179,29 @@
 ```
 
 - E por fim, iremos chamar a função `listaVideos()` e no navegador irá aparecer __todos os vídeos que estamos requisitando__
+- Devemos também __apagar as `<div>` estáticas na nossa página `index.html` e somente deixar a tag `<ul class="videos__container" alt="videos alura" data-lista></ul>`__, já que fizemos o __tratamento de dados do `json` , criamos as funções responsáveis pela criação das tags de forma assíncrona__
 
+#### Crescendo a lista 
+
+- Agora, precisamos __adicionar novos vídeos no AluraPlay e que eles possam aparecer na tela inicial__
+- Se nós formos adicionar novos vídeos na lista, __Será um processo muito manual__
+  - Por exemplo, queremos adicionar um novo vídeo do Dev Soutinho no nosso AluraPlay, e para isso iremos no `db.json`
+  - A partir da última linha, iremos adicionar uma nova linha da seguinte forma:
+
+ ```json
+ {
+  // valores anteriores
+ },
+    {
+      "id": 13,
+      "titulo": "O que você precisa saber pra começar com ReactJS!",
+      "descricao": "2,5 mil visualizações",
+      "url": "https://www.youtube.com/embed/00_rIYoeJtQ",
+      "imagem": "https://github.com/MonicaHillman/aluraplay-requisicoes/blob/main/img/logo.png?raw=true"
+    },
+ ```
+
+- Quando nós voltarmos a página, __o vídeo terá aparecido, com título e suas informações__'
+- Porém, quando nós vamos querer adicionar múltiplos dias e diferentes formas, __seria muito trabalhoso, e qualquer pessoa que tentasse adicionar, iria poder quebrar nosso código `json`__
+- Assim, para isso temos nosso fomulário na página `enviar-video.html` e que terá esta função.
+- Nossa missão agora é __transformar este formulário em dinâmico e adicionar novos vídeos no AluraPlay
