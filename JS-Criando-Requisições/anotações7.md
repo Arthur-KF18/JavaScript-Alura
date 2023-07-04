@@ -123,7 +123,8 @@
 - No fim, iremos utilizar o `return video;`, __para a criação do elemento e como ele deverá ficar, além de podermos utiliza-lo em outro lugar.__
 - Porém, ainda precisamos inserir corretamente os valores, de forma que __ele traga os dados do nosso `db.json`, já que estamos realizando uma forma dinâmica__
 - Agora precisamos __acessar os valores da lista, ou seja, a requisição que está trazendo os dados da list, iremos realizar o `import` na primeira linha, já que nosso arquivo `mostrarVideos.js` é um módulo__
-  - `import { conectaAPI } from "./conectaAPI";`
+  - `import { conectaAPI } from "./conectaAPI.js";`
+  - __Não devemos esquecer do .js do arquivo que estamos importando, para que ocorra corretamente__
   - agora __conseguimos usar o `conectaAPI` e as funções dentro dele
   - E por fim, precisamos somente criar a função necessária para consumir os dados daquela API:
 
@@ -136,3 +137,46 @@
 - Iremos criar uma função assíncrona, na qual irá ter uma constante onde __ela vai esperar a `conectaAPI` retornar a lista de vídeos que temos no `db.json`__
 - Assim poderemos utilizá-la para __criar cards ou elementos para nossa página__
 - Sendo assim, __importamos a variável que estávamos exportando do `conectaAPI.js` e fizemos a questão da assincronidade para aguardar as coisas serem resolvidas, tendo acesso aos valores__
+
+#### forEach()
+
+- Construímos a função `constroiCard` __que cria outros itens da lista do index.html, e também criamos a função `listaVideos` que nos retorna o valor da nossa API, do `db.json`.__ Agora precisamos __conectar essas duas funcionalidades, para cada item da lista da nossa API, um item da lista do index.html deve ser criado__.
+- Na nossa função assíncrona, mudaremos o nome da constante `lista` para __`listaAPI`__. Após isso, iremos entrar nela __e utilizaremos o `forEach()`, pois, para cada elemento da lista, precisamos que seja construído o elemento HTML__
+- Usando a `arrow function`, que __serve apenas em um único parâmetro, evitando o uso do `return`, iremos armazenar o valor vindo da `lista.appendChild()`__
+  - Isso quer dizer que nossa função ficará desta forma:
+
+ ```javascript
+  const listaAPI = await conectaAPI.listaVideos();
+  listaAPI.forEach(elemento => lista.appendChild())
+ ```
+
+- Então, nosso processo ocorrerá da seguinte forma:
+  - `appendChild()` é um método do JS, onde __adiciona um nó ao final da lista de filhos de um nó pai especificado, ou seja, os filhos da tag `<ul>`que estão sendo criados pela função `constroiCard`, que são o `<li>`__
+  - __Então a função, o método `appendChild`, ele vai anexar outros filhos para ela, outros filhos para o pai que é a lista. Os filhos que ele vai anexar, é que vai voltar lá no nosso `constroiCard`. Então ele vai construir vários `<li>` para colocar dentro do `<ul>`, que é a nossa variável lista.__
+  - Então, iremos __chamar a função `constroiCard` dentro da nosso `appendChild()` e que nela irá receber os valores do `elemento`. Estes valores são os parâmetros dos itens dos nosso `db.json`, como `titulo`, `descricao`, `url` e `imagem`__
+  - Por fim, nossa função `listaVideo` ficará: 
+
+ ```javascript
+  async function listaVideos() {
+    const listaAPI = await conectaAPI.listaVideos();
+    listaAPI.forEach(elemento => lista.appendChild(constroiCard(elemento.titulo, elemento.descricao, elemento.url, elemento.imagem)));
+  }
+ ```
+
+- Para entendermos melhor: __Para cada item da lista da API, criamos um card, que seria uma `<li>`, que foi anexada dentro da `<ul>` do index.html que estamos referênciando como `lista`__
+- Tendo isto, iremos __transformar nossas `<li>` em dinâmicas, as que inserimos na função `constroiCard()`__
+- Na função iremos __inserir os valores que devem ser retornados ao realizarmos a requisição da lista__ : `constroiCard(titulo, descricao, url, imagem)`, agora ele vai esperar receber esses valores, `título, descrição, URL e imagem` e vamos poder usar em outros lugares ali dentro, que vai ser lá dentro do `innerHTML`. e no `video.innerHTML` iremos __inserir as variáveis dentro da `template Strings`__:
+
+```javascript
+  video.innerHTML = `
+    <iframe width="100%" height="72%" src="${url}" title="${titulo}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <div class="descricao-video">
+        <img src="${imagem}" alt="logo canal alura">
+        <h3>${titulo}</h3>
+        <p>${descricao}</p>
+    </div>
+    `
+```
+
+- E por fim, iremos chamar a função `listaVideos()` e no navegador irá aparecer __todos os vídeos que estamos requisitando__
+
