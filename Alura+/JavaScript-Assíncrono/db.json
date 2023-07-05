@@ -1,0 +1,24 @@
+{
+    "clientes": [
+        {
+            "id": 1,
+            "nome": "Carlos",
+            "cpf": "12345678900"
+        },
+        {
+            "id": 2,
+            "nome": "Thiago",
+            "cpf": "12345678900"
+        },
+        {
+            "id": 3,
+            "nome": "Manuel",
+            "cpf": "12345678900"
+        },
+        {
+            "id": 4,
+            "nome": "Alessandra",
+            "cpf": "12345678900"
+        }
+    ]
+}

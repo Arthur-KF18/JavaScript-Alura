@@ -204,4 +204,5 @@
 - Quando nós voltarmos a página, __o vídeo terá aparecido, com título e suas informações__'
 - Porém, quando nós vamos querer adicionar múltiplos dias e diferentes formas, __seria muito trabalhoso, e qualquer pessoa que tentasse adicionar, iria poder quebrar nosso código `json`__
 - Assim, para isso temos nosso fomulário na página `enviar-video.html` e que terá esta função.
-- Nossa missão agora é __transformar este formulário em dinâmico e adicionar novos vídeos no AluraPlay
+- Nossa missão agora é __transformar este formulário em dinâmico e adicionar novos vídeos no AluraPlay__
+

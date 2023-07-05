@@ -1,0 +1,71 @@
+:root {
+    --fonte-principal: 'Open Sans', sans-serif;
+    --fonte-300: 300;
+    --fonte-400: 400;
+}
+
+* {
+    font-family: var(--fonte-principal);
+    font-weight: var(--fonte-400);
+    font-size: 1.2rem;
+}
+
+.clientes {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    gap: 1rem;
+}
+
+.secaoClientes {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    background-color: #3c86b1;
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+.secaoClientes>h1 {
+    font-size: 2rem;
+    color: #c2e6fd;
+}
+
+.cliente {
+    color: #f2f2f2;
+    font-size: 1.1rem;
+}
+
+.listaClientes {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.erro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    gap: 1rem;
+}
+
+.erro__titulo {
+    font-family: var(--fonte-principal);
+    font-weight: var(--fonte-400);
+    font-size: 2.5rem;
+    color: #3c86b1;
+}
+
+.erro__mensagem {
+    font-family: var(--fonte-principal);
+    font-weight: var(--fonte-300);
+    font-size: 1.1rem;
+}
