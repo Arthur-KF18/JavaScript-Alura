@@ -1,6 +1,7 @@
+import { conectaAPI } from "./conectaAPI.js";
 const formulario = document.querySelector("[data-formulario]")
 
-function criarVideo(evento) {
+async function criarVideo(evento) {
     evento.preventDefault();
     
     const imagem = document.querySelector("[data-imagem]").value;
@@ -8,6 +9,9 @@ function criarVideo(evento) {
     const titulo = document.querySelector("[data-titulo]").value;
     const descricao = Math.floor(Math.random() *10).toString();
 
+    await conectaAPI.criaVideo(titulo, descricao, url, imagem);
+
+    window.location.href = "../pages/envio-concluido.html";
 }
 
 formulario.addEventListener("submit", evento => criarVideo(evento));

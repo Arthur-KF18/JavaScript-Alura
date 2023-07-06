@@ -357,3 +357,26 @@ required placeholder="Insira a url da imagem" id='imagem' data-imagem/>
   - `ParseInt()`: Este método __analisa um valor passado como parâmetro como uma string e retorna o primeiro número inteiro__
     - `const descricao = parseInt(Math.random() *10);`
     - Na prática, esse método funciona assim: __Imagine que você recebeu o valor 9.326843049629467, ele irá pegar o primeiro valor inteiro, ou seja, o número 9__.
+
+#### Enviar vídeos
+
+- Nós construímos uma função que fazia a conexão com API possibilitando a inserção de novos dados. Também criamos outra função que captava os dados que o usuário digitava no formulário da AluraPlay, e agora que falta? Unir essas duas funções. Queremos captar os dados e mandar para API.
+- Primeiro iremos importar a `conectaAPI` da `conectaAPI.js`, e iremos inseri-la na nossa função `criaVideo`.
+  - `conectaAPI.criaVideo(titulo, descricao, url, imagem);`. Nisto, __importamos a constante `conectaAPI`, que nos trouxe tudo aquilo que queríamos, tanto a função `criaVideo` quanto a `listaVideos`.__
+  - Essas funções __que estão conectadas com nossa API são assíncronas, e são declaradas pelo async/await, nos retornando uma Promise. Então nós não conseguiríamos acesso aqui até a promise nesse ser resolvida, e o que temos que fazer então? Transformar essa função, `criaVideo` em assíncrona também__
+
+ ```javascript
+  async function criarVideo(evento){
+    // ...
+    await conectaAPI.criarVideo(titulo, descricao, url, imagem);
+  }
+ ```
+
+- É importante também avisar __que a ordem dentro do criarVideo faz sentido, porque se formos no conectaApi é nessa ordem que ele está esperando receber, é título, descrição, URL e imagem.__ Se colocassemos em outra ordem eu poderiamos sem querer mandar a imagem para o campo que ele está esperando uma URL, isso ia dar vários problemas. __Então tem que prestar atenção quando estamos enviando algo para uma função, que também está esperando receber algo.__
+- Precisamos que ele espere pois __pode ser que venha a resposta, um erro que queremos passar na tela e temos que passar para o usuário este status__
+- Agora, precisamos passar o parâmetro de que __quando o vídeo for enviado, ele retorne uma página na qual irá ser a confirmação de entrega do vídeo__
+  - `window.location.href = "../pages/envio-concluido.html";`: graças a este comando, ele irá __nos enviar para uma outra página, esta que irá trazer a resposta se ocorreu ou não a entrega do vídeo__
+  - o método `window` __se refere a janela que estamos, e o atributo `location` só será executado se forem recebidos os dados da `criaVideo`__
+- Por fim, ao adicionarmos um vídeo, aparecerá na tela o vídeo que escolhemos.
+- Agora precisamos adicionar a funcionalidade de pesquisa para nosso website
+
