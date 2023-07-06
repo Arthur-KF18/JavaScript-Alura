@@ -286,7 +286,7 @@
 ```
 
 - __Depois de ter as "manhas do assíncrono", reutilizamos em vários locais__
-- Por fim, importaremos a função `criaVideo`: 
+- Por fim, importaremos a função `criaVideo`:
 
 ```javascript
   export const conectaAPI = {
@@ -296,3 +296,54 @@
 ```
 
 - __Dessa maneira, criamos toda a estrutura de uma função assíncrona, que faz uma conexão com a API e cria uma requisição POST, que é a de cadastrar novas coisas lá na nossa API, no nosso `db.json`.__
+
+#### Captando Eventos
+
+- Agora que aprendemos sobre POST, precisamos __conectar nossa requisiçao POST em nosso formulário de envio de vídeos__
+- No `enviar-video.html` iremos inserir nas tags os seguintes data attributes:
+
+```htm
+<form class="container__formulario" data-formulario>
+
+<input name="url" class="campo__escrita" 
+required placeholder="Por exemplo: https://www.youtube.com/embed/FAY1K2aUg5g" id='url' data-url />
+
+<input name="titulo" class="campo__escrita" 
+required placeholder="Neste campo, dê o nome do vídeo" id='titulo' data-titulo/>
+
+<input name="imagem" class="campo__escrita" 
+required placeholder="Insira a url da imagem" id='imagem' data-imagem/>
+```
+
+- Assim, iremos identificar através dos data attributes nossas classes que iremos aplicar dinamismo
+- Agora com isto, iremos criar um novo arquivo denominado `criarVideo.js` que será onde iremos adicionar as __funções denominadas para criação dos vídeos, ou seja, sua adição a nossa página__
+  - `<script src="../js/criarVideo.js" type="module"></script>`
+- Após criarmos nosso `criarVideo.js`, iremos criar uma constante na qual __irá armazenar o campo de formulário, o `data-formulario`. Iremos fazer isto para todos os elementos que atribuimos os data-attributes__
+
+```javascript
+  const imagem = document.querySelector("[data-imagem]").value;
+  const url = document.querySelector("[data-url]").value;
+  const titulo = document.querySelector("[data-titulo]").value;
+```
+
+- __Criamos as variáveis com um seletor de elemento, que foi o data attributes, e como queremos o valor do elemento, utilizamos o `.value`__
+- Porém, como __não vamos utilizar contadores, iremos criar uma constante, a descrição do nosso vídeo era o número de visualizações. por não ser do controle do usuário, e como não temos um contador precisamos definir um número.__
+
+```js
+   const descricao = Math.floor(Math.random() *10).toString()
+```
+
+- O que ocorre é que, __`Math.floor` é um método matemático onde retorna o maior número inteiro menor ou igual ao seu argumento numérico, sendo ele os parâmetros `Math.random * 10`, onde gera um número aleatório entre 0 e 1, e multiplica por 10, onde transforma em um número inteiro. E que no final, o `toString()` transforma em string para podermos passar na nossa requisição__
+- Agora, __iremos selecionar nosso formulário e adicionar um evento de clique, onde ao realizarmos a entrega dos dados, ele irá associar com os parâmetros escritos dentro do body no `conectaAPI.js`__
+- `formulario.addEventListener("submit", evento => criarVideo(evento));`
+- Iremos enviar para a função __`criarVideo(evento)` o `evento`, sendo assim, ele irá escutar e irá enviar para a função os dados recebidos através do `submit`. também iremos evitar com que a página recarregue automaticamente ao realizar o `"submit"`__
+
+```js
+  function criarVideo(evento) {
+    evento.preventDefault();
+    // ...
+  }
+```
+
+- Agora que capta os valores, precisamos enviar para a função POST e realizar os movimentos corretos para que toda vez que enviar um vídeo, seja atualizado tudo corretamente
+
