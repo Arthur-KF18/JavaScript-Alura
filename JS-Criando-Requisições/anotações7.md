@@ -347,3 +347,13 @@ required placeholder="Insira a url da imagem" id='imagem' data-imagem/>
 
 - Agora que capta os valores, precisamos enviar para a função POST e realizar os movimentos corretos para que toda vez que enviar um vídeo, seja atualizado tudo corretamente
 
+#### Para saber mais: Números aleatórios
+
+- Em outros sites de compartilhamento de vídeos o número de visualizações para cada vídeo é gerado a partir do número de cliques dos usuários nele. Como o AluraPlay não possui esse sistema implementado, tentamos simular esse valor através da geração de números aleatórios.
+- Para isso, utilizamos algumas das funções nativas do JS:
+  - `Math.random()`: Usada para __retornar um número pseudoaleatório de ponto flutuante entre 0 e 1__. Para __conseguirmos um número maior, precisamos multiplicar esse retorno pelo intervalo desejado.__ Podendo ser qualquer número, entre 1 e 5, 1 e 10 ou até mesmo 1 e 100. __A forma como fazemos isso é graças ao `Math.random()*10` que irá criar um número entre dois valores.__
+    - Geralmente o retorno é um __número real gigantesco, e temos que tranformá-lo em inteiro__
+  - `Math.floor()`: Transforma o resultado da operação `Math.random` em um __número inteiro. Ela é usada para arredondar o número passado como parâmetro para seu inteiro mais próximo, levando como base o valor menor.__
+  - `ParseInt()`: Este método __analisa um valor passado como parâmetro como uma string e retorna o primeiro número inteiro__
+    - `const descricao = parseInt(Math.random() *10);`
+    - Na prática, esse método funciona assim: __Imagine que você recebeu o valor 9.326843049629467, ele irá pegar o primeiro valor inteiro, ou seja, o número 9__.
