@@ -35,7 +35,7 @@
 - Iremos utilizar os comandos para instalação do Json-server:
   - `npm init` : inicializou o node package manager (npm) dentro do projeto. O npm __é um repositório de projetos OpenSource, além de ser uma ferramenta de linha de comando que permite a instalação de pacotes e bibliotecas__
   - `npm install -g json-server` : __Pedimos ao npm para que instale o json-server para podermos utilizá-lo no nosso projeto__
-- A instalação é feita e então usamos o comando `json-server --watch db.json`, assim ele 
+- A instalação é feita e então usamos o comando `json-server --watch db.json`, assim ele
 - Usamos o comando `json-server`, que é o próprio nome do pacote, e o `--watch`, que vai fazer ele ficar olhando se tem alguma alteração.
 
 #### Requisição GET
@@ -53,8 +53,8 @@
   listaVideos();
 ```
 
-- Temos que utilizar os métodos assíncronos pois __a função `listaVideos` deve esperar a resposta do `fetch` para ser executada__ 
-- __O `fetch` ele é um método assíncrono, que ele tem como o único parâmetro obrigatório dele a URL da Api, e quando pedimos ele o `fetch` para API ele vai retornar uma promessa.__ 
+- Temos que utilizar os métodos assíncronos pois __a função `listaVideos` deve esperar a resposta do `fetch` para ser executada__
+- __O `fetch` ele é um método assíncrono, que ele tem como o único parâmetro obrigatório dele a URL da Api, e quando pedimos ele o `fetch` para API ele vai retornar uma promessa.__
 - E é por isso que ele é um método assíncrono, __porque ele não está retornando já o resultado, ele está retornando uma promessa, e as promessas funcionam prometendo que algo vai acontecer alguma hora, e também essa promessa pode ser resolvida, ou ela pode ser rejeitada.__
 - Quando for rejeitada, __podemos inserir páginas de erro e afins, o que ajuda em definir os problemas existentes__
 - Quando nós __não coloca mais nenhum parâmetro, já que o único obrigatório é a URL, estamos fazendo uma requisição GET__
@@ -154,7 +154,7 @@
   - `appendChild()` é um método do JS, onde __adiciona um nó ao final da lista de filhos de um nó pai especificado, ou seja, os filhos da tag `<ul>`que estão sendo criados pela função `constroiCard`, que são o `<li>`__
   - __Então a função, o método `appendChild`, ele vai anexar outros filhos para ela, outros filhos para o pai que é a lista. Os filhos que ele vai anexar, é que vai voltar lá no nosso `constroiCard`. Então ele vai construir vários `<li>` para colocar dentro do `<ul>`, que é a nossa variável lista.__
   - Então, iremos __chamar a função `constroiCard` dentro da nosso `appendChild()` e que nela irá receber os valores do `elemento`. Estes valores são os parâmetros dos itens dos nosso `db.json`, como `titulo`, `descricao`, `url` e `imagem`__
-  - Por fim, nossa função `listaVideo` ficará: 
+  - Por fim, nossa função `listaVideo` ficará:
 
  ```javascript
   async function listaVideos() {
@@ -181,7 +181,7 @@
 - E por fim, iremos chamar a função `listaVideos()` e no navegador irá aparecer __todos os vídeos que estamos requisitando__
 - Devemos também __apagar as `<div>` estáticas na nossa página `index.html` e somente deixar a tag `<ul class="videos__container" alt="videos alura" data-lista></ul>`__, já que fizemos o __tratamento de dados do `json` , criamos as funções responsáveis pela criação das tags de forma assíncrona__
 
-#### Crescendo a lista 
+#### Crescendo a lista
 
 - Agora, precisamos __adicionar novos vídeos no AluraPlay e que eles possam aparecer na tela inicial__
 - Se nós formos adicionar novos vídeos na lista, __Será um processo muito manual__
@@ -206,3 +206,93 @@
 - Assim, para isso temos nosso fomulário na página `enviar-video.html` e que terá esta função.
 - Nossa missão agora é __transformar este formulário em dinâmico e adicionar novos vídeos no AluraPlay__
 
+#### Requisição POST
+
+- Vimos que para poder adicionar um novo vídeo no Alura Play é necessário adicionar manualmente no .json. Como podemos adicionar de uma forma dinâmica e constante?
+
+- Primeiro, no nosso `conectaAPI.js` iremos adicionar uma __nova função assíncrona__
+- Esta função será chamada de `criaVideo()` e __dentro dela iremos adicionar o método POST, já que por padrão o `fetch` realiza requisições do tipo GET pois o único parâmetro é a url e quando não especificado, sempre será este padrão__
+- Assim, irá ficar da seguinte forma dentro de nossa função:
+
+```javascript
+  const conexao = await fetch("http://localhost:3000/videos"), {
+    //método a ser especificado
+  }
+```
+
+- Para que seja possível __declarar outro tipo de requisição, iremos adiciona-las entre chaves e qual será o tipo de requisição, que é um método__
+
+```javascript
+  const conexao = await fetch("http://localhost:3000/videos"), {
+    method: "POST",
+    // inserção de ações para o http:
+    headers: {
+      "Content-type" : "application/json"
+    }
+  }
+```
+
+- O `headers` __é uma interface da API do `fetch`, na qual permite várias ações na requsição do HTTP e a resposta destes `headers`. Essas ações incluem recuperar, definir, adicionar e remover cabeçalhos da lista de cabeçalhos da solicitação.__
+- O objeto do __`headers` tem uma lista de cabeçalho associada, na qual inicialmente é vazia e consiste em 0, ou valores e nomes pares__. O `append()` é um método onde também podemos adicionar cabeçalhos como `myHeaders.append("Content-Type", "text/xml");`.
+-__Em todos os métodos dessa interface, os nomes de cabeçalho são correspondidos por uma sequência de bytes que não diferencia maiúsculas de minúsculas.__
+- __Um objeto `headers` também tem um guard associado, que assume um valor de `immutable, request, request-no-cors, response ou none`__
+- Iremos inserir outra propriedade chamada `body`. A propriedade `body read-only` da interface `Response` é um `ReadableStream` no conteúdo do corpo
+  - A interface `ReadableStream` da API Streams representa __um fluxo legível de dados de bytes. A API Fetch oferece uma instância concreta de um `ReadableStream` por meio da propriedade `body` de um objeto `Response`.__
+- Ou seja, tudo que for escrito dentro dela, irá afetar o documento no qual nós estamos nos comunicando através do `fetch` e o `content-type` serve para especificar __qual o tipo de arquivo que está sendo enviado ou recebido. Quando nós estamos enviando ou recebendo um arquivo json, especificamos com `application/json`__
+- Após isso, iremos inserir o `body`, onde iremos enviar __os dados que queremos cadastrar nessa requisição__:
+
+```javascript
+  headers : {
+      "Content-type" : "application/json"
+  },
+  body : JSON.stringify({
+      titulo: titulo,
+      descricao: descricao,
+      url: url,
+      imagem: imagem
+  })
+```
+
+- Estamos dizendo dentro desta propriedade, que __transforme em strings as variáveis `titulo`, `descricao`, `url` e `imagem` que estão associadas com os parâmetros existentes no `db.json`. O `body` é o corpo da requisição e quando colocamos estes parâmentro dentro dele, estamos enviando um objeto de variáveis e valores. E para uma requisição, precisamos enviar uma string, dessa forama é possível enviar a requisição POST__
+  - `parâmetro : variável`, e que deve ser chamado na nossa função `criaVideo`:
+
+```javascript
+  async function criaVideo(titulo, descricao, url, imagem) {
+    const conexao = await fetch("http://localhost:3000/videos", {
+        method: "POST",
+        headers : {
+            "Content-type" : "application/json"
+        },
+        body : JSON.stringify({
+            titulo: titulo,
+            descricao: descricao,
+            url: url,
+            imagem: imagem
+        })
+    })
+}
+```
+
+- __Dessa forma, iremos enviar para a função `criaVideo` estes valores e eles serão atribuídos as propriedades do `body`__
+- Como não queremos utilizar o contador de cliques no momento, __as visualizações serão colocadas como um `template string`, ficando desta forma `${descricao} mil visualizações`__
+- __então vamos botar uma variável que vai se transformar em uma string junto com o resto da frase, não vai aparecer que foi uma variável colocada ali. Dependendo do número, 5.000 visualizações, 10.000 visualizações, vai ficar bem variável e não vai ter influência do usuário, vai ser sempre tantas mil visualizações.__
+- Como podemos retornar o resultado da conexão do usuário? Iremos simplemente criar a função __convertida da nossa conexao__
+- Iremos __criar uma variável chamada `conexaoConvertida` que irá receber a variável `conexao.json()`__.
+- __Quando fazemos as requisições, o `fetch` sendo assíncrono, ele irá retornar uma promessa e queremos esperar o resultado dela, através do `await` iremos esperar o retorno em json para podermos visualizar. E por fim, o usuário tem o retorno disso através do `return conexaoConvertida`__
+
+```javascript
+  const conexaoConvertida = await conexao.json();
+  return conexaoConvertida;
+```
+
+- __Depois de ter as "manhas do assíncrono", reutilizamos em vários locais__
+- Por fim, importaremos a função `criaVideo`: 
+
+```javascript
+  export const conectaAPI = {
+    listaVideos, criaVideo
+    // vírgula usada para sempre adicionar novas funções
+  }
+```
+
+- __Dessa maneira, criamos toda a estrutura de uma função assíncrona, que faz uma conexão com a API e cria uma requisição POST, que é a de cadastrar novas coisas lá na nossa API, no nosso `db.json`.__
