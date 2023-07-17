@@ -517,3 +517,30 @@ async function listaVideos() {
 ```
 
 - Assim, podemos indicar ao usuário qual foi o problema encontrado e assim ele irá entender o erro
+
+#### Inserção de vídeos
+
+- Temos agora de previnir os erros em relação à __inserção de vídeos__
+- No `conectaAPI.js` iremos inserir uma __condicional `if`__ e nela iremos passar o parâmetro de que, __checando se a conexão resposta estiver funcionando, o vídeo sera enviado, do contrário, existirá o erro de não ser enviado o vídeo__
+
+```js
+if (!conexao.ok) {
+        throw new Error("Não foi possível enviar o vídeo!")
+}
+```
+
+- O operador `!` está __negando se a conexão ocorrer, ou seja, se ela não acontecer, o erro irá ser lançado__
+- Agora que temos isto, iremos receber este erro em algum outro local. No `criarVideo.js` iremos utilizar o `try catch`, pois, __ele vai tentar esperar receber os dados do vídeo e que sejam criados, indo para a página que confirma o envio, se não conseguir, iremos inserir o erro que criamos__
+
+```js
+try {   
+    await conectaAPI.criaVideo(titulo, descricao, url, imagem);
+    window.location.href = "../pages/envio-concluido.html";
+} catch (error) {
+    alert(error);
+}
+```
+
+- __O `throw` está jogando o erro dentro do js, então pegamos este erro através do catch__
+- Com isto, caso exista um erro durante a criação do vídeo, ele irá exibir um alerta na tela dizendo que o vídeo não foi possível de ser enviado
+
