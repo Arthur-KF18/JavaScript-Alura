@@ -543,4 +543,22 @@ try {
 
 - __O `throw` está jogando o erro dentro do js, então pegamos este erro através do catch__
 - Com isto, caso exista um erro durante a criação do vídeo, ele irá exibir um alerta na tela dizendo que o vídeo não foi possível de ser enviado
+- __Para lidarmos com erros nas promises, geradas em funções assíncronas como requisições, podemos utilizar o `try` e o `catch` na função. Agora, a interpretação funciona como: tente/`try` fazer o que está dentro do `try`, caso não consiga ele irá pegar/`catch`, detectar e imprimir uma frase dentro do `alert()`.__
 
+#### Busca Não Encontrada
+
+- Fizemos duas validações, e agora, precisamos apenas __adicionar um erro caso pesquisemos algo que não está presente na lista__
+- Através de uma condicional, no `buscarVideo.js` iremos verificar se __O nome do item pesquisado está presente em nosso banco de dados__:
+
+```js
+if (busca.length == 0) {
+        lista.innerHTML = `
+        <div class = "mensagem">
+            <h2 class = "mensagem__titulo">O título não foi encontrado</h2>
+        </div>
+        `
+}
+```
+
+- Com isto, __ao procurarmos um título inexistente, ele irá retornar a mensagem de erro que foi esperada__
+- Fizemos __uma validação de acordo com o tamanho da lista, ou seja, se o tamanho da lista for igual a 0, não exista nada, irá retornar a mensagem dentro da nossa lista__
