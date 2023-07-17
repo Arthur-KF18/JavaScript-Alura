@@ -475,3 +475,17 @@ export default function constroiCard(titulo, descricao, url, imagem){
 - Para usarmos ela corretamente, iremos __utilizar o `data-lista` responsável por obter a lista de itens, e usaremos o `busca` que traz todos os itens filtrados. Para cada item da lista retornado iremos realizar algo, e esta ação resultará em um filho anexado dentro da lista__
 - E como tinhámos feito anteriormente para os vídeos, __para cada filho, será anexado seu titulo, descricao, url e imagem__. Para __cada um que foi criado, foi anexado ao elemento pai, o `<ul>`__
 - Como resultado, o vídeo será inserido na página, porém, __os vídeos gerais ainda vão aparecer e precisamos alterar isto__
+
+```js
+const lista = document.querySelector("[data-lista]");
+
+    busca.forEach(elemento => lista.appendChild(
+        constroiCard(elemento.titulo, elemento.descricao, elemento.url, elemento.imagem)));
+```
+
+- Com isto, os elementos irão aparecer na tela de acordo com nossa pesquisa
+
+#### Lista Filtrada
+
+- Agora que temos os elementos aparecendo na tela conforme solicitamos, __precisamos que a página fique vazia e apenas apareça os vídeos que solicitamos__
+- Antes do `forEach`
