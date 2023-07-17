@@ -488,4 +488,12 @@ const lista = document.querySelector("[data-lista]");
 #### Lista Filtrada
 
 - Agora que temos os elementos aparecendo na tela conforme solicitamos, __precisamos que a página fique vazia e apenas apareça os vídeos que solicitamos__
-- Antes do `forEach`
+- Antes do `forEach` iremos construir __um `while` para podermos remover todos os itens da lista que estavam nela antes para podermos adicionar somente os elementos pesquisados__
+
+```js
+ while (lista.firstChild) {
+        lista.removeChild(lista.firstChild);
+    }
+```
+
+- __Enquanto a nossa lista ter um primeiro filho, significa que há algo nela, e enquanto isto for verdadeiro, iremos remover este primeiro filho da lista. O resultado disto é uma lista vazia ao pesquisarmos. Isto ocorre pois o `while` é um laço de repetição e irá executar continuamente até ser falso__
