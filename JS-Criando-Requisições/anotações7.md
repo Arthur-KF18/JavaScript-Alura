@@ -497,3 +497,23 @@ const lista = document.querySelector("[data-lista]");
 ```
 
 - __Enquanto a nossa lista ter um primeiro filho, significa que há algo nela, e enquanto isto for verdadeiro, iremos remover este primeiro filho da lista. O resultado disto é uma lista vazia ao pesquisarmos. Isto ocorre pois o `while` é um laço de repetição e irá executar continuamente até ser falso__
+
+#### Carregamento da Lista
+
+- Agora, com tudo realizado, iremos adicionar __respostas aos erros na página, como não carregamento de vídeos, ou erros na postagem dos mesmos, isso auxilia na experiência do usuário em geral e facilita nossa aplicação__
+- No `mostrarVideos.js` iremos utilizar o `try` e `catch`, onde __ele irá tentar imprimir os vídeos na tela, se não puder ele irá pegar o erro e iremos inserir o que acontecerá caso não haja essa resposta__
+
+```js
+async function listaVideos() {
+    try {
+        const listaAPI = await conectaAPI.listaVideos();
+        listaAPI.forEach(elemento => lista.appendChild(constroiCard(elemento.titulo, elemento.descricao, elemento.url, elemento.imagem)));
+    } catch {
+        lista.innerHTML = `
+            <h2 class = "mensagem__titulo">Não foi possível carregar a lista de vídeos</h2>
+        `
+    }
+}
+```
+
+- Assim, podemos indicar ao usuário qual foi o problema encontrado e assim ele irá entender o erro
