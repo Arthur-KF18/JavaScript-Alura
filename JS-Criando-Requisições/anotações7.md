@@ -457,3 +457,21 @@ async function buscarVideo(evento) {
 - __Pediremos a execução da nossa busca no console por enquanto, então, ao termos uma pesquisa de qualquer título, irá nos trazer no console a resposta em formato `Array(n)` sendo `n` o valor índice do vídeo__
 - Por fim, precisamos que ele nos mostre na tela os vídeos que queremos
 
+#### Reutilizar Funções
+
+- Vendo nosso código até o momento, precisamos apenas __mostrar apenas os vídeos que foram selecionados do Array__
+- Para isso, iremos fazer da mesma forma como no `mostrarVideos.js` onde __ele imprime os vídeos nos quais estão presentes no nosso `db.json`__
+- Podemos __reutilizar as funções existentes para podermos realizar nossa função esperada__
+- Primeiro, iremos __exportar a função no `mostrarVideos.js`__:
+
+```js
+export default function constroiCard(titulo, descricao, url, imagem){
+  // ...
+}
+```
+
+- Após isso, iremos no `buscarVideo.js` e iremos realizar um import:
+  - `import constroiCard from "./mostrarVideos.js";` Agora estaremos importando exatamente a função que queríamos.
+- Para usarmos ela corretamente, iremos __utilizar o `data-lista` responsável por obter a lista de itens, e usaremos o `busca` que traz todos os itens filtrados. Para cada item da lista retornado iremos realizar algo, e esta ação resultará em um filho anexado dentro da lista__
+- E como tinhámos feito anteriormente para os vídeos, __para cada filho, será anexado seu titulo, descricao, url e imagem__. Para __cada um que foi criado, foi anexado ao elemento pai, o `<ul>`__
+- Como resultado, o vídeo será inserido na página, porém, __os vídeos gerais ainda vão aparecer e precisamos alterar isto__
