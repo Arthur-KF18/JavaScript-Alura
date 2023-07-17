@@ -410,3 +410,50 @@ async function buscaVideo(termoDeBusca) {
 #### Busca dinâmica
 
 - __Agora que fizemos a conexão e podemos realizar a busca, precisamos receber aquele valor do campo de pesquisa e enviar para a função que acabamos de criar.__
+- Iremos criar um novo arquivo chamado `buscarVideo.js` onde iremos realizar a busca dos vídeos. Importaremos ele dentro do `indexhtml` e depois iremos adicionar a importação do `conectaAPI`:
+  - `import { conectaAPI } from "./conectaAPI.js";`
+- Após isso, iremos criar uma função assíncrona que irá esperar a busca dos vídeos chamada de `buscarVideo`:
+
+```javascript
+async function buscarVideo() {
+    const busca = await conectaAPI.buscaVideo();
+}
+```
+
+- __Importamos a variável conectaAPI, que ela vinha com várias funções dentro dela, criamos uma função assíncrona, porque quando chamávamos buscarVídeo vai retornar uma promise e precisamos esperar que ela seja resolvida__
+- Agora, precisamos adicionar `data-pesquisa` ao nosso input de pesquisa. Depois, no `buscarVideo.js` iremos criar uma constante que busque este elemento:
+  - `const dadosPesquisa = document.querySelector("[data-pesquisa]")`
+  - Com este `data-pesquisa`, __já conseguimos enviar para nossa conectaAPi nossa pesquisa__
+
+```js
+async function buscarVideo() {
+    const dadosPesquisa = document.querySelector("[data-pesquisa]").value;
+    const busca = await conectaAPI.buscaVideo(dadosPesquisa);
+}
+```
+
+- __Colocamos um data attributes no input de pesquisa, selecionamos ele, e depois enviamos para o `conectaApi.buscaVideo`, para fazer aquela busca dinâmica, que ele vai enviar o valor e depois vai substituir na URL para retornar só o item que queremos__
+- Como queremos apenas o __valor do nosso input, adicionamos `.value`__
+- Após isto, voltamos ao HTML e criamos o data attributes: `<button class="pesquisar__botao" data-botao-pesquisa>`
+- Voltando ao js, iremos adicionar as seguintes linhas:
+
+```js
+const botaoDePesquisa = document.querySelector("[data-botao-pesquisa]");
+botaoDePesquisa.addEventListener("click", evento => buscarVideo(evento));
+```
+
+- O que ocorre é __pegar o data attribute, e dele adicionar um evento. O parâmetro de`evento` será atrelado ao `buscarVideo`. Ou seja, quando inserirmos o valor e realizarmos a busca, o valor será enviado a função `buscarVideo` e nela irá ser inserido dentro da template string da nossa URL__
+
+```js
+async function buscarVideo(evento) {
+    evento.preventDefault();
+    
+    const dadosPesquisa = document.querySelector("[data-pesquisa]").value;
+    const busca = await conectaAPI.buscaVideo(dadosPesquisa);
+}
+```
+
+- Agora de tudo que temos aqui, __quando clicarmos no botão de pesquisa, ele vai pegar o valor do campo de pesquisa, vai puxar na API procurando aquela função `buscaVideo`, que ela vai buscar a URL do nosso servidor local, como o termo de pesquisa. Aí ela vai retornar para mim isso filtrado__
+- __Pediremos a execução da nossa busca no console por enquanto, então, ao termos uma pesquisa de qualquer título, irá nos trazer no console a resposta em formato `Array(n)` sendo `n` o valor índice do vídeo__
+- Por fim, precisamos que ele nos mostre na tela os vídeos que queremos
+
