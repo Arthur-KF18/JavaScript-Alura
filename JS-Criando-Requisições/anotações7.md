@@ -407,3 +407,6 @@ async function buscaVideo(termoDeBusca) {
   - A diferença é a __URL, onde estamos procurando um parâmetro, de forma a usar o `termoDeBusca` como template string. Podemos enviar para essa função quando formos chamá-la, e ela vai se adaptar. No lugar do fetch vai ficar ali meu termo de busca esperado, e vai ser como a URL que eu pesquisei no meu navegador, e vai retornar o vídeo que tenha só o que eu quero.__
 - Por fim, só iremos exportá-la
 
+#### Busca dinâmica
+
+- __Agora que fizemos a conexão e podemos realizar a busca, precisamos receber aquele valor do campo de pesquisa e enviar para a função que acabamos de criar.__
