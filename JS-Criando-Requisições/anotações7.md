@@ -380,3 +380,30 @@ required placeholder="Insira a url da imagem" id='imagem' data-imagem/>
 - Por fim, ao adicionarmos um vídeo, aparecerá na tela o vídeo que escolhemos.
 - Agora precisamos adicionar a funcionalidade de pesquisa para nosso website
 
+#### Busca de vídeos
+
+- Precisamos criar um método de busca para os vídeos, caso a lista for muito extensa, e precisemos procurar um vídeo em específico
+- Por exemplo, na nossa url de vídeos, se colocarmos: `http://localhost:3000/videos?q=memes`, quando a busca for feita, iremos encontrar __apenas o título do vídeo que corresponde a esta mensagem!__
+  - Dissecando esta URL:
+  - ? : __Perguta aos "videos", que é a nossa categoria__
+  - q: __q significa Query, porém no caso funciona como uma pesquisa geral dentro do db.json__
+  - Em seguida, colocamos o `=` __que era para definir que eu queria um que fosse igual o termo que vamos colocar em seguida__, que foram os memes. 
+  - Desta maneira, __colocando `q=palavra` podemos encontrar uma palavra para buscar o elemento que queremos__
+- Dessa maneira, __conseguimos perguntar para os vídeos se existem vídeos com a palavra memes e ele me retornou o único que tinha.__
+- Ou seja, baseado nisto, precisamos adicionar ao nosso js, __a mesma forma de busca e trazer os elementos correspondentes na tela__
+- No nosso `conectaAPI.js`, iremos criar uma função assíncrona, na qual irá receber:
+
+```js
+async function buscaVideo(termoDeBusca) {
+    const conexao = await fetch(`http://localhost:3000/videos?q=${termoDeBusca}`)
+    const conexaoConvertida = conexao.json();
+
+    return conexaoConvertida;
+}
+```
+
+- O que ocorre é que, __iremos criar uma função que irá esperar a conexão com a busca que iremos realizar, guardada na variável `termoDeBusca`. Após isso, irá ser transformada em Json e depois retornada em conexaoConvertida__
+  - __declaramos como uma função assíncrona, criamos a variável conexão, que ela vai receber um fetch, depois convertemos o emaranhado de informações que traz em bytes para json, e depois vamos retornar esse valor para usar na tela__
+  - A diferença é a __URL, onde estamos procurando um parâmetro, de forma a usar o `termoDeBusca` como template string. Podemos enviar para essa função quando formos chamá-la, e ela vai se adaptar. No lugar do fetch vai ficar ali meu termo de busca esperado, e vai ser como a URL que eu pesquisei no meu navegador, e vai retornar o vídeo que tenha só o que eu quero.__
+- Por fim, só iremos exportá-la
+
