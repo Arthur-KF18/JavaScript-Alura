@@ -3,12 +3,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 2rem;
+    height: 10vh;
 }
-
-
-
-
-
 
 /* SEÇÃO VÍDEOS */
 
@@ -16,7 +13,7 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 1rem;
     z-index: 1;
     padding: 153px 20px 10px 20px;
 }

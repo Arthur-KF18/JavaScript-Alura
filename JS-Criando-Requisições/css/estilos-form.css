@@ -41,8 +41,20 @@
 }
 
 .formulario__botao {
+    display: flex;
+    justify-content: center;
+    font-size: 1.2rem;
+    width: 15vw;
     padding: 1em 3em;
     margin: 2em 0;
     border-radius: 24px;
     background-color: var(--azul-escuro);
+}
+
+.formulario__botao:hover {
+    background-color: var(--azul-medio);
+}
+
+.formulario__botao, .formulario__botao:hover{
+    transition: 1.2s;
 }
