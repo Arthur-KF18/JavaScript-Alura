@@ -119,3 +119,28 @@ console.log(senha.length) // 13 caracteres
 ```
 
 - Lembrando que `lenght` __é uma propriedade da nossa variável__
+
+#### Tipo Boolean
+
+- O tipo `boolean` ou "booleano", __que conhecemos como `true` ou `false`. Ele é um tipo único para comparação, como em estruturas condicionais(`if, else, for, while`) que são amplamente utilizadas__
+- Podemos verificar __isto com `==` ou `===`. Quando utilizamos apenas um `=`, significa atribuição de valor a uma variável. Quando comparamos, elas retornam `true` e `false`:__
+
+```javascript
+const num1 = 3;
+const num2 = 4;
+
+console.log(num1 == num2)
+// false
+console.log(num1 === num2)
+// false
+
+const num3 = 2
+const num4 = 2
+
+console.log(num3 === num4)
+// true
+```
+
+- __Implementamos o booleano pois comparamos eles entre pedaços de código, como por exemplo, verificar se o usuário está logado ou não e trazer uma página exibindo isto. Esta comparação é aplicada em um sistema de senha por exemplo.__
+  - __Se a senha digitada for exatamente igual à cadastrada no sistema, o usuário pode acessar sua conta.__
+- Levamos em conta, que __`const` é uma variável constante, imutável. Já `let` permite a reatribuição de valores, como um sistema de contas ou input de dados__
