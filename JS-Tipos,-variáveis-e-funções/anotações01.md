@@ -48,3 +48,74 @@ function ganhoHora(salario, horasTrabalhadas) {
 console.log(ganhoHora(1200, 156))
 // R$ 7,69
 ```
+
+#### Tipo String
+
+- Tipos `string` são tipos textos, e __utilizamos ela em tudo que não for booleano e número. Podemos guardar caracteres do alfabeto ou qualquer palavra que temos__
+
+```javascript
+const stringDuplas = "Texto em aspas duplas"
+const stringSimples = 'Texto em aspas simples'
+```
+
+- __Utilizamos as strings para guardar dados e valores, como senhas por exemplo. Para o JS, ele precisa da `string` sendo especificada, já que são uma cadeia de caracteres, que podem ser manipulados__
+- Uma diferença entre __aspas simples e duplas, é que simples são uma cadeia de caracteres, e duplas, também são, mas podem ser diferenciadas pelo JS__
+
+```javascript
+const minhaSenha = "senha123"
+console.log(minhaSenha)
+// senha123
+const fala = 'A fala foi "Horrível" segundo especialistas'
+console.log(fala)
+// A fala foi "Horrível" segundo especialistas
+const falaInversa = "O valor era 'alto demais' segundo ele"
+console.log(falaInversa)
+// O valor era 'alto demais' segundo ele
+```
+
+- Além disto, __a terceira forma de se escrever strings são as `template String`, onde são strings com variáveis: `let diga = ${fala}`__
+- Sabemos dos operadores matemáticos, porém em strings podemos __concatenar__. Concatenar é __juntar duas variáveis do tipo string entre si, ou um número com string. Elas irão se juntar uma ao lado da outra:__
+
+```javascript
+let seuNome = 'Arthur'
+const diga = "Seu nome é: "
+
+// template Strings
+console.log(`${diga}${seuNome}`);
+// concatenação
+console.log(diga + seuNome)
+```
+
+#### Para saber mais: Trabalhando com strings
+
+- O JavaScript traz em sua biblioteca-base __vários métodos que usamos para manipular strings de texto: alterar de maiúsculas para minúsculas, contar quantas letras tem uma palavra, retirar espaços, juntar duas strings, etc.__
+- Vamos pensar em alguns exemplos práticos para fazer esse tipo de alteração. Por exemplo, para padronizar uma comparação entre strings:
+
+```javascript
+const cidade = "belo horizonte";
+const input = "Belo Horizonte";
+
+console.log(cidade === input); // false
+```
+
+- Quando nós vemos esta comparação, __é perceptível que estamos falando da mesma cidade, porém, para o JS, ambos os dados são apenas sequências de caracteres, e a comparação vai falhar, pois como já vimos, o JavaScript diferencia minúsculas e maiúsculas, tanto nos valores dos dados quanto no código que escrevemos.__
+- Uma das formas de tratar isso é __padronizando todos os inputs para o formato de texto que será comparado antes mesmo de fazer a comparação. Nesse caso, transformando todos os caracteres em letras minúsculas:__
+
+```javascript
+const cidade = "belo horizonte";
+const input = "Belo Horizonte";
+
+const inputMinusculo = input.toLowerCase();
+
+console.log(cidade === inputMinusculo); // true
+```
+
+- Acima, vemos um dos métodos de string nativos do JavaScript em ação, o `toLowerCase()` que __converte todos os caracteres da string informada (no caso, input) para letras minúsculas (se forem algarismos, nada é convertido)__
+- qualquer inserção de texto que exija uma quantidade mínima de caracteres, como uma senha ou um nome. __A propriedade `length` pode ser utilizada para sabermos quantos caracteres uma string contém__:
+
+```javascript
+const senha = "minhasenha123"
+console.log(senha.length) // 13 caracteres
+```
+
+- Lembrando que `lenght` __é uma propriedade da nossa variável__
