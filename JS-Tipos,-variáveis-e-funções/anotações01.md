@@ -144,3 +144,12 @@ console.log(num3 === num4)
 - __Implementamos o booleano pois comparamos eles entre pedaços de código, como por exemplo, verificar se o usuário está logado ou não e trazer uma página exibindo isto. Esta comparação é aplicada em um sistema de senha por exemplo.__
   - __Se a senha digitada for exatamente igual à cadastrada no sistema, o usuário pode acessar sua conta.__
 - Levamos em conta, que __`const` é uma variável constante, imutável. Já `let` permite a reatribuição de valores, como um sistema de contas ou input de dados__
+
+#### Padrões de nomes em JS
+
+- Existem várias convenções para nomes e cada linguagem de programação tem o seu. Seguem alguns deles:
+  - `camelCase`: Inicia com letra minúscula e a primeira letra de cada palavra em seguida é escrita com letra maiúscula. Por exemplo: minhaVar ou senhaDoUsuario. Esta é a convenção utilizada pelo JavaScript para variáveis e funções.
+  - `snake_case`: Os espaços são substituídos pelo caractere _ (underline), com todas as palavras em letra minúscula. Por exemplo: minha_variavel ou senha_do_usuario.
+  - `kebab-case`: Similar ao anterior, porém com os espaços substituídos por hífens. Por exemplo: minha-var ou senha-do-usuario. Esta convenção não pode ser utilizada no JavaScript para variáveis e funções.
+  - `PascalCase`: Similar ao CamelCase, porém neste caso todas as palavras começam com letra maiúscula. Por exemplo: MinhaVar ou SenhaDoCliente.
+- __Importante: Nunca utilize espaço nem caracteres especiais, nem inicie os nomes das variáveis com números.__
