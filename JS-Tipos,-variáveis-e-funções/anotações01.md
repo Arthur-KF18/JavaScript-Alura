@@ -153,3 +153,39 @@ console.log(num3 === num4)
   - `kebab-case`: Similar ao anterior, porém com os espaços substituídos por hífens. Por exemplo: minha-var ou senha-do-usuario. Esta convenção não pode ser utilizada no JavaScript para variáveis e funções.
   - `PascalCase`: Similar ao CamelCase, porém neste caso todas as palavras começam com letra maiúscula. Por exemplo: MinhaVar ou SenhaDoCliente.
 - __Importante: Nunca utilize espaço nem caracteres especiais, nem inicie os nomes das variáveis com números.__
+
+#### Para saber mais: Tipos null e undefined
+
+- Existem mais dois tipos além dos ditos anteriormente. O `null` e o `undefined`.
+- O `null` __é um tipo especial que pode ser traduzido como `ausência de valor` e pode ser atribuído como valor de uma variável:__
+
+```javascript
+let input = null
+
+if (input === null) {
+    console.log('Não há informações')
+} else {
+    console.log(input)
+}
+```
+
+- No código acima, __há uma comparação `se` ou `if`, onde, se o valor do `input` for `null` retorna uma mensagem. Caso não, ele retorna o valor do input. O `null` verifica de fato se está vazio nosso valor, seja ele vindo de um objeto ou função, podemos usar a descontrução em js para verificarmos nossos valores__
+- Um outro importante vem do seguinte código:
+
+```javascript
+let input;
+
+console.log(input)
+```
+
+- __Por não existir um valor ou variável atribuída, ele retorna `undefined` ou indefinido. Ela também é uma ausência de valor, porém a diferença é de que `null` é um valor atribuído a uma variável que existe e foi iniciada, enquanto `undefined` é o contrário, não inicializada__
+- `undefined` também __é o valor retornado por uma função que não tem cláusula return__
+- É importante notar que, __embora os dois tipos sejam utilizados para sinalizar ausência de valor, os operadores de comparação do JavaScript podem ou não diferenciá-los:__
+
+```javascript
+console.log(null == undefined); // true
+console.log(null === undefined); // false
+```
+
+- __No cotidiano é comum considerar `undefined` como uma ausência de valor “inesperada” (causada por um bug ou erro no código) e `null` como um tipo de dado que também significa ausência de valor, mas não de maneira inesperada.__
+- Por exemplo, um campo em uma tabela de um banco de dados que esteja sem dados ou uma informação solicitada que não seja obrigatória e não tenha sido preenchida pelo usuário pode ter valor `null`.
