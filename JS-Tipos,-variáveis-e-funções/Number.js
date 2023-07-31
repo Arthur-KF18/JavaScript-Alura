@@ -12,6 +12,7 @@ const exponencial = 5e+2
 const alura = 'Alura';
 console.log(exponencial)
 
+// método `toLocaleString`
 function ganhoHora(salario, horasTrabalhadas) {
     const salarioHora = (salario / horasTrabalhadas);
     const formatado = salarioHora.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
