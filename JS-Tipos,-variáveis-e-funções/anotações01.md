@@ -220,3 +220,52 @@ if (forma === 'retangulo') {
 
 console.log(area)
 ```
+
+#### Truthy e Falsy
+
+- Além do tipo booleano, `true` e `false`, temos __alguns outros valores de variáveis que não são nem `true`, nem `false`, mas que para o js, eles equivalem a ser tipo verdadeiro ou tipo falso. Para isto existem o `truthy` e o `falsy`. Não são exatamente booleanos, mas podem se comportar como se fossem:__
+
+```javascript
+0 => false
+1 =. true
+```
+
+- Um exemplo é 0 e 1. __Em outras linguagens,, eles são usados para indicar verdadeiro ou falso, e no js pode ser aplicado o mesmo conceito, porém como "tipo", por exemplo:__
+
+```javascript
+console.log(0 == false)
+console.log("" == false)
+```
+
+- Lembrando que __`==` compara valor e `===` tipo e valor. Comparamos então o 0, o retorno será `true` pois o js entende que sim, 0 tem valor `false`. Strings vazias o js também entende como `false`__
+
+```javascript
+console.log(1 == true)
+```
+
+- Para o js, __ele também considera o 1 como tipo verdadeiro.__
+- Podemos verificar __o que uma variável está armazenando através do `typeof`, ou, "tipo do":__
+
+```javascript
+let numero = 3;
+let texto = 'Arthur';
+
+console.log(typeof(numero));
+// number
+console.log(typeof(texto));
+// string
+```
+
+- Supondo que verificamos duas variáveis, uma vazia e outra com valor nulo:
+
+```js
+let minhaVar;
+let nulo = null;
+
+console.log(typeof minhaVar)
+// undefined
+console.log(typeof nulo)
+// object
+```
+
+- __Percebemos que, a `minhaVar` é indefinida por não há valor declarado. A `nulo`, retorna como um tipo objeto. O js deveria ter o tipo `null`, porém este bug acarretou neste pequeno porém. Muitos códigos utilizam esta forma de ferramenta, e que não influenciam em nada durante os códigos__
