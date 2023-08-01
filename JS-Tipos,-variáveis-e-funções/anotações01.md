@@ -189,3 +189,34 @@ console.log(null === undefined); // false
 
 - __No cotidiano é comum considerar `undefined` como uma ausência de valor “inesperada” (causada por um bug ou erro no código) e `null` como um tipo de dado que também significa ausência de valor, mas não de maneira inesperada.__
 - Por exemplo, um campo em uma tabela de um banco de dados que esteja sem dados ou uma informação solicitada que não seja obrigatória e não tenha sido preenchida pelo usuário pode ter valor `null`.
+
+#### Var,, let e const
+
+- O js tem uma particularidade de __possuir 3 formas de declarar variável, `var`, `let` e `const`__
+  - `var`: Primeira que surgiu e que __executa em qualquer parte do código. Porém, isso faz com que ela não seja alterada, e como podemos declarar uma variável depois de ser executada, chamamos isto de "hoisting" ou hasteamento, que é quando a `var` declarada, mas sempre lida no início.. Não é recomendado seu uso, caso necessário por questões lógicas do sistema, deve existir apenas uma__
+  - `let`: Surgiu quando __a variável `var` causou bugs devido seu complexo. A `let` é uma variável mutável, onde, quando nós realizamos um cálculo, novos valores podem ser atribuídos:__
+  - No exemplo abaixo, __`i` é uma variável do tipo `let` que muda conforme o código executa, sendo reatribuídos novos valores__ 
+
+ ```javascript
+ for (let i = 0; i < 10; i++) {
+    console.log(i)    
+}
+// impressão no console será os números de 0 a 9
+ ```
+
+- `const`: Variável amplamente utilizada, __diferente da `let`, ela é uma variável constante, não alterável. Ela geralmente é utilizada quando os valores não são alteráveis, pois basta se perguntar se nosso valor é ou não alterável:__
+
+```javascript
+const forma = 'retangulo'
+const altura = 5;
+const comprimento = 7;
+let area;
+
+if (forma === 'retangulo') {
+    area = (altura * comprimento)
+} else {
+    area = (altura * comprimento) / 2
+}
+
+console.log(area)
+```
