@@ -269,3 +269,31 @@ console.log(typeof nulo)
 ```
 
 - __Percebemos que, a `minhaVar` é indefinida por não há valor declarado. A `nulo`, retorna como um tipo objeto. O js deveria ter o tipo `null`, porém este bug acarretou neste pequeno porém. Muitos códigos utilizam esta forma de ferramenta, e que não influenciam em nada durante os códigos__
+
+#### Conversão de Tipos
+
+- Temos que ter noção __dos tipos de dados e dos booleanos para entendermos das conversões que o js faz.__
+- Temos dois tipos de conversões, __a implícita e a explícita. A conversão implícita permite que conversemos um tipo de dado em outro, ou seja, converter uma string em número e vice versa. Usando o exemplo abaixo:__
+
+```js
+const numero = 456;
+const numeroString = "456"
+
+console.log(numero === numeroString)
+```
+
+- O retorno __será `false`, pois estamos comparando uma string com um texto__
+- __Podemos fazer a conversão implicita com `==`, onde ele irá ver apenas o valor inserido dentro da nossa variável, e no caso, ele irá converter um número em string para essa comparação. Essa comparação implicita pode causar bugs no código__
+- Se nós __utilizarmos o operador de soma, irá ter a transformação e será uma concatenação__
+
+```javascript
+const numero = 456;
+const numeroString = "456"
+
+console.log(numero == numeroString)
+// true
+console.log(numero + numeroString)
+// 456456
+```
+
+- __O ideal é sempre reforçar, dai a importância de perceber as diferenças entre os tipos,sempre reforçar que a variável guarde a informação no tipo de dado que ela espera__
