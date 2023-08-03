@@ -403,4 +403,31 @@ print(minhaVar);
 
 #### Console.api
 
-- 
+- Console é __a principal forma de comunicação entre o desenvolvedor e a aplicação web. Além disto, na documentação do Node.js, existem diferentes comandos que podem ser utilizados pelo Console API__
+- Podemos simular um tipo de erro como:
+
+```javascript
+let senha = 1234;
+
+function logado() {
+    console.log('Bem-vindo ao website')
+}
+
+if (senha === 1234) {
+    return logado();
+} else {
+    console.error('Não foi feita a validação');    
+}
+```
+
+- É sempre uma boa prática nós utilizarmos o console, tanto quanto `log` quanto `error`, __para sair da nossa aplicação, para sempre sabermos o que está acontecendo dentro dela. Já que se ela, simplesmente, entra, executa e sai, nós não sabemos se teve algum problema no meio.__ Ás vezes, uma conta entra um dado errado, então, é sempre bom termos esse __feedback da aplicação__, para sabermos o que está acontecendo.
+- Estes erros __complementam a stacktrace, deixando mais objetivo qual o erro existente. Além do exemplo acima, podemos ter erros mais elaborados e mais assíduos__
+- Podemos criar até mesmo um erro:
+
+```javascript
+console.log("Deu erro");
+console.error(new Error("deu erro"));
+```
+
+- A resposta do segundo console __será um novo erro, no qual o terminal identifica como `Error: deu erro`, trazendo um pouco de classes em js, deixando bem organizado caso nossa aplicação apresente erros__
+
