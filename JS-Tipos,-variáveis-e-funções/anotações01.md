@@ -477,3 +477,15 @@ const verificaUsuario = senhaInserida === senhaCadastrada ? 'Bem-vindo ao sistem
 - Então, a mesma estrutura do `if` __pode ser construída apenas com operadores ternários, recebendo diferentes tipos de comparação, e trazendo a primeira opção caso seja verdadeira nossa condição, e a segunda opção caso seja falsa__
 - O único detalhe do operador ternário, __é que ele pode ser difícil de ler, então deve ser utilizado em pequenas condições, algo simples. Em estruturas mais complexas, utilizar `if`, `ifelse` e `if` encadeado são opções melhores de manutebilidade__
 - Os operadores são chamados de ternários pois __possuem 3 tipos de operadores em uma única linha, criando uma condição que terá resultado__
+
+#### Template Literal
+
+- Há uma forma mais fácil __de se inserir variáveis junto a textos, além das concatenações que são as `template strings`. Para serem escritas basta utilizar crases, e as variáveis `${variavel}` ficando desta forma.__
+- Lembrando que, elas podem ser acessadas de forma dinâmica, __sem necessidade da concatenação, isto deixa o código mais limpo__
+
+```javascript
+const nome = 'Arthur'
+console.log(`Olá, meu nome é ${nome}, e estou usando template strings!`);
+// Olá, meu nome é Arthur, e estou usando template strings!
+```
+
