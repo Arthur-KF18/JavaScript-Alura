@@ -310,3 +310,53 @@ console.log(numero + Number(numeroString))
 ```
 
 - __A resposta do console será `912`, a soma dos valores inseridos, convertidos. Porém, se nós tentarmos somar um texto, ele será convertido porém será `NaN`__
+
+```javascript
+let telefone = 12341234;
+console.log("O telefone é " + String(telefone));
+//O telefone é 12341234
+```
+
+- __Teremos a conversão do número 12341234 para uma string “12341234” e assim poderemos fazer a concatenação entre as strings. Também temos outra forma de realizar isto utilizando a função como método:__
+
+```javascript
+let telefone2 = 12341234;
+console.log("O telefone é " + telefone2.toString()); 
+```
+
+- __O `toString()`, converte da mesma forma nosso texto, porém ele é um método de nossa variável, que fica mais interessante de se utilizar. Podemos também realizar a string de booleanos:__
+
+```javascript
+let usuarioConectado = false;
+console.log(usuarioConectado)
+// Retorna `false` booleano
+console.log(usuarioConectado.toString());
+// Retorna `false` como String
+usuarioConectado = true;
+console.log(usuarioConectado.toString());
+// Retorna `True` como String
+```
+
+- Agora que entendemos como o `string()` funciona, podemos converter textos e booleanos em números através do `number()`:
+
+```javascript
+let largura = "10";
+let altura = "5";
+
+console.log(Number(largura) * Number(altura));
+// 50
+```
+
+- Nós __pegamos os textos inseridos e os transformamos em números, Porém ambém utilizar o operador de soma `+` para isto, ficando `console.log(+ largura * + altura)`. Não podemos também converter textos em números, retornando `NaN`. Para os booleanos, veremos que, ao transformá-los em números, nos é retornado 0 e 1:__
+
+```javascript
+let usuario = false;
+console.log(Number(usuario));
+// 0
+usuario = true;
+console.log(Number(usuario));
+// 1
+```
+
+- __Dica de boas práticas: Apesar do JavaScript fazer a maioria das conversões de forma correta, problemas podem aparecer, então é sempre bom fazer as conversões de forma explícita. Não é comum usar o operador de soma para fazer a conversão para números, mas este uso é possível. Conversões de booleanos não costumam ser muito usados, mas são possíveis.__
+- __Dica de boas práticas: sempre procure nomear/identificar seu código da forma mais semântica possível, pensando em qual é o dado que está sendo salvo na variável e para que ele será utilizado. Além de evitar palavras reservadas, faz com que o código fique mais compreensível e de leitura mais fluida.__
