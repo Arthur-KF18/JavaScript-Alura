@@ -297,3 +297,16 @@ console.log(numero + numeroString)
 ```
 
 - __O ideal é sempre reforçar, dai a importância de perceber as diferenças entre os tipos,sempre reforçar que a variável guarde a informação no tipo de dado que ela espera__
+- Com isto, nós iremos entender a __conversão explícita__
+- Para isso, iremos utilizar duas funções do javascript. __A `Number()` e a `String()`. Então, sabemos que se queremos que uma string seja número, basta usarmos a função `Number` e vice-versa.__
+- Então, no nosso exemplo anterior:
+
+```js
+const numero = 456;
+const numeroString = "456"
+
+console.log(numero == numeroString)
+console.log(numero + Number(numeroString))
+```
+
+- __A resposta do console será `912`, a soma dos valores inseridos, convertidos. Porém, se nós tentarmos somar um texto, ele será convertido porém será `NaN`__
