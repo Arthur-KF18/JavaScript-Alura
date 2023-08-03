@@ -431,3 +431,23 @@ console.error(new Error("deu erro"));
 
 - A resposta do segundo console __será um novo erro, no qual o terminal identifica como `Error: deu erro`, trazendo um pouco de classes em js, deixando bem organizado caso nossa aplicação apresente erros__
 
+#### Operadores de comparação
+
+- O javascript possui duas operações de comparação: `==` e `===`. __O `==` é uma comparação implícita apenas dos valores presentes dentro do nosso código, enquanto `===` é uma comparação explícita que verifica o valor e o tipo do nosso valor:__
+
+```javascript
+const palavra = '5'
+const numero = 5;
+// comparaçao Implícita
+console.log(palavra == numero)
+console.log(palavra === numero)
+```
+
+- __É altamente recomensável utilizar o `===`, e quando realizar conversão, fazer ela de modo explícito, utilizando métodos de conversão, utilizando `Number` e `String`__
+
+#### Operadores Importantes:
+
+- `||` : Operador "ou". __Retorna `true` caso uma condição seja válida__
+- `&&` : Operador "e", __retorna `true` somente se todas as condições forem válidas__
+- `!=` e `!==`: Operadores __"não igual" e "estritamente não igual", utilizados para comparação da mesma forma que `==`e `===` retornam `true` ou `false`__
+
