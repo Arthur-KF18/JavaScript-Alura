@@ -489,3 +489,63 @@ console.log(`Olá, meu nome é ${nome}, e estou usando template strings!`);
 // Olá, meu nome é Arthur, e estou usando template strings!
 ```
 
+#### Funções
+
+- No javaScript, __a sua leitura é de uma linha atrás da outra, e não há como avisar ao js que existirá um próximo valor que deve ser reatribuído da seguinte maneira:__
+
+```javascript
+let x = 5
+console.log(x)
+x = 10;
+```
+
+- O valor `10`, __não será reatribuído desta forma. Para que isto seja resolvido, utilizaremos as funçoes. Funções são pequenos blocos de códigos que serão executados quando chamados, ou seja, eles esperam nossa interação. Para declará-los utilizamos:__
+
+```javascript
+function minhaFuncao(parametros){
+  // realiza algo
+}
+// chamada da função:
+minhaFuncao(parametros);
+```
+
+- Dentro deste pequeno bloco, ou extenso, dependendo da quantidade de código que inserimos, __teremos uma execução com dados inseridos. Os dados inseridos são os parâmetros, que são manipulados dentro da função. Ela não necessariamente precisa ter um parâmetro e elas podem ser escritas de diferentes formas também__
+- Por exemplo:
+
+```javascript
+function imprime(texto){
+  console.log(texto)
+}
+
+function calculaValor(x, y) {
+    calculo = x + y;
+    return calculo
+}
+
+imprime(calculaValor(4, 8));
+// 12
+```
+
+- Assim, criamos uma função __que pode imprimir os textos inseridos, além de que, temos uma função que precisa de dois valores para que seja impresso o cálculo do mesmo. Nós podemos sempre executar várias vezes nossas funções. Uma outra função por exemplo:__
+
+```javascript
+function insereTexto(texto) {
+    const verificaTexto = texto === String(texto) ? imprime(texto) : imprime('Digite apenas um texto');
+    
+    return verificaTexto
+}
+
+insereTexto(123)
+// Digite apenas um texto
+insereTexto("Arthur")
+// Arthur
+insereTexto('Arthur')
+// Arthur
+```
+
+- Esta função é capaz de reconhecer __se estamos digitando ou não um texto através do `String(texto)`, já que o texto inserido deve ser exatamente do tipo `String`. O `return` retorna o valor do nosso `verificaTexto`, uma resposta da nossa função, lembrando que ela deve ser sempre a última linha da nossa função__
+- Existem 3 formas de escrever funções no js:
+  - Declaração de função: `function myfunction(parameters){}`. É a maneira __mais clássica de criar funções__
+  - Declaração anônima: `function (){}`. Maneira mais dinâmica, apenas executável que funciona como objeto
+  - Funções de seta: `() => {}`. Maneira mais dinâmica e que resolve muitos dos problemas atuais dentro do js
+  
