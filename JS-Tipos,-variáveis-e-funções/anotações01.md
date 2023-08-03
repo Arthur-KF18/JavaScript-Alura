@@ -360,3 +360,30 @@ console.log(Number(usuario));
 
 - __Dica de boas práticas: Apesar do JavaScript fazer a maioria das conversões de forma correta, problemas podem aparecer, então é sempre bom fazer as conversões de forma explícita. Não é comum usar o operador de soma para fazer a conversão para números, mas este uso é possível. Conversões de booleanos não costumam ser muito usados, mas são possíveis.__
 - __Dica de boas práticas: sempre procure nomear/identificar seu código da forma mais semântica possível, pensando em qual é o dado que está sendo salvo na variável e para que ele será utilizado. Além de evitar palavras reservadas, faz com que o código fique mais compreensível e de leitura mais fluida.__
+
+#### JavaScript e Node.js
+
+- __Javascript é uma linguagem de tipagem dinâmica. E nós podemos dizer que uma linguagem é dinamicamente tipada, quando não precisamos declarar o tipo. Javascript possui isto, onde, quando declaramos uma variável, e se ter apenas números, ele saberá que é um número, já que não possui aspas. E como podemos utilizar a variável `let`, podemos reatribuir valores:__
+
+```javascript
+function print(texto) {
+    console.log(texto)
+}
+
+let minhaVar = 123;
+print(minhaVar);
+// 123
+minhaVar = "Olá mundo";
+print(minhaVar);
+// Olá mundo
+minhaVar = true;
+print(minhaVar);
+// true
+```
+
+- Podemos também dizer que o JS, __é uma linguagem multiparadigma, ou seja, consegue resolver o mesmo problema de maneiras diferentes. Podemos ter sempre soluções mais simples__
+- __Não é recomendado que no dia a dia da programação, alteremos o tipo das variáveis e afins, pois isto pode causar problemas no código__
+- O ES6, é a versão mais marcante, e que deixou o js mais completo e robusto, como `let` e `const`, que resolvia diferentes bugs existentes.
+- O js é __uma linguagem interpretada. Antes de falarmos dela, temos de lembrar que existe ela e as linguagens compiladas. A interpretada é quando um programa lê nosso código e pode lê-lo. O que acontece entre o navegador e a linguagem js. Compiladas são aquelas que são passadas por um compilador e que se torna linguagem de máquina, facilitando para o computaodor__
+- O NodeJS é __um interpretador da linguagem JavaScript, onde executamos ele no lado do back-end, sendo ele uma ferramenta para executar o JS fora do navegador__
+
