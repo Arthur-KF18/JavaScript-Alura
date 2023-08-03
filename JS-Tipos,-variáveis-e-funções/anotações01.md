@@ -451,3 +451,29 @@ console.log(palavra === numero)
 - `&&` : Operador "e", __retorna `true` somente se todas as condições forem válidas__
 - `!=` e `!==`: Operadores __"não igual" e "estritamente não igual", utilizados para comparação da mesma forma que `==`e `===` retornam `true` ou `false`__
 
+#### Operadores Ternários
+
+- Operadores ternários __são basicamente um `if`, ele realiza uma comparação. Porém é feita de uma forma muito específica. Ela é feita em uma única linha. Podemos verificar se é verdadeira ou falsa a condição, porém devemos utilizar com cuidado, já que ele tem uma sintaxe mais reduzida__
+- Vamos nos basear nos códigos anteriores e criar um sistema de validação de sistema:
+
+```javascript
+const senhaCadastrada = 12345;
+const senhaInserida = 12345;
+
+if (senhaInserida === senhaCadastrada) {
+    console.log('Bem vindo ao sistema')
+} else {
+    console.log('Senha errada, digite novamente')
+}
+```
+
+- Agora que sabemos da condição `if`, ou, "se", utilizando os operadores ternários, irá ficar da seguinte forma:
+
+```javascript
+const verificaUsuario = senhaInserida === senhaCadastrada ? 'Bem-vindo ao sistema' : 'Senha errada, digite novamente';
+```
+
+- Quebrando nossa linha: __`tipoDeVariavel nomeVariavel = var1 ||, &&, > var2 ? casoVerdadeiro : casoFalso`.__
+- Então, a mesma estrutura do `if` __pode ser construída apenas com operadores ternários, recebendo diferentes tipos de comparação, e trazendo a primeira opção caso seja verdadeira nossa condição, e a segunda opção caso seja falsa__
+- O único detalhe do operador ternário, __é que ele pode ser difícil de ler, então deve ser utilizado em pequenas condições, algo simples. Em estruturas mais complexas, utilizar `if`, `ifelse` e `if` encadeado são opções melhores de manutebilidade__
+- Os operadores são chamados de ternários pois __possuem 3 tipos de operadores em uma única linha, criando uma condição que terá resultado__
