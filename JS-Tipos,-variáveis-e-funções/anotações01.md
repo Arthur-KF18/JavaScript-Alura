@@ -387,3 +387,20 @@ print(minhaVar);
 - O js é __uma linguagem interpretada. Antes de falarmos dela, temos de lembrar que existe ela e as linguagens compiladas. A interpretada é quando um programa lê nosso código e pode lê-lo. O que acontece entre o navegador e a linguagem js. Compiladas são aquelas que são passadas por um compilador e que se torna linguagem de máquina, facilitando para o computaodor__
 - O NodeJS é __um interpretador da linguagem JavaScript, onde executamos ele no lado do back-end, sendo ele uma ferramenta para executar o JS fora do navegador__
 
+#### Erros e stacltrace
+
+- É muito comum existirem erros no javascript. Quando criarmos algum código, ele precisa ter sua lógica definida, e sua estrutura deve estar de acordo com a sintaxe do código. Quando um erro existe, __temos que saber interpretá-lo para saber onde devemos resolvê-lo.__
+- Podemos ter erros de __sintaxe, lógica, associação, referência__
+- Quando erros ocorrem, __além do erro referênciado, existem diversas linhas de texto adicionais. Elas se referem aos módulos da linguagem. Também podemos entender como módulo de frameworks e bibliotecas que vamos trabalhar__
+- __Esta linha de arquivos, que fazem referência, ou que trabalham juntos para executar nosso código, chamamos de stack. É uma pilha de comando executados, e no terminal temos uma stacktrace, onde o js nos mostra todo o caminho que ele realzou para executar nosso código. E ele pode nos ajudar a descobrir onde está acontecendo, tendo um erro, um bug que, às vezes, é mais difícil identificar em um código maior.__
+- Como vimos, as pessoas que desenvolvem os programas e linguagens são as responsáveis pelo __chamado “tratamento de erros”, ou seja, permitir a comunicação de quais foram os problemas, e nem sempre isso acontece da melhor forma - embora já tenha melhorado muito nas últimas décadas.__
+- O JavaScript divide seus erros em:
+  - RangeError: Quando o código recebe um dado do tipo certo, porém não dentro do formato aceitável.
+  - ReferenceError: Normalmente ocorre quando o código tenta acessar algo que não existe, como uma variável que não foi definida; muitas vezes é causado por erros de digitação ou confusão nos nomes utilizados, mas também pode indicar um erro no programa.
+  - Syntax Error: Os erros podem ser métodos ou propriedades escritos ou utilizados de forma incorreta
+  - TypeError: Indica que o código esperava receber um dado de um determinado tipo, tal qual uma string de texto, mas recebeu outro, como um número, booleano ou null.
+- __Além do tipo de erro, o terminal também vai dar outras informações, como o nome do arquivo e linha onde foi detectado o erro. Muitas vezes isso já basta para identificar e corrigir, mas existem também casos onde o erro não é detectado pelo JavaScript na linha onde o código é declarado, por exemplo, mas onde ele é executado. Por isso é importante praticar sempre a leitura dos erros e da stacktrace e nunca pular esta etapa.__
+
+#### Console.api
+
+- 
