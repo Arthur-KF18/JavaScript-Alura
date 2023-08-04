@@ -7,14 +7,12 @@ function calculaValor(x, y) {
     return calculo
 }
 
-imprime(calculaValor(5, 10));
-
-
+imprime(calculaValor(5, 10) * calculaValor(10, 4));
 
 
 function insereTexto(texto) {
     const verificaTexto = typeof texto === 'string' ? imprime(texto) : imprime('Digite apenas um texto');
-    
+
     return verificaTexto;
 }
 
@@ -34,3 +32,9 @@ numero = 10;
 const verificar = numero >= 5 ? 'Número Certo' : 'Errou!'
 
 console.log(verificar)
+
+function pessoa(nome, idade) {
+    return `Meu nome é ${nome} e minha idade é ${idade}`
+}
+
+imprime(pessoa('Arthur', 20));

@@ -548,4 +548,27 @@ insereTexto('Arthur')
   - Declaração de função: `function myfunction(parameters){}`. É a maneira __mais clássica de criar funções__
   - Declaração anônima: `function (){}`. Maneira mais dinâmica, apenas executável que funciona como objeto
   - Funções de seta: `() => {}`. Maneira mais dinâmica e que resolve muitos dos problemas atuais dentro do js
-  
+
+#### Parâmetros e argumentos
+
+- Dentro das funções, __podemos passar um nome a ela, e também parâmetros. Os argumentos estarão presentes no interior da nossa função. Quando nós passamos parâmetros, ele irão ser utilizados dentro dos argumentos da nossa função:__
+
+```javascript
+function imprime(texto) {
+    console.log(texto)
+}
+imprime('Olá Mundo!');
+// Olá mundo
+```
+
+- __Definimos como parâmetro o `(texto)`, que será utilizado dentro da nossa função. E como argumento, utilizando `imprime(argumento)` onde o `argumento` é o texto que queremos exibir__
+- Outro exemplo disso, é uma __função que receba como parâmetro nome e idade e imprima assim que escrevermos seus argumentos:__
+
+```javascript
+function pessoa(nome, idade) {
+    return `Meu nome é ${nome} e minha idade é ${idade}`
+}
+
+imprime(pessoa('Arthur', 20))
+// Meu nome é Arthur e minha idade é 20
+```
