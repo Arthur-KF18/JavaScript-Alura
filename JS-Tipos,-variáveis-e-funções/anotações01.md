@@ -572,3 +572,17 @@ function pessoa(nome, idade) {
 imprime(pessoa('Arthur', 20))
 // Meu nome é Arthur e minha idade é 20
 ```
+
+#### Expressão de Função
+
+- Nós já vimos as funções padrão, onde damos nome e seus parâmetros. Porém existe outra maneira de serem escritas, chamadas de __expressão de função. Nós a escrevemos criando uma `const`, onde atribuímos uma função com seus parâmetros, e depois abrimos as chaves, e dentro dela passaremos o que ela deverá fazer:__
+
+```javascript
+const soma = function(n1, n2) {return n1 + n2};
+console.log(soma(2, 5));
+// 7
+```
+
+- __Nós atribuímos a uma função, a variável `soma`. Ela será o nome da nossa função, e que será utilizada quando for executada, como `console.log(soma(2, 5))`, e como resultado temos 7__
+- A principal diferença é que __funções declaradas, podem ser acessadas antes mesmo de terem sido declaradas, e o js irá ler o código primeiro, procurará a função e será executada. Porém, nas expressões de funções, ela não pode ser chamada antes de ser declarada, resultando um erro. Expressões de funções usam variáveis, e variáveis só podem ser executadas quando passamos por elas.__
+- Isto ocorre em __`var` e funções declaradas, gerando o "Hoisting", ou, "içamento", que irá subir todas as funções e `var` e as executam primeiro__
