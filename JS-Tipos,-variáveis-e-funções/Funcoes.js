@@ -18,7 +18,7 @@ function insereTexto(texto) {
 
 function insiraNumero(numero) {
     const verificaNumero = typeof numero === 'number' ? imprime(numero) : imprime('Aceitamos apenas números')
-    
+
     return verificaNumero;
 }
 
@@ -38,6 +38,43 @@ imprime(pessoa('Arthur', 20));
 
 // Expressões de funções
 
-const multiplica = function (n1, n2) {return n1 * n2};
+const multiplica = function (n1, n2) { return n1 * n2 };
 imprime(multiplica(2, 3));
 
+// Arrow Functions
+
+const multiplicar = (n1, n2) => n1 * n2;
+imprime(multiplicar(6, 10))
+
+const apresentar = nome => `meu nome é ${nome}`;
+imprime(apresentar('Arthur'));
+
+const pagamento = (tipo) => {
+    switch (tipo) {
+        case 1:
+            console.log('Débito')
+            break;
+        case 2:
+            console.log('Crédito')
+            break;
+        case 3:
+            console.log('Dinheiro')
+            break;
+
+        default:
+            console.log('Selecione a forma de pagamento')
+            break;
+    }
+}
+
+pagamento(2);
+
+const calculaMedia = (n1, n2, n3) => {
+    if (n1 <= 10 && n2 <= 10 && n3 <= 10) {
+        imprime((n1 + n2 + n3)/ calculaMedia.length)
+    } else {
+        imprime('Insira valores de 0 a 10!')
+    }
+}
+
+calculaMedia(10, 10, 10);

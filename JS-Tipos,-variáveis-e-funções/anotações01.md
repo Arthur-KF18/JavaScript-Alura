@@ -586,3 +586,60 @@ console.log(soma(2, 5));
 - __Nós atribuímos a uma função, a variável `soma`. Ela será o nome da nossa função, e que será utilizada quando for executada, como `console.log(soma(2, 5))`, e como resultado temos 7__
 - A principal diferença é que __funções declaradas, podem ser acessadas antes mesmo de terem sido declaradas, e o js irá ler o código primeiro, procurará a função e será executada. Porém, nas expressões de funções, ela não pode ser chamada antes de ser declarada, resultando um erro. Expressões de funções usam variáveis, e variáveis só podem ser executadas quando passamos por elas.__
 - Isto ocorre em __`var` e funções declaradas, gerando o "Hoisting", ou, "içamento", que irá subir todas as funções e `var` e as executam primeiro__
+
+#### Arrow Function(Funções de Seta)
+
+- Chamada de função de seta, __foi introduzida no ES6, como uma forma mais evoluída das `function`. Antes sempre estavámos declarando funções ou inserindo em constantes. As `arrow functions` vem como uma forma mais rápida de escrita:__
+
+```js
+const apresentaArrow = parâmetro => return parâmetro;
+``` 
+
+- __Ela simplifica nossa escrita, sendo assim, mais rápida de se escrever. Quando existe apenas um valor de retorno, não é necessário as `{}`, mas caso tenha, basta adicionar a lógica no escopo da função. Por exemplo:__
+
+```javascript
+const multiplicar = (n1, n2) => n1 * n2;
+imprime(multiplicar(6, 10))
+// 60
+```
+
+- Definimos __os parâmetros da função e o que ela deve retornar. O uso dos parênteses, é quando temos mais de um parâmetro para ela. Ela não pode ser nomeada e sempre vem acompanhada de uma `const`.__
+- Por exemplo, podemos utilizar `switch case` para uma forma de pagamento, utilizando as arrow Functions:
+
+```javascript
+const pagamento = (tipo) => {
+    switch (tipo) {
+        case 1:
+            console.log('Débito')
+            break;
+        case 2:
+            console.log('Crédito')
+            break;
+        case 3:
+            console.log('Dinheiro')
+            break;
+
+        default:
+            console.log('Selecione a forma de pagamento')
+            break;
+    }
+}
+
+pagamento(2);
+// Crédito
+```
+
+- Nós utilizamos a arrow function para imprimir a forma de pagamento escolhida, __passamos como parâmetro o `tipo`, e então usamos `switch`, que é um loop onde, se for o primero `case` será executado e o `break` interrompe a execução do código__
+- Um exemplo mais robusto:
+
+```javascript
+const calculaMedia = (n1, n2, n3) => {
+    if (n1 <= 10 && n2 <= 10 && n3 <= 10) {
+        imprime((n1 + n2 + n3)/ calculaMedia.length)
+    } else {
+        imprime('Insira valores de 0 a 10!')
+    }
+}
+
+calculaMedia(10, 10, 10);
+```
