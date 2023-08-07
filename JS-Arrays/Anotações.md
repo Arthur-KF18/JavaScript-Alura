@@ -94,3 +94,47 @@ grades.pop()
 
 - De forma simplificada, podemos declarar um array vazio assim: `const arrayVazio = [];`. __Quando nós verificamos no console, ele retorna `[]` ou `0` se vermos seu `length`. Mesmo que sua largura seja 0, os valores não foram definidos, então `console.log(arrayVazio[1])` retorna `undefined`. Podemos utilizar a `,` para adicionar posições, mas sem um valor, sempre sera indefinido. É interessante dizer que, mesmo utilizando `const arrayVazio = [, , ,]`, indicando 3 posições, e adicionarmos um novo valor, como `arrarVazio.psuh(20)`, irá ser adicionado ao fim do array.__
 - O resultado disto é `[<3 empty items>, 20]`, ou seja, __3 valores vazios e indica 4 de largura em nosso array. Chamamos isto de array esparso.__
+
+#### Dividindo com slice()
+
+- Sabendo de um dos métodos do javascript, __como `push` e `pop`, vamos utilizar agora o método `slice()` em uma lista de alunos e que devemos dividí-los em quantidades iguais__
+- Quando utilizamos o método, __devemos prestar atenção, pois, dentro dele iremos inserir o intervalo de items, de qual começa e qual termina, ficando `metodo.slice(indexPrimário, indexFinal)`. Quando aplicamos isto, temos que saber que, se o intervalo for de 0 a 10, estaremos pegando apenas 9 items da lista, já que o índice não será incluído no novo array__
+
+```javascript
+const students = [
+    'João', 'Juliana', 'Ana', 'Caio', 'Lara', 'Marjorie', 'Guilherme', 'Aline', 'Fabiana', 'Andre', 'Carlos', 'Paulo', 'Bia', 'Vivian', 'Isabela', 'Vinícius', 'Renan', 'Renata', 'Daisy', 'Camilo'
+];
+
+students.slice(0, 10);
+```
+
+- No console, irá __exibiro array original, já que o `slice` não altera o array original. Para podermos ter acesso ao novo array que foi feito, utilizamos uma const, `const room1 = students.slice(0, 10)`, e quando a imprimimos, teremos um novo array, imprimindo dos 10 primeiros nomes. Para fazermos isto ao restante basta utilizar `students.slice(10)`, pois o método `slice` já entende que sem o 2 parâmetro, queremos todos os itens até o final.__
+- Porém, estamos informando de forma __estática nossos items. Precisamos de uma forma mais dinâmica__
+
+```js
+const room1 = students.slice(0, (students.length / 2));
+const room2 = students.slice(students.length/2);
+
+console.log(room1);
+// [
+//   'João',      'Juliana',
+//   'Ana',       'Caio',
+//   'Lara',      'Marjorie',
+//   'Guilherme', 'Aline',
+//   'Fabiana',   'Andre'
+// ]
+console.log(room2);
+// [
+//   'Carlos',  'Paulo',
+//   'Bia',     'Vivian',
+//   'Isabela', 'Vinícius',
+//   'Renan',   'Renata',
+//   'Daisy',   'Camilo'
+// ]
+```
+
+- Desta forma, __acessamos os valores, de forma dinâmica e que não resultará em problemas no futuro, já que no código `students.length` é o comprimento da nossa lista, e se quisermos até metade, utilizamos `students.length/2`__
+
+#### Alterando com splice
+
+- 
