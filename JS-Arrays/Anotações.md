@@ -155,3 +155,30 @@ console.log(room3)
 
 - __Há uma pequena confusão entre o `slice` e o `splice`. O `slice` cria um intervalo para dividir um array em novas listas e o `splice` é utilizado para retirar items da lista de acordo com um intervalo. Podemos adicionar um 3 parâmetro responsável por adicionar o item que precisamos no lugar: `room3.splice(1, 2, 'Rodrigo');`__
 - __Sendo assim, métodos de array que alteram o original não precisam de uma constante para guardar seu valor__
+
+#### Concatenando arrays
+
+- Para nós podermos juntar dois arrays, __basta utilizar o método `concat(array)`, onde dentro do nosso métos, será inserido o array que iremos juntar com outro. Utilizando os exemplos anteriores:__
+
+```javascript
+const combinedRooms = students.concat(room1);
+console.log(combinedRooms);
+// [
+//   'João',      'Juliana',  'Ana',
+//   'Caio',      'Lara',     'Marjorie',
+//   'Guilherme', 'Aline',    'Fabiana',
+//   'Andre',     'Carlos',   'Paulo',
+//   'Bia',       'Vivian',   'Isabela',
+//   'Vinícius',  'Renan',    'Renata',
+//   'Daisy',     'Camilo',   'João',
+//   'Juliana',   'Ana',      'Caio',
+//   'Lara',      'Marjorie', 'Guilherme',
+//   'Aline',     'Fabiana',  'Andre'
+// ]
+```
+
+- Podemos alterar a ordem, __de acordo com a sequência de array selecionados, `room1.concat(students)` traria um array de sequência diferente__
+
+#### Lista com 2 dimensões
+
+- Trabalhando com os exemplos anteriores, iremos ter duas listas. Uma será apenas de alunos e a outra das médias de alunos. __Podemos criar uma única lista que contém o conteúdo de ambas as listas__
