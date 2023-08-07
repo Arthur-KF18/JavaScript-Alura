@@ -181,4 +181,18 @@ console.log(combinedRooms);
 
 #### Lista com 2 dimensões
 
-- Trabalhando com os exemplos anteriores, iremos ter duas listas. Uma será apenas de alunos e a outra das médias de alunos. __Podemos criar uma única lista que contém o conteúdo de ambas as listas__
+- Trabalhando com os exemplos anteriores, iremos ter duas listas. Uma será apenas de alunos e a outra das médias de alunos. __Podemos criar uma única lista que contém o conteúdo de ambas as listas:__
+
+```javascript
+const room3 = ['João', 'Ana', 'Caio', 'Lara', 'Marjorie', 'Leo'];
+room3.splice(1, 2, 'Rodrigo');
+
+const grades = [10, 6.5, 8, 7.5, 8];
+const studentsTable = [room3, grades];
+
+console.log(studentsTable)
+console.log(`O aluno da posicao 2 é ${studentsTable[0][2]} e sua média foi ${studentsTable[1][2]}`);
+// O aluno da posicao 2 é Lara e sua média foi 8
+```
+
+- __O que ocorreu foi: Guardamos em uma variável duas listas. Vale lembrar que quando inserimos `studentsTable[0]` estamos selecionando o item da nossa lista. Ou seja, selecionamos uma lista, e o próximo `[1]` marca a posição que queremos da lista selecionada. O nome que damos a isto é uma lista de duas dimensões, ou seja, uma lista formada por outras listas. Também podemos chamá-la de matriz__

@@ -16,3 +16,8 @@ console.log(room3);
 const combinedRooms = students.concat(room1);
 console.log(combinedRooms)
 
+const grades = [10, 6.5, 8, 7.5, 8];
+const studentsTable = [room3, grades];
+
+console.log(studentsTable)
+console.log(`O aluno da posicao 2 é ${studentsTable[0][2]} e sua média foi ${studentsTable[1][2]}`);
