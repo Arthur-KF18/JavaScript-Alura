@@ -137,4 +137,21 @@ console.log(room2);
 
 #### Alterando com splice
 
-- 
+- Seguindo com o exemplo de alunos, imaginemos que temos uma sala que existam 6 alunos, dos quais, `Ana` e `Caio` saíram:
+
+```javascript
+const room3 = ['João', 'Ana', 'Caio', 'Lara', 'Marjorie', 'Leo'];
+```
+
+- Para que possamos retirar __um item da lista, de forma onde seja em qualquer posição, utilizamos o `splice()`:__
+
+```javascript
+const room3 = ['João', 'Ana', 'Caio', 'Lara', 'Marjorie', 'Leo'];
+room3.splice(1, 2);
+
+console.log(room3)
+// [ 'João', 'Lara', 'Marjorie', 'Leo' ]
+```
+
+- __Há uma pequena confusão entre o `slice` e o `splice`. O `slice` cria um intervalo para dividir um array em novas listas e o `splice` é utilizado para retirar items da lista de acordo com um intervalo. Podemos adicionar um 3 parâmetro responsável por adicionar o item que precisamos no lugar: `room3.splice(1, 2, 'Rodrigo');`__
+- __Sendo assim, métodos de array que alteram o original não precisam de uma constante para guardar seu valor__

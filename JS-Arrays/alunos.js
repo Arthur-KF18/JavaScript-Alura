@@ -9,3 +9,8 @@ const room2 = students.slice(students.length/2);
 
 console.log(room1);
 console.log(room2);
+
+const room3 = ['João', 'Ana', 'Caio', 'Lara', 'Marjorie', 'Leo'];
+room3.splice(1, 2, 'Rodrigo');
+
+console.log(room3);
