@@ -46,6 +46,51 @@ const nomeVar = [item];
 
 - __Vale lembrar que as listas no js, não se restringem a um único tipo de dado. Podemos ter strings, booleanos e os inteiros. É uma boa prática trabalhar com o mesmo tipo de dado em um array__
 
-#### Adicionando elementos
+#### Adicionando e deletando elementos
 
-- 
+- Agora que realizamos a media de notas, e se nós quisermos adicionar uma nova nota e realizar novamente a média? Podemos fazer isto da seguinte forma:
+
+```javascript
+const grades = [10, 6, 8];
+grades.push(7);
+//  [10, 6, 8, 7 ]
+```
+
+- __Utilizaremos os métodos, ou seja, funções que irão fazer parte do array. Utilizando o método `push` iremos "empurrar" ou adicionar uma nova nota à nossa lista de itens. É importante dizer que utilizamos a variável `const`, e mesmo desta forma, o array pode adicionar itens, já que são métodos próprios. A única coisa que o `const` não aceita, é uma nova atribuição.__
+- Agora que já realizamos estas alterações, e se quisermos apagar um dos elementos da nossa lista? Podemos utilizar o método abaixo:
+
+```javascript
+const grades = [10, 6, 8];
+grades.push(7);
+// [10, 6, 8, 7 ]
+grades.push(6);
+// [10, 6, 8, 7, 6 ]
+grades.pop()
+// [10, 6, 8, 7 ]
+```
+
+- O método `pop()`, quando __inicializado, irá apagar o último item do array, alterando o array original__
+
+#### Métodos de Array
+
+- __Um método é uma função que serve como uma propriedade do array ou de um objeto. Ele pode realizar tarefas pré-definidas usando os dados do array e dos parâmetros que passamos para eles, como adicionar, remover ou até encontrar elementos.__
+- Existem muitos métodos diferentes, então iremos ver alguns importantes:
+  - `concat()`: __Junta dois arrays, colocando o array passado como argumento, logo depois do primeiro. É a concatenação de arrays. Não altera o array no qual foi chamado então precisamos salvar esse resultado em um novo array__
+  - `filter()`: __Retorna uma lista contanto todos os elementos que passaram em um teste ou seja, uma função escrita por nós. Também precisamos salvar o resultado em um novo array__
+  - `find()`: Funciona de forma parecida com o `filter()`, __porém retorna apenas o primeiro valor que satisfizer o teste, podendo ser uma string ou um número.__
+  - `findIndex()`: __Funcionar igual ao `find()`, mas retorna o indíce em vez do elemento, possibilitando usá-lo em outras partes do código__
+  - `lastIndexOf()`: Igual ao anterior, porém, __começa do último elemento__
+  - `forEach()`: __Executa uma função em cada elemento do array de forma individual. Não altera o array original e nem retorna um valor, deixando esse trabalho a cargo da função escolhida.__
+  - `shift()`: __Retira o primeiro elemento do array, alterando o array original  trocando o índice de todos os elementos para um a menos do que eram__
+  - `unshift()`: __Igual ao `push()` porém adiciona na primeira posição, alterando o array original__
+  - `reduce()`: __Utiliza uma função definida pelo usuário em cada um dos elementos, guardando o resultado em uma variável que pode ser acessada dentro da função que foi definida, retornando um único valor no final, reduzindo o array para um único valor.__
+  - `reduceRight()`: __funciona igual ao anterior, porém começa do final do array e segue até o início__
+  - `reverse()`: __Inverte a ordem dos elementos do array__
+  - `slice()`: __Copia uma parte do array para outro array__
+  - `sort()`: __Organiza o array de acordo com a classificação Unicode, onde os números vêm antes das letras, porém não funciona corretamente para números, onde temos que definir uma função que irá auxiliar o comando.__
+  - `splice()`: __Consegue remover, um ou mais elementos consecutivos caso o segundo parâmetro tenha um valor maior que 0, e incluir um ou mais elementos a partir de um índice escolhido.__
+
+#### Arrays vazios
+
+- De forma simplificada, podemos declarar um array vazio assim: `const arrayVazio = [];`. __Quando nós verificamos no console, ele retorna `[]` ou `0` se vermos seu `length`. Mesmo que sua largura seja 0, os valores não foram definidos, então `console.log(arrayVazio[1])` retorna `undefined`. Podemos utilizar a `,` para adicionar posições, mas sem um valor, sempre sera indefinido. É interessante dizer que, mesmo utilizando `const arrayVazio = [, , ,]`, indicando 3 posições, e adicionarmos um novo valor, como `arrarVazio.psuh(20)`, irá ser adicionado ao fim do array.__
+- O resultado disto é `[<3 empty items>, 20]`, ou seja, __3 valores vazios e indica 4 de largura em nosso array. Chamamos isto de array esparso.__
