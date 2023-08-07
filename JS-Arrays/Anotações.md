@@ -35,3 +35,17 @@ console.log(average)
 
 - Este código, nos traz o resultado da média. __Utilizaremos uma propriedade chamada `length`. Esta propriedade se aplica unicamente aos arrays em js. Estamos dizendo que ele irá pegar cada item do array e será dividido pela quantidade de itens presentes nele__
 
+#### Como funcionam os Arrays
+
+- __Todo array precisa de um identificador, o nome da variável que armazena-o, e cada um destes valores, está guardado em uma pequena caixa, está que o computador armazenou apenas para guardar os valores. Além disto, o array tem praticamente o tamanho que quisermos.__
+- __Cada item do array, é identificado através de um índice, ou, posição, sendo a posição de cada item do array, e nós tinhamos feito um array da seguinte forma:__
+
+```javascript
+const nomeVar = [item];
+```
+
+- __Vale lembrar que as listas no js, não se restringem a um único tipo de dado. Podemos ter strings, booleanos e os inteiros. É uma boa prática trabalhar com o mesmo tipo de dado em um array__
+
+#### Adicionando elementos
+
+- 
