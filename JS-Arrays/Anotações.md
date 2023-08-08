@@ -196,3 +196,34 @@ console.log(`O aluno da posicao 2 é ${studentsTable[0][2]} e sua média foi ${s
 ```
 
 - __O que ocorreu foi: Guardamos em uma variável duas listas. Vale lembrar que quando inserimos `studentsTable[0]` estamos selecionando o item da nossa lista. Ou seja, selecionamos uma lista, e o próximo `[1]` marca a posição que queremos da lista selecionada. O nome que damos a isto é uma lista de duas dimensões, ou seja, uma lista formada por outras listas. Também podemos chamá-la de matriz__
+
+#### Procurando na lista
+
+- Sabendo de tudo que já foi passado, __agora iremos ter como exemplo uma função que recebe como argumento o nome do aluno. E irá verificar se o aluno está presente e retornando sua média. Caso não esteja, terá uma mensagem de que o aluno não foi encontrado:__
+
+```javascript
+function showNameAndScore(student) {
+    if (studentsList[0].includes(student)) {
+        console.log(`O aluno ${student} está cadastrado`)
+    } else {
+        console.log('aluno não encontrado')
+    }
+}
+
+showNameAndScore('João');
+```
+
+- O que ocorreu foi: __Criamos uma função que recebe como parâmetro o nome do aluno. Utilizando o método `includes`, estamos verificando se, na primeira lista, existe o aluno com o nome que inserimos. Sendo assim, utilizamos o `if` verificando se existe ou não. O método `includes` faz com que em seu parâmetro receba o valor inserido na função, verificando corretamente, sendo então um retorno booleano, `true` ou `false`__
+- Agora, __precisamos adicionar a média do aluno, e para isso precisamos acessar o índice do nosso `student`. Faremos isto com:__
+
+```javascript
+const index = studentsList[0].indexOf(student);
+```
+
+- O que ocorre é que __como nosso parâmetro da função é o valor inserido, no qual verifica o aluno existente, precisamos acessar a posição dele dentro da lista. Para isso, utilizamos o método `indexOf()`, que como se autodescreve, é a posição do elemento inserido da lista. Com está informação, vamos acessá-la e passar qual é a média do aluno:__
+
+```js
+const studentAverage = studentsList[1][index];
+```
+
+- __Neste trecho de código, selecionamos a segunda lista e dela nós acessaremos a posição do aluno inserido, dessa forma, conseguindo trazer de fato a nota do aluno e a posição do mesmo__
