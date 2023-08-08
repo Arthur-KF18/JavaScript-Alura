@@ -227,3 +227,16 @@ const studentAverage = studentsList[1][index];
 ```
 
 - __Neste trecho de código, selecionamos a segunda lista e dela nós acessaremos a posição do aluno inserido, dessa forma, conseguindo trazer de fato a nota do aluno e a posição do mesmo__
+
+#### Desestruturando uma lista
+
+- Nosso código está amplamente funcionando, porém, temos muito texto sendo inserido e pode se causar um pouco de confusão ao ler ele. para isso, iremos refatorá-lo e aplicar uma desestruturação:
+
+```javascript
+const [students, averages] = studentsList;
+
+const index = students.indexOf(student);
+const studentAverage = averages[index];
+```
+
+- O __`const [students, averages] = studentsList;` está pegando o valor de cada lista quando requisitada. E por estarmos usando listas, utilizamos o `[]`. O valor da primeira lista esttá armazenado em `students` e o da segunda lista em `averages`. Desta forma__

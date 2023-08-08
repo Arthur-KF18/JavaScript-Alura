@@ -5,8 +5,10 @@ const studentsList = [students, average];
 
 function showNameAndScore(student) {
     if (studentsList[0].includes(student)) {
-        const index = studentsList[0].indexOf(student);
-        const studentAverage = studentsList[1][index];
+        const [students, averages] = studentsList;
+
+        const index = students.indexOf(student);
+        const studentAverage = averages[index];
 
         console.log(`O aluno ${student} está cadastrado e sua média é ${studentAverage}`);
     } else {
