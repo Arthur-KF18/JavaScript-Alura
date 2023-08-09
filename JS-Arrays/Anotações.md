@@ -285,4 +285,60 @@ console.log(`A média do aluno foi de ${average}`);
 
 #### Média com For of
 
-- 
+- Agora que vimos o `for`, __utilizaremos uma nova estrutura chamada de `for of`. Escreveremos da seguinte maneira:__
+
+```javascript
+const grades2 = [10, 6.5, 8, 7.5];
+for (let element of grades2){
+    console.log(element);
+}
+// 10 6.5 8 7.5
+```
+
+- O __`for of` é uma estrutura de repetição exatamente igual ao `for` tradicional, sendo composto apenas por uma expressão, sendo assim "para cada elemento de um array, execute o código dentro dos `{}`".__
+- O `for of` __é de uso mais indicado ao trabalharmos com listas. Diferente do `for` clássico, onde declaramos de forma manual o controle, a condição e execução, o `for of` realiza elas de forma automatica, sabendo que deve percorrer o array do início ao fim, e que podemos selecionar o valor de cada elemento que fica armazenado na variável `element`__
+- Podemos realizar a soma de todas as notas desta maneira:
+
+```javascript
+const grades2 = [10, 6.5, 8, 7.5];
+let grades2Sum = 0;
+
+for (let element of grades2) {
+    grades2Sum += element;
+}
+
+console.log(grades2Sum)
+// 32
+```
+
+- E se quisermos realizar a média das notas:
+
+```javascript
+const average2 = (grades2Sum/grades2.length)
+console.log(`A média do segundo aluno é: ${average2}`)
+// A média do segundo aluno é: 8
+```
+
+- Porém, __vale ressaltar que o uso dele depende do contexto. Apesar de ser conciso, ele funciona em arrays que queremos percorrer do início ao fim, e todos os elementos. A diferença do `for` tradicional, é que o tradicional pode ser mais flexível de ser utilizado, em contextos mais complexos. O `for of` não possui toda essa flexibilidade, podendo ser mais utilizado para verificar cada item da lista__
+- Uma outra forma de se utilizar o `for`, é __verificar a quantidade de números pares de 0 a 100:__
+
+```javascript
+const evenNumbers = [];
+
+for (let i = 0; i <= 100; i += 2) {
+  evenNumbers.push(i);
+}
+console.log(evenNumbers);
+// [
+//    0,  2,  4,  6,  8, 10,  12, 14, 16, 18, 20,
+//   22, 24, 26, 28, 30, 32,  34, 36, 38, 40, 42,
+//   44, 46, 48, 50, 52, 54,  56, 58, 60, 62, 64,
+//   66, 68, 70, 72, 74, 76,  78, 80, 82, 84, 86,
+//   88, 90, 92, 94, 96, 98, 100
+// ]
+```
+
+- Usando operadores como o `+=`, onde __será adicionado 2 para cada item que será feito no loop__
+
+#### Média com For Each
+
