@@ -259,4 +259,30 @@ for (let i = 0; i < numbers.length; i++) {
 
 #### Média com For
 
+- Agora que já sabemos do `for`, __se quisermos calcular as médias de um aluno?__
+
+```javascript
+const grades = [10, 6.5, 8, 7.5];
+let gradesSum = 0;
+
+for (let i = 0; i < grades.length; i++) {
+    const grade = grades[i];    
+    gradesSum += grade;
+}
+
+console.log(gradesSum)
+// 32
+```
+
+- O que ocorreu foi; __Criamos o laço de repetição, e declaramos a variável `gradesSum`, ou seja, a soma das médias. Precisamos iniciá-la em 0, pois ela irá receber os valores do loop em `grades[i]`. O uso do operador `+=` significa que é um operador de atribuição no qual atribui um valor ao seu operando esquerdo com base no valor do seu operando direito, que é o valor de cada item durante o loop.__
+- Desta forma, com a soma de todas as notas, basta calcular a média com:
+
+```javascript
+const average = (gradesSum / grades.length);
+console.log(`A média do aluno foi de ${average}`);
+// A média do aluno foi de 8
+```
+
+#### Média com For of
+
 - 
