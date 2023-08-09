@@ -240,3 +240,23 @@ const studentAverage = averages[index];
 ```
 
 - O __`const [students, averages] = studentsList;` está pegando o valor de cada lista quando requisitada. E por estarmos usando listas, utilizamos o `[]`. O valor da primeira lista esttá armazenado em `students` e o da segunda lista em `averages`. Desta forma__
+
+#### For clássico
+
+- Vamos supor que temos uma lista de números e precisamos imprimi-los um de cada vez. Antigamente, iríamos apenas selecionar um item da lista de cada vez e imprimí-lo, porém, isto não é uma boa prática. Para isso __utilizaremos o laço de repetição `for`. O "para" é uma condição que irá executar repetidas vezes até finalizar os itens da lista. Porém, ela também pode ser utilizada de forma única.__
+
+```javascript
+const numbers = [100, 200, 300, 400, 500, 600];
+
+for (let i = 0; i < numbers.length; i++) {
+    const number = numbers[i];
+    console.log(number);
+}
+```
+
+- Neste trecho de código, temos uma lista chamada `numbers`, que recebe todos os valores. __Após isto, temos nosso `for`, que irá ter 3 variáveis. `let i = 0` será o índice que irá começar o loop. `i < numbers.length` é o tamanho do nosso array, e `i++` é a soma para o próximo item. Ou seja, `i` será a vez, e irá se repetir até cumprir o tamanho de itens dentro do array. Lembrando que `i` é o índice do nosso array__
+- `const number = numbers[i]` é  __responsável por selecionar cada item do nosso array de acordo com sua posição, e depois será impresso em `console.log(number)`__
+
+#### Média com For
+
+- 

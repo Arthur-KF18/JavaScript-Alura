@@ -4,18 +4,16 @@ const average = [10, 8, 7.5, 9];
 const studentsList = [students, average];
 
 function showNameAndScore(student) {
-    if (studentsList[0].includes(student)) {
-        const [students, averages] = studentsList;
+    if (students.includes(student)) {
 
         const index = students.indexOf(student);
-        const studentAverage = averages[index];
+        const studentAverage = average[index];
 
-        console.log(`O aluno ${student} está cadastrado e sua média é ${studentAverage}`);
+        return `O aluno ${student} está cadastrado e sua média é ${studentAverage}`;
     } else {
-        console.log('aluno não encontrado');
+        console.error(`Aluno não encontrado`);
     }
 }
 
-showNameAndScore('João');
-showNameAndScore('Carla');
-showNameAndScore('Caio');
+console.log(showNameAndScore('João'));
+showNameAndScore('Fernando');
