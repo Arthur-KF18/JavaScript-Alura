@@ -28,7 +28,7 @@ for (let element of grades2) {
     grades2Sum += element;
 }
 
-const average2 = (grades2Sum/grades2.length)
+const average2 = (grades2Sum / grades2.length)
 console.log(`A média do segundo aluno é: ${average2}`)
 
 // Quick example for verification of Even Numbers
@@ -36,6 +36,20 @@ console.log(`A média do segundo aluno é: ${average2}`)
 const evenNumbers = [];
 
 for (let i = 0; i <= 100; i += 2) {
-  evenNumbers.push(i);
+    evenNumbers.push(i);
 }
 console.log(evenNumbers);
+
+// Using forEach to average score of students
+
+const grades3 = [8, 10, 6, 7];
+let sumGrades3 = 0;
+
+grades3.forEach((grade) => {
+    sumGrades3 += grade;
+})
+
+const average3 = (sumGrades3 / grades3.length);
+console.log(`A nota do terceiro aluno é ${average3}`)
+
+

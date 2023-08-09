@@ -342,3 +342,43 @@ console.log(evenNumbers);
 
 #### Média com For Each
 
+- Continuando nosso cálculo de média de notas, __iremos utilizar outro método amplamente utilizado no desenvolvimento que é o `for Each`. O "para cada" é um método de array onde passamos uma função anônima que irá realizar uma ação para nosso código:__
+
+```javascript
+const grades3 = [10, 6.5, 8, 7.5];
+grades3.forEach(() => {
+    console.log('Hi')
+})
+```
+
+- No caso, __ele também é um método de array, que executa uma repetição, um loop. Nós fizemos o loop de que para cada item do array, imprimisse o `console.log`. Podemos utilizar funções anônimas ou funções de seta. Isto ocorreu pois a função anônima foi parâmetro de outra função, a `forEach`, chamamos isso de Callback.__
+- O Callback __chama de volta uma função que foi passada como parâmetro, e que está sendo chamada para cada elemento do array__
+- Uma das especifidades do `forEach`, __é que utilizamos um parâmetro que receberá os valores do array:__
+
+```js
+const grades3 = [8, 10, 6, 7];
+let sumGrades3 = 0;
+
+grades3.forEach((grade) => {
+    sumGrades3 += grade;
+})
+
+const average3 = (sumGrades3 / grades3.length);
+console.log(`A nota do terceiro aluno é ${average3}`);
+// A nota do terceiro aluno é 7.75
+```
+
+- Nós também podemos passar __mais de um parâmentro, como o índice de cada elemento por exemplo:__
+
+```javascript
+const grades3 = [8, 10, 6, 7];
+let sumGrades3 = 0;
+
+grades3.forEach((grade, index) => {
+    sumGrades3 += grade;
+    console.log(index)
+    // 0 1 2 3
+})
+```
+
+- Desta forma, __podemos acessar o índice de cada valor presente no nosso array. O único parâmetro obrigatório é a função que recebe o elemento, pois como essa função tem o nome de callback, ela vai ser executada para cada elemento do array, sendo que pode receber de 1 a 3 argumentos; o elemento, o índice e o array atual, respectivamente__
