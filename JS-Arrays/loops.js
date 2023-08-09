@@ -51,5 +51,3 @@ grades3.forEach((grade) => {
 
 const average3 = (sumGrades3 / grades3.length);
 console.log(`A nota do terceiro aluno é ${average3}`)
-
-

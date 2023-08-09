@@ -342,7 +342,7 @@ console.log(evenNumbers);
 
 #### Média com For Each
 
-- Continuando nosso cálculo de média de notas, __iremos utilizar outro método amplamente utilizado no desenvolvimento que é o `for Each`. O "para cada" é um método de array onde passamos uma função anônima que irá realizar uma ação para nosso código:__
+- Continuando nosso cálculo de média de notas, __iremos utilizar outro método amplamente utilizado no desenvolvimento que é o `for Each`. O "para cada" é um método do objeto array onde passamos uma função anônima que irá realizar uma ação para nosso código:__
 
 ```javascript
 const grades3 = [10, 6.5, 8, 7.5];
@@ -382,3 +382,30 @@ grades3.forEach((grade, index) => {
 ```
 
 - Desta forma, __podemos acessar o índice de cada valor presente no nosso array. O único parâmetro obrigatório é a função que recebe o elemento, pois como essa função tem o nome de callback, ela vai ser executada para cada elemento do array, sendo que pode receber de 1 a 3 argumentos; o elemento, o índice e o array atual, respectivamente__
+
+#### Revisando Callbacks
+
+- A função callback __é uma função que passamos como parâmetro de outra. Sabemos que, além de utilizar a função anônima `function (){}`, nós podemos utilizar funções de seta, ou arrow functions `() => {}`:__
+
+```javascript
+const names = ['Arthur', 'Evaldo', 'Felipe'];
+
+names.forEach((name) => {
+    console.log(name)
+})
+// Arthur Evaldo Felipe
+```
+
+- Porém, __essa não é a única forma de trabalharmos com funções callback. Como estamos lidando com funções dentro de funções, podemos utilizar uma função declarada:__
+
+```javascript
+const names = ['Arthur', 'Evaldo', 'Felipe'];
+
+function showName(name) {
+    console.log(name)
+}
+
+names.forEach(showName);
+```
+
+- Com isto, __para cada valor inserido, será impresso. Sem a necessidade de utilizar as arrow functions diretamente. Como queremos referênciar uma função, só a chamamos sem utilizar `()`__
