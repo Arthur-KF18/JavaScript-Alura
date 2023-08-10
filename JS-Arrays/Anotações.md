@@ -446,8 +446,18 @@ const newNotes = grades.map((grade) => {
 console.log(newNotes);
 ```
 
-- __Não substitui o `forEach`, mas pode ser utilizado dependendo do contexto em que está sendo aplicado__
+- __Não substitui o `forEach`, mas pode ser utilizado dependendo do contexto em que está sendo aplicado. Vale lembrar que o uso do `{}` e o `return` é opcional quando temos apenas um retorno simples__
 
 #### Alterando Strings com map()
 
--
+- Iremos agora, __padronizar uma determinada lista de alunos, onde teremos que colocar todas as letras de seus nomes, com a primeira sendo maiúscula:__
+
+```javascript
+const names = ['ana Julia', 'Caio vinicius', 'BIA silva']
+const standardNames = names.map((name) => name.toUpperCase())
+
+console.log(standardNames)
+```
+
+- Desta forma, __utilizando o método map, percorremos todo o array, criando um loop, onde a função de seta irá pegar cada palavra e deixá-la em letras maiúsculas__
+- __A principal diferença entre o `forEach` e `map()` é  que enquanto o método `forEach` não tem um retorno, o método `map()` pode retornar um array se a função callback retornar algum valor.__
