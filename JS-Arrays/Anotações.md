@@ -488,4 +488,46 @@ console.log(reproved)
 
 #### Somando com reduce
 
+- Um método muito usado e recomendado é o `reduce`. __O método de arrays `reduce()` é muito flexível, tendo de mais de uma aplicação. Para entendermos seu uso, iremos ter 3 listas de notas de 3 diferentes salas, e que iremos calcular a média delas__
+
+```javascript
+const roomJs = [7, 8, 8, 7, 10, 6.5, 4, 10, 7]
+const roomJava = [6, 5, 8, 9, 5, 6]
+const roomPython = [7, 3.5, 9, 9.5]
+
+
+```
+
+- O método `reduce` __irá iterar sobre o array e iremos passar um função callback para ele. Os parâmetros que ela recebe são diferentes, tendo o primeiro argumento o `acumulador` e o segundo sendo a `grade`, ou seja a nota. Além deste callback, iremos passar um segundo parâmetro para o `reduce`, que é o `0`, ele é o valor inicial do acumulador. Ele tem o papel de soma de notas como no `forEach`.__
+- Para podermos fazer isto, __retornamos para a função o `acumulador + grade`. Lembrando que o `reduce` não altera o array original. Por isso, temos que guardar o valor do `reduce` em uma nova variável.__
+- Com isto, nosso código ficará da seguinte maneira:
+
+```javascript
+const roomJs = [7, 8, 8, 7, 10, 6.5, 4, 10, 7]
+const roomJava = [6, 5, 8, 9, 5, 6]
+const roomPython = [7, 3.5, 9, 9.5]
+
+function calcAverage(roomGrade) {
+  const sumRoomGrade = roomGrade.reduce((acc, grade) => {
+    return acc + grade
+  }, 0)
+
+  const average = sumRoomGrade / roomGrade.length
+
+  return average
+}
+
+console.log(`A média da sala de JS é ${calcAverage(roomJs)}`)
+// A média da sala de JS é 7.5
+console.log(`A média da sala de Java é ${calcAverage(roomJava)}`)
+// A média da sala de Java é 6.5
+console.log(`A média da sala de Python é ${calcAverage(roomPython)}`)
+// A média da sala de Python é 7.25
+```
+
+- __A nossa função, vai retornar a soma de todos os elementos presentes dentro do nosso array. Com isto, iremos pegar a soma dos elementos e dividí-los pelo tamanho do nosso array que inserimos em `roomGrade`. Com isto, podemos imprimir a média das salas__
+- Em suma, __`reduce` é um método mais complexo de se lidar, porém, sabendo que o acumulador, o `acc`, recebe o `0` que passamos como parâmetro do `reduce`, sabemos que o loop irá começar de 0 e que ao somarmos com a variável `grade`, ele irá começar em 0 e irá somar com uma nota da lista que selecionamos. Vale lembrar que se inserirmos `return acc + 1`, será somado 1 a cada valor que está sendo iterado no loop, como 1 + 1, 2 + 1, e assim por diante__
+
+#### Clonando com spread operator
+
 - 
