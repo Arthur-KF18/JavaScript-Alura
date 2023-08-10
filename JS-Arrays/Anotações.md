@@ -409,3 +409,45 @@ names.forEach(showName);
 ```
 
 - Com isto, __para cada valor inserido, será impresso. Sem a necessidade de utilizar as arrow functions diretamente. Como queremos referênciar uma função, só a chamamos sem utilizar `()`__
+
+#### Método map()
+
+- Agora que já vimos o `forEach`, __iremos ver mais um método das listas chamado de `map()`. O `map()` ou "mapeamento", é um método que invoca a função callback passada por argumento para cada elemento do Array e devolve um novo Array como resultado.__
+- Para entendermos melhor seu funcionamento, iremos utilizar um exemplo de pontuação extra as notas em uma determinada lista:
+
+```js
+grades.map((grade) => {
+  return grade + 1
+})
+
+console.log(grade)
+// 40.5 (soma de todos os elementos)
+```
+
+- O que ocorre é que, __`map()` também é uma função callback, assim como o `forEach`,, por isto utilizamos uma arrow function, recebendo os mesmos parâmetros que passamos para o `forEach`. Dentro dela, iremos retornar o valor que queremos sobreescrever, sendo o `return grade + 1`. O `map()` executa isto pois também é uma estrutura de repetição, e que irá ler cada nota, sendo assim, o `map()` é muito apropriado para reescrever arrays, mas não altera o original__
+- __Por fim, ao imprimirmos, precisamos atribuir o resultado dele a um novo array:__
+
+```javascript
+const newNotes = grades.map((grade) => {
+  return grade + 1;
+})
+
+console.log(newNotes);
+// [ 11, 10.5, 9, 8, 7 ]
+```
+
+- Com isto, nosso código terá mais um adicionado ao nosso array. Podemos verificar que, se a nota for maior do que 10, retorna 10, porém, se for menor, irá adicionar:
+
+```javascript
+const newNotes = grades.map((grade) => {
+  return grade + 1 >= 10 ? 10 : grade + 1;
+})
+
+console.log(newNotes);
+```
+
+- __Não substitui o `forEach`, mas pode ser utilizado dependendo do contexto em que está sendo aplicado__
+
+#### Alterando Strings com map()
+
+-
