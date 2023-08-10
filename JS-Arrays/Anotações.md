@@ -530,4 +530,47 @@ console.log(`A média da sala de Python é ${calcAverage(roomPython)}`)
 
 #### Clonando com spread operator
 
+- Agora que vimos sobre o método `reduce` e sua importância, __se nós termos uma lista de notas, e quisermos adicionar mais um nota, porém sem alterar o array original, e incluir em uma nova lista. Como podemos fazer isto?__
+- Vendo o exemplo abaixo:
+
+```javascript
+const grades = [7, 7, 8, 9]
+
+const newGrades = grades
+
+newGrades.push(10)
+
+console.log(`as novas notas são ${newGrades}`)
+// as novas notas são 7,7,8,9,10
+console.log(`as notas originais são ${grades}`)
+// as notas originais são 7,7,8,9,10
+```
+
+- Apesar de __termos feito listas diferentes e termos utilizado `const`, isso não assegura que o array permanecerá igual. Isso ocorre pois o operador `=` está atribuindo um novo array ao antigo, transformando-os em um mesmo único array. Para resolvermos este problema, faremos__
+
+```javascript
+const grades = [7, 7, 8, 9]
+
+const newGrades = [...grades]
+```
+
+- Utilizamos o __operador `...` chamado de spread operator, ou, operador de espalhamento. O que ele faz é pegar todo o conteúdo de um array e "espalhar" seus valores exatamente no local que estamos escrevendo. É como se estivéssemos pegando os valores do `grades` e copiando-os para o `[...grades]`, como se fosse a mesma coisa. Como resultado teremos:__
+
+```javascript
+const grades = [7, 7, 8, 9]
+
+const newGrades = [...grades]
+
+newGrades.push(10)
+
+console.log(`as novas notas são ${newGrades}`)
+// as novas notas são 7,7,8,9,10
+console.log(`as notas originais são ${grades}`)
+// as notas originais são 7,7,8,9
+```
+
+- Desta maneira, __teremos o array intacto. Vale lembrar que podemos utilizar este operador como um parâmetro de uma função. E também podemos apenas utilizar o `[...grades, 10]` para adicionarmos um novo valor, e também podemos inserir no começo do nosso array__
+
+#### Removendo elementos repetidos
+
 - 
