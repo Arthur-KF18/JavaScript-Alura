@@ -461,3 +461,31 @@ console.log(standardNames)
 
 - Desta forma, __utilizando o método map, percorremos todo o array, criando um loop, onde a função de seta irá pegar cada palavra e deixá-la em letras maiúsculas__
 - __A principal diferença entre o `forEach` e `map()` é  que enquanto o método `forEach` não tem um retorno, o método `map()` pode retornar um array se a função callback retornar algum valor.__
+
+#### Filtrando elementos
+
+- Utilizando os conceitos até agora aboradados, iremos criar um filtro onde __depois de termos as médias dos alunos, trazer quem está reprovado ou não:__
+
+```js
+const students = ['Ana', 'Marcos', 'Maria', 'Mauro']
+const averages = [7, 4.5, 8, 7.5]
+```
+
+- A partir destas listas, __utilizando o método `filter()`, iremos filtrar apenas os alunos que estão reprovados, porém ele retorna um novo array.__
+
+```javascript
+const students = ['Ana', 'Marcos', 'Maria', 'Mauro']
+const averages = [7, 4.5, 8, 7.5]
+
+const reproved = students.filter((student, index) => averages[index] < 7)
+
+console.log(reproved)
+// [ 'Marcos' ]
+```
+
+- Desta forma, teremos um __filtro da nossa lista, tendo um novo array que possui o valor que foi filtrado, sendo assim, sabemos qual aluno está reprovado. Para sabermos os aprovados, basta trocar a lógica para `>=`. Nota-se que, utilizamos apenas o segundo parâmetro, pois é ele quem acessa a nossa segunda lista. Uma conveção utilizada é o `_` para dar um espaço vazio a este item que não será utilizado. Precisamos obrigatoriamente utilizar um nome no primeiro parâmetro pois o segundo é o índice__
+- Lembrando que __o `filter` retorna `true` ou `false` quando estamos trabalhando com ele.__
+
+#### Somando com reduce
+
+- 
