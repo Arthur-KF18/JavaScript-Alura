@@ -1,3 +1,4 @@
+![alt](./undraw_coding_re_iv62.svg)
 <div style=" display:flex; flex-direction:row; text-align: center;">
 
 ![logo HTML](./HTML5_Badge_32.png "logo JS")
@@ -30,8 +31,10 @@
 
 ### Formação Aprenda a programar em JavaScript com foco no back-end
 
-- Link: []()
+- Link: [Tipos, variáveis e funções](https://github.com/Arthur-KF18/JavaScript-Alura/blob/main/JS-Tipos%2C-vari%C3%A1veis-e-fun%C3%A7%C3%B5es/anota%C3%A7%C3%B5es01.md)
+- Link: [JavaScript - Arrays](https://github.com/Arthur-KF18/JavaScript-Alura/blob/main/JS-Arrays/Anota%C3%A7%C3%B5es.md)
 
 ### Alura+ de JavaScript
 
-- Link: [Data Attributes]()
+- Link: [Data Attributes](https://github.com/Arthur-KF18/JavaScript-Alura/blob/main/Alura%2B/Data-Attributes-do-HTML5/readme.md)
+- Link: [JavaScript Assíncrono](https://github.com/Arthur-KF18/JavaScript-Alura/blob/main/Alura%2B/JavaScript-Ass%C3%ADncrono/readme.md)
