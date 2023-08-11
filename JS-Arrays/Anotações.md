@@ -570,7 +570,52 @@ console.log(`as notas originais são ${grades}`)
 ```
 
 - Desta maneira, __teremos o array intacto. Vale lembrar que podemos utilizar este operador como um parâmetro de uma função. E também podemos apenas utilizar o `[...grades, 10]` para adicionarmos um novo valor, e também podemos inserir no começo do nosso array__
+- vale dizer que __utilizamos este operador pois arrays são do tipo primitivo, e eles alteram seu próprio valor ao atribuirmos com `=`. Isto ocorre apenas com tipos primitivos em js, não ocorrem em funções por exemplo__
 
 #### Removendo elementos repetidos
 
-- 
+- Agora, em uma lista onde temos nomes repetidos, precisamos removê-los e deixar apenas um de cada:
+
+```javascript
+const names = ["Ana", "Clara", "Maria", "Maria", "João", "João", "João"];
+```
+
+- Para podermos fazer isto utilizando o método `set`, __este método é uma estrutura que é uma classe em js. Para podermos utilizá-lo, faremos:__
+
+```javascript
+const mySet = new Set()
+```
+
+- __É uma classe que já possui algumas lógicas internas. Ele é parecido com as listas, porém funciona de forma diferente. Uma de suas regras é que os elementos de um set não podem se repetir. Para isso, dentro dos `()` podemos inserir uma lista:__
+
+```javascript
+const names = ['Ana', 'Clara', 'Maria', 'Maria', 'João', 'João', 'João']
+
+const mySet = new Set(names)
+console.log(mySet)
+// Set(4) { 'Ana', 'Clara', 'Maria', 'João' }
+```
+
+- Assim, teremos a remoção das nossa duplicatas, porém, __queremos nosso array completo novamente, para isso iremos:__
+
+```javascript
+const names = ['Ana', 'Clara', 'Maria', 'Maria', 'João', 'João', 'João']
+
+const mySet = new Set(names)
+const newNames = [...mySet]
+
+console.log(newNames)
+// [ 'Ana', 'Clara', 'Maria', 'João' ]
+```
+
+- __Assim, nós iremos retornar a lista completa, com apenas os elementos não repetidos sem repetição dos elementos. E também utilizaremos o spread operator no nosso set para guardar em um array o valor deles.__
+- Podemos também __passar diretamente a nossa condição, já que o spread operator permite esta forma de interação deixando mais concisa:__
+
+```javascript
+const names = ['Ana', 'Clara', 'Maria', 'Maria', 'João', 'João', 'João']
+
+const newNames = [...new Set(names)]
+
+console.log(newNames)
+// [ 'Ana', 'Clara', 'Maria', 'João' ]
+```
