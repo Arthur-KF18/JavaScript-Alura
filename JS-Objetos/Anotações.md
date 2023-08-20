@@ -2,14 +2,14 @@
 
 - Esta pasta tem como função __a anotação dos assuntos descritos no curso de "JavaScript: Objetos" da empresa Alura__
 
-## O que será visto no curso:
+#### O que será visto no curso:
 
 - Os objetos e o que são
 - Como alterar seus campos
 - Suas propriedades
 - Entender melhor sobre o Formato JSON
 
-## O que são Objetos
+#### O que são Objetos
 
 - Primeiro, iremos criar um arquivo chamado `objeto.js`. Nele iremos inserir dados, como no curso anterior, onde tinhámos vários nomes, alunos e até mesmo o cálculo de médias.
 - Vamos criar uma lista de CPFs, __essa lista é uma estrutura de dados que guarda a mesma informação, várias vezes.__
@@ -52,3 +52,39 @@ const personObject = {
 const { name, age } = personObject
 console.log(`O seu nomé é ${name} e sua idade ${age}`)
 ```
+
+#### Acessando Dados
+
+- Agora que entendemos a estrutura dos objetos, __precisamos apenas acessá-los. Para podermos fazer isso, iremos utilizar o exemplo de uma loja onde temos clientes. Iremoscriar alguns clientes para esta loja, com suas características:__
+
+```javascript
+const client = {
+  name: "Arthur",
+  age: 20,
+  cpf: "1122233345",
+  email: "Arthur@dominio.com"
+};
+```
+
+- Agora, __precisamos apenas acessar um dos dados do cliente. Por exemplo o nome:__
+
+```javascript
+console.log(client.name)
+// Arthur
+```
+
+- __O js vai entender que queremos acessar as propriedades individuais do nosso cliente, através do uso do `.`. Podemos também utilizar as template strings:__
+
+```javascript
+console.log(`O nome do cliente é ${client.name}, e sua idade é ${client.age}`);
+// O nome do cliente é Arthur, e sua idade é 20
+```
+
+- Nós também __podemos utilizar métodos quando estamos acessando as propriedades de um objeto. Por exemplo, se quisermos apenas os 3 primeiros dígitos do CPF, utilizaremos o método `substring(valor inicial, valor final)`, onde com ele definimos o intervalo de caracteres que queremos selecionar:__
+
+```javascript
+console.log(`Os 3 primeiros digitos do CPF são ${client.cpf.substring(0, 3)}`);
+// Os 3 primeiros digitos do CPF são 112
+```
+
+- Lembrando que __para cada tipo de dados, seja ele número ou string, teremos seus métodos.__
