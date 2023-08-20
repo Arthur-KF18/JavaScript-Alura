@@ -36,3 +36,5 @@ const person = {
 console.log(person.name);
 person.number = "12 3456 7891"
 console.log(person.number);
+
+console.log(person);
