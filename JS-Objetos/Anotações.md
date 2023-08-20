@@ -115,3 +115,29 @@ A chave email tem valor Arthur@dominio.com
 ```
 
 - Com isto, teremos acessado as chaves e trazido os valores de cada propriedade. __O uso dos colchetes é para cenários em que não necessariamente, sabemos quais campos vamos acessar. E se acessarmos uma propriedade inexistente, teremos o valor `undefined`__
+
+#### Adicionando e alterando
+
+- Agora que sabemos acessar os valores dentro de objetos, __é interessante poder manipular todos estes valores__
+- Vamos então ter uma pessoa da seguinte maneira:
+
+```javascript
+const person = {
+  name: "Luna",
+  job: "Engenherira"
+}
+```
+
+- Sabemos que podemos acessar os valores das propriedades através do `.`, __como `person.name` que é "Luna". Porém, e se quisermos adicionar uma nova propriedade e seu valor? Como por exemplo o número de telefone? Para isso iremos:__
+
+```javascript
+console.log(person.number);
+// undefined
+person.number = "12 3456 7891"
+console.log(person.number);
+// 12 3456 7891
+```
+
+- __Ao nós perdirmos o valor da propriedade inexistente, teremos como resultado `undefined`. Porém, ao declararamos este valor, e como sabemos que o js lê linha por linha, teremos como resultado a nova atribuição à nossa pessoa.__
+- Isso também aconteceria se __aumentassemos o nome da pessoa, e quando pedissemos o objeto completo, iriámos ver o nome e o telefone que foram alterados e inseridos respectivamente. Isso acontece pois o js, entende que estamos reatribuindo o valor ao nosso objeto.__
+- Porém, como é possível notar, sabemos que nos 3 tipos de variáveis que temos no js, __`const` é uma variável do tipo constante que é imutável. A palavra reservada `const` não nos permite reatribuir um objeto inteiro, mas permite que um objeto armazenado, a propriedade, possa ser alterada. As variáveis `const` não podem ser reatribuídas, mas seu conteúdo interno alterado__

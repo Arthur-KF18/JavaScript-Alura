@@ -25,3 +25,14 @@ console.log(`Os 3 primeiros digitos do CPF são ${client.cpf.substring(0, 3)}`);
 const keys = ["name", "age", "cpf", "email"];
 
 keys.forEach((key) => { console.log(`A chave ${key} tem valor ${client[key]}`) });
+
+// Alterando valores de um objeto
+
+const person = {
+  name: "Luna",
+  job: "Engenherira"
+}
+
+console.log(person.name);
+person.number = "12 3456 7891"
+console.log(person.number);
