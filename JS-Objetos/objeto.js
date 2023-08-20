@@ -19,3 +19,9 @@ const client = {
 console.log(client.name);
 console.log(`O nome do cliente é ${client.name}, e sua idade é ${client.age}`);
 console.log(`Os 3 primeiros digitos do CPF são ${client.cpf.substring(0, 3)}`);
+
+// Usando colchetes para acessar os dados
+
+const keys = ["name", "age", "cpf", "email"];
+
+keys.forEach((key) => { console.log(`A chave ${key} tem valor ${client[key]}`) });

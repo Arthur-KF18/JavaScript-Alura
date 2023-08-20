@@ -88,3 +88,30 @@ console.log(`Os 3 primeiros digitos do CPF são ${client.cpf.substring(0, 3)}`);
 ```
 
 - Lembrando que __para cada tipo de dados, seja ele número ou string, teremos seus métodos.__
+
+#### Acessando Dados com Colchetes
+
+- Agora que entendemos como acessar as propriedades através do ponto, temos outra forma de acesso __é utilizando o operador de colchetes, similar aos arrays. Podemos fazer `nomeDoObjeto["propriedade"]`.__
+- Nós acessaremos __as propriedades e o colchetes irá utilizar o `""`para acessar os valores:__
+
+```javascript
+console.log(`A idade é ${client["age"]}`);
+// A idade é 20
+```
+
+- __O fator de aprendizado deste modo de acesso, é por que quando estamos acessando um objeto, não necessariamente sabemos as propriedades que ele possui. Através disto, podemos acessar as propriedades do objeto, mas não precisamos sempre utilizar este método__
+- Com isto, por exemplo, podemos ter uma variável constante onde ela recebe os nomes __de todas as propriedades do objeto, e queremos que, para cada uma delas, ela acesse o objeto e retorne seu valor:__
+
+```javascript
+const keys = ["name", "age", "cpf", "email"];
+
+keys.forEach((key) => { console.log(`A chave ${key} tem valor ${client[key]}`) });
+/*
+A chave name tem valor Arthur
+A chave age tem valor 20
+A chave cpf tem valor 1122233345
+A chave email tem valor Arthur@dominio.com
+*/
+```
+
+- Com isto, teremos acessado as chaves e trazido os valores de cada propriedade. __O uso dos colchetes é para cenários em que não necessariamente, sabemos quais campos vamos acessar. E se acessarmos uma propriedade inexistente, teremos o valor `undefined`__
